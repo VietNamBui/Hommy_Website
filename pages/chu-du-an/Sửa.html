@@ -1,0 +1,565 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+    <style>
+        /* Custom CSS */
+        body {
+                background-color: #f8f8f8;
+                font-family: Arial, sans-serif;
+            }
+            .navbar {
+                background-color: #1b2e00;
+                padding: 10px 20px;
+            }
+            .navbar-brand {
+                font-weight: bold;
+            }
+            .navbar-nav .nav-link {
+                color: #ffffff;
+                border: 1px solid #cb0047;
+                border-radius: 10px;
+                margin: 10px;
+                background-color: #cb004763;
+                box-shadow: 0px 0px 5px 1px #cb0047, 0px 0px 2px 4px #1b2e00;
+                transition: transform 250ms, color 650ms;
+            }
+            
+            .navbar-nav .nav-link:hover {
+                transform: translate(0px) scale(1.1);
+                color: rgb(255, 0, 89) !important; /* Thêm !important để đảm bảo hiệu lực */
+            }
+    
+            /* CSS cho các mục bên trong dropdown */
+            .dropdown-menu .dropdown-item {
+                color: #4f9000; /* Màu mặc định cho các mục trong dropdown */
+                background-color: #ffffff; /* Màu nền cho mục trong dropdown */
+                transition: tranform 650ms, background-color 650ms, color 250ms;
+            }
+    
+            .dropdown-menu .dropdown-item:hover {
+                transform: translate(5px) scale(1.1);
+                color: rgb(238, 255, 205); /* Màu chữ khi trỏ vào mục */
+                background-color:#1b2e00; /* Màu nền khi trỏ vào mục */
+            }
+            .video-background {
+                position: relative;
+                width: 100%;
+                height: 100vh; /* Chiều cao bằng chiều cao của viewport */
+                overflow: hidden;
+            }
+            
+            .video-background video {
+                filter: blur(30px);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                transform: translate(-50%, -50%);
+                z-index: -1; /* Đặt video dưới các nội dung khác */
+            }
+    
+            
+            .form-inline {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+            }
+            .form-inline input {
+                width: 100%;
+            }
+            .form-inline button {
+                margin-left: 10px;
+            }
+            .login-box {
+                background-color:   #1b2e00b7;
+                border: 5px solid #e3e3e3;
+                border-radius: 20px;
+                padding: 30px;
+                width: 100%;
+                max-width: 400px;
+                margin: 80px auto;
+                box-shadow: 0px 0px 50px 1px rgb(0, 0, 0);
+            }
+            .login-box h2 {
+                font-size: 24px;
+                color:#c1e98a;
+                margin-bottom: 20px;
+            }
+            .login-box input[type="email"],
+            .login-box input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+            .login-box input[type="checkbox"] {
+                margin-right: 5px;
+            }
+            .login-box .btn-submit {
+                background-color: #ffffff;
+                border-color: #cdd0d0;
+                padding: 10px 20px;
+                color: #fff;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 5px;
+                cursor: pointer;
+                width: 100%;
+            }
+            .login-box .btn-submit:hover {
+                background-color: #83bff7;
+            }
+            .no-underline a {
+                text-decoration: none;
+                color: inherit;
+            }
+            .no-underline a:hover {
+                text-decoration: underline;
+            }
+</style>
+</head>
+<body style="margin: 0; padding: 0;">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+             Logo Hommy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+             <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+               <a class="nav-link" href="#">Mua gói</a>
+              </li>
+              <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Danh mục
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Chung cư</a></li>
+                <li><a class="dropdown-item" href="#">Nhà ở</a></li>
+                <li><a class="dropdown-item" href="#">Phòng trọ</a></li>
+               </ul>
+              </li>
+             </ul>
+             <form class="form-inline my-2 my-lg-0">
+              <input class="form-control me-2" type="search" placeholder="Nhập từ khóa tìm kiếm" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+             </form>
+             <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+               <a class="nav-link" href="#">
+                <img src="https://storage.googleapis.com/a1aa/image/hb5Nzm6NNdYaPJTIStmWgEycMxfReJur7GbB6Bf5Bd1ypQZnA.jpg" alt="User avatar" width="30" height="30" class="rounded-circle">
+               </a>
+              </li>
+             </ul>
+            </div>
+           </nav>
+        </header>
+    
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col">
+                    <div class="container bg-light rounded-3" style="min-height: 800px;">
+                        <div class="row">
+                            <div class="col-4 mt-3 mb-3">
+                                <h5 class="text-center"> Chỉnh sửa hình ảnh và Video sản phẩm</h5>
+                                <label class="custum-file-upload" for="file" style="display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #6c757d; padding: 2rem; border-radius: 10px; cursor: pointer; width: 100%; height: 250px; transition: background-color 0.3s;">
+                                    <div class="icon" style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 60px; height: 60px; fill: #6c757d;">
+                                            <path fill="" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span style="font-weight: 500; color: #495057; text-align: center;">Thêm hình ảnh và video BDS</span>
+                                    <input type="file" id="file" style="display: none;">
+                                </label>
+                            </div>
+                            <div class="col-8 mt-3 mb-3">
+                                <form action="">
+                                    <select class="form-select" id="categorySelect">
+                                        <option value="">Danh Mục Đăng Tin *</option>
+                                        <option value="phongtro">Phòng trọ</option>
+                                        <option value="nhao">Nhà ở</option>
+                                        <option value="chungcu">Chung cư</option>
+                                    </select>
+                                </form>
+                                <form action="">
+                                    <div id="phongtroForm" class="form-section">
+                                        <div class="mb-3 mt-3">
+                                            <label for="tieude">Chỉnh sửa tiêu đề bài đăng:</label>
+                                            <input type="text" class="form-control" id="tieude" value="Tiêu đề hiện có" name="tieude">
+                                        </div>
+                                        <h5>Thông tin địa chỉ</h5>
+                                        <div class="mb-3">
+                                            <label for="province/city">Tỉnh/Thành phố:</label>
+                                            <select class="form-select" id="province/city" name="province/city">
+                                                <option>Tỉnh/Thành phố</option>
+                                                <option selected>Hồ Chí Minh</option>
+                                                <option>Bình Dương</option>
+                                                <option>Hà Nội</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="district">Quận/Huyện:</label>
+                                            <select class="form-select" id="district" name="district">
+                                                <option>Quận/Huyện</option>
+                                                <option selected>Quận 1</option>
+                                                <option>Quận 2</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="Sonha">Số nhà:</label>
+                                            <input type="text" class="form-control" id="Sonha" value="Số nhà hiện có" name="Sonha">
+                                        </div>
+                                        <h5>Thông tin bất động sản</h5>
+                                        <div class="mb-3 mt-3">
+                                            <label for="dientich">Diện tích:</label>
+                                            <input type="text" class="form-control" id="dientich" value="100 m²" name="dientich">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="furniture">Thông tin nội thất:</label>
+                                            <select class="form-select" id="furniture" name="furniture">
+                                                <option>Thông tin nội thất</option>
+                                                <option selected>Đầy đủ nội thất</option>
+                                                <option>Phòng trống</option>
+                                            </select>
+                                        </div>
+                                        <h5>Thông tin cho thuê</h5>
+                                        <div class="mb-3 mt-3">
+                                            <label for="tiencoc">Tiền cọc:</label>
+                                            <input type="number" class="form-control" id="tiencoc" value="1000000" name="tiencoc">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="tienthue">Tiền thuê:</label>
+                                            <input type="number" class="form-control" id="tienthue" value="5000000" name="tienthue">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="commision">Phí hoa hồng:</label>
+                                            <select class="form-select" id="commision" name="commision">
+                                                <option>Phí hoa hồng</option>
+                                                <option selected>30%</option>
+                                                <option>40%</option>
+                                                <option>50%</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-success">Lưu thay đổi</button> 
+                                        <button type="reset" class="btn btn-secondary">Hủy</button>
+                                    </div>
+                                </form>
+                                <form action="">
+                                    <div id="phongtroForm" class="form-section" style="display:none;">
+                                            <div class="mb-3 mt-3" >
+                                                <label for="tieude">Tiêu đề đăng tin:</label>
+                                                <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
+                                            </div>
+                                            <h5>Thông tin địa chỉ</h5>
+                                            <div class="mb-3">
+                                                <label for="province/city">Tỉnh/Thành phố:</label>
+                                                <select class="form-select" id="province/city" name="province/city">
+                                                    <option>Tỉnh/Thành phố</option>
+                                                    <option>Hồ Chí Minh</option>
+                                                    <option>Bình Dương</option>
+                                                    <option>Hà Nội</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="district">Quận/Huyện:</label>
+                                                <select class="form-select" id="district" name="district">
+                                                    <option>Quận/Huyện</option>
+                                                    <option>Quận 1</option>
+                                                    <option>Quận 2</option>
+                                                    <option>Quận 3</option>
+                                                    <option>Quận 4</option>
+                                                    <option>Quận 5</option>
+                                                    <option>Quận 6</option>
+                                                    <option>Quận 1</option>
+                                                    <option>Quận 2</option>
+                                                    <option>Quận 7</option>
+                                                    <option>Quận Phú Nhuận</option>
+                                                    <option>Quận Tân Phú</option>
+                                                    <option>Quận Gò Vấp</option>
+                                                    <option>Quận Bình Thạnh</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="Wistrict">Phường/Xã:</label>
+                                                <select class="form-select" id="Wistrict" name="Wistrict">
+                                                    <option>Phường/Xã</option>
+                                                    <option>Phường 1</option>
+                                                    <option>Phường 2</option>
+                                                    <option>Phường 3</option>
+                                                    <option>Phường 4</option>
+                                                    <option>Phường 5</option>
+                                                    <option>Phường 6</option>
+                                                    <option>Phường 1</option>
+                                                    <option>Phường 2</option>
+                                                    <option>Phường 7</option>
+                                                    <option>Phường 8</option>
+                                                    <option>Phường 9</option>
+                                                    <option>Phường 10</option>
+                                                    <option>Phường 12</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="Sonha">Số nhà:</label>
+                                                <input type="text" class="form-control" id="Sonha" placeholder="Số nhà" name="Sonha">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="tenduong">Tên đường:</label>
+                                                <input type="text" class="form-control" id="tenduong" placeholder="Tên đường" name="tenduong">
+                                            </div>
+                                            <h5>Thông tin chi tiết bất động sản</h5>
+                                            <div class="mb-3 mt-3">
+                                                <label for="dientich">Diện tích:</label>
+                                                <input type="text" class="form-control" id="dientich" placeholder="Diện tích" name="dientich">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="furniture">Thông tin nội thất:</label>
+                                                <select class="form-select" id="furniture" name="furniture">
+                                                    <option>Thông tin nội thất</option>
+                                                    <option>Đầy đủ nội thất</option>
+                                                    <option>Phòng trống</option>
+                                                  </select>
+                                            </div>
+                                            <h5>Thông tin cho thuê</h5>
+                                            <div class="mb-3 mt-3">
+                                                <label for="tiencoc">Tiền cọc:</label>
+                                                <input type="number" class="form-control" id="tiencoc" placeholder="Tiền cọc" name="tiencoc">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="tienthue">Tiền thuê:</label>
+                                                <input type="number" class="form-control" id="tienthue" placeholder="Tiền thuê" name="tienthue">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="commision">Phí hoa hồng:</label>
+                                                <select class="form-select" id="commision" name="commision">
+                                                    <option>Phí hoa hồng</option>
+                                                    <option>30%</option>
+                                                    <option>40%</option>
+                                                    <option>50%</option>
+                                                  </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-primary">Cancel</button>
+                                        </div>
+                                        <div id="nhaoForm" class="form-section" style="display:none;">
+                                            <div class="mb-3 mt-3" >
+                                                <label for="tieude">Tiêu đề đăng tin:</label>
+                                                <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
+                                            </div>
+                                            <h5>Thông tin địa chỉ</h5>
+                                            <div class="mb-3">
+                                                <label for="province/city">Tỉnh/Thành phố:</label>
+                                                <select class="form-select" id="province/city" name="province/city">
+                                                    <option>Tỉnh/Thành phố</option>
+                                                    <option>Hồ Chí Minh</option>
+                                                    <option>Bình Dương</option>
+                                                    <option>Hà Nội</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="district">Quận/Huyện:</label>
+                                                <select class="form-select" id="district" name="district">
+                                                    <option>Quận/Huyện</option>
+                                                    <option>Quận 1</option>
+                                                    <option>Quận 2</option>
+                                                    <option>Quận 3</option>
+                                                    <option>Quận 4</option>
+                                                    <option>Quận 5</option>
+                                                    <option>Quận 6</option>
+                                                    <option>Quận 1</option>
+                                                    <option>Quận 2</option>
+                                                    <option>Quận 7</option>
+                                                    <option>Quận Phú Nhuận</option>
+                                                    <option>Quận Tân Phú</option>
+                                                    <option>Quận Gò Vấp</option>
+                                                    <option>Quận Bình Thạnh</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="Wistrict">Phường/Xã:</label>
+                                                <select class="form-select" id="Wistrict" name="Wistrict">
+                                                    <option>Phường/Xã</option>
+                                                    <option>Phường 1</option>
+                                                    <option>Phường 2</option>
+                                                    <option>Phường 3</option>
+                                                    <option>Phường 4</option>
+                                                    <option>Phường 5</option>
+                                                    <option>Phường 6</option>
+                                                    <option>Phường 1</option>
+                                                    <option>Phường 2</option>
+                                                    <option>Phường 7</option>
+                                                    <option>Phường 8</option>
+                                                    <option>Phường 9</option>
+                                                    <option>Phường 10</option>
+                                                    <option>Phường 12</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="Sonha">Số nhà:</label>
+                                                <input type="text" class="form-control" id="Sonha" placeholder="Số nhà" name="Sonha">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="tenduong">Tên đường:</label>
+                                                <input type="text" class="form-control" id="tenduong" placeholder="Tên đường" name="tenduong">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="macan">Mã căn:</label>
+                                                <input type="text" class="form-control" id="macan" placeholder="Mã căn" name="macan">
+                                            </div>
+                                            <h5>Thông tin chi tiết bất động sản</h5>
+                                            <div class="mb-3 mt-3">
+                                                <label for="dientich">Diện tích:</label>
+                                                <input type="text" class="form-control" id="dientich" placeholder="Diện tích" name="dientich">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="Loainho">Loại nhà ở:</label>
+                                                <select class="form-select" id="Loainho" name="Loainho">
+                                                    <option>Loại nhà ở</option>
+                                                    <option>Nhà cấp 4</option>
+                                                    <option>Biệt thự</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="sophongngu">Số phòng ngủ:</label>
+                                                <input type="text" class="form-control" id="sophong" placeholder="Số phòng ngủ" name="sophong">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="sonhvs">Số nhà vệ sinh:</label>
+                                                <input type="text" class="form-control" id="sonhvs" placeholder="Số nhà vệ sinh" name="sonhvs">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="huongcua">Hướng cửa chính:</label>
+                                                <select class="form-select" id="huongcua" name="huongcua">
+                                                    <option>Hướng cửa chính</option>
+                                                    <option>Đông</option>
+                                                    <option>Tây</option>
+                                                    <option>Nam</option>
+                                                    <option>Bắc</option>
+                                                  </select>
+                                            </div>
+                                            <h5>Thông tin khác</h5>
+                                            <div class="mb-3">
+                                                <label for="giaytopl">Giấy tờ pháp lý:</label>
+                                                <select class="form-select" id="giaytopl" name="giaytopl">
+                                                    <option>Giấy tờ pháp lý</option>
+                                                  </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="tinhtrang">Tình trang:</label>
+                                                <select class="form-select" id="tinhtrang" name="tinhtrang">
+                                                    <option>Tình trang</option>
+                                                  </select>
+                                            </div>
+                                            <h5>Thông tin cho thuê</h5>
+                                            <div class="mb-3 mt-3">
+                                                <label for="tiencoc">Tiền cọc:</label>
+                                                <input type="number" class="form-control" id="tiencoc" placeholder="Tiền cọc" name="tiencoc">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="tienthue">Tiền thuê:</label>
+                                                <input type="number" class="form-control" id="tienthue" placeholder="Tiền thuê" name="tienthue">
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <label for="commision">Phí hoa hồng:</label>
+                                                <select class="form-select" id="commision" name="commision">
+                                                    <option>Phí hoa hồng</option>
+                                                    <option>30%</option>
+                                                    <option>40%</option>
+                                                    <option>50%</option>
+                                                  </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button> <button type="reset" class="btn btn-primary">Cancel</button>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="bg-light text-center text-lg-start mt-2 border-top ">
+            <div class="container py-5">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <div class="rounded-circle bg-secondary d-inline-block p-3 text-white">Logo</div>
+                    </div>
+        
+                    <!-- Hỗ trợ khách hàng -->
+                    <div class="col-lg-4 mb-4 mb-lg-0 no-underline">
+                        <h6 class="text-uppercase fw-bold">Hỗ trợ khách hàng</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#!" class="text-dark">Trung tâm trợ giúp</a></li>
+                            <li><a href="#!" class="text-dark">An toàn mua bán</a></li>
+                            <li><a href="#!" class="text-dark">Liên hệ hỗ trợ</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Thông tin web -->
+                    <div class="col-lg-4 mb-4 mb-lg-0 no-underline">
+                        <h6 class="text-uppercase fw-bold">Thông tin về web</h6>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="#!" class="text-dark">Giới thiệu</a></li>
+                            <li><a href="#!" class="text-dark">Quy chế hoạt động</a></li>
+                            <li><a href="#!" class="text-dark">Chính sách bảo mật</a></li>
+                            <li><a href="#!" class="text-dark">Giải quyết tranh chấp</a></li>
+                            <li><a href="#!" class="text-dark">Tuyển dụng</a></li>
+                            <li><a href="#!" class="text-dark">Truyền thông</a></li>
+                            <li><a href="#!" class="text-dark">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Social links -->
+            <div class="text-center p-3 border-top">
+                <span>Copyright!</span>
+                <div class="mt-2">
+                    <a href="#!" class="text-dark me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#!" class="text-dark me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#!" class="text-dark me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#!" class="text-dark"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>
+<script>
+    document.getElementById("categorySelect").addEventListener("change", function() {
+        // Ẩn tất cả các form
+        document.querySelectorAll('.form-section').forEach(function(section) {
+            section.style.display = 'none';
+        });
+        
+        // Hiển thị form tương ứng
+        var selectedValue = this.value;
+        if (selectedValue) {
+            document.getElementById(selectedValue + 'Form').style.display = 'block';
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
