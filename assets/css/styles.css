@@ -1,0 +1,58 @@
+        /* Container for the membership packages */
+        .membership-container {
+            padding: 100px;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #f7f9fa;
+        }
+        /* Styling for cards */
+        .package-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .package-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        /* Icons */
+        .package-icon {
+            font-size: 50px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        /* Title styling */
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        /* Price styling */
+        .package-price {
+            font-size: 1.3rem;
+            color: #28a745;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        /* List styling */
+        .package-features {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+            flex-grow: 1;
+        }
+        .package-features li {
+            margin-bottom: 10px;
+        }
+        /* Button styling */
+        .select-btn {
+            margin-top: 20px;
+            font-weight: bold;
+            padding: 10px 30px;
+        }

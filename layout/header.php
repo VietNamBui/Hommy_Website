@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <title>Chọn Time Hẹn Lịch</title>
 </head>
 <body>
@@ -21,7 +24,7 @@
                     </div>
 
                     <div class="col">
-                        <a class="nav-link" href="#">Mua gói</a>
+                        <a class="nav-link" href="index.php?page=mua_goi_thanh_vien">Mua gói</a>
                     </div>
                         
                     <div class="col">
