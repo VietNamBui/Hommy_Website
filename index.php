@@ -23,4 +23,3 @@
 
     include("layout/footer.php");
 ?>
-fewhfwefhewuifhwefoihwefoewhf
