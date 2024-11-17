@@ -12,7 +12,7 @@
     }
 
     if(isset($_GET["cate"])) {
-        $cate = $_GET["cate"];
+        $page = $_GET["cate"];
     }
 
     if(file_exists("pages/".$page."/index.php")) {
@@ -23,4 +23,4 @@
 
     include("layout/footer.php");
 ?>
-Bui Viet Nam
+
