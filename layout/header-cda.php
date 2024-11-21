@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Chọn Time Hẹn Lịch</title>
     <style>
                     body {
@@ -133,49 +135,38 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="#">
-         Logo Hommy
+            Logo Hommy
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-           <a class="nav-link" href="#">Mua gói</a>
-          </li>
-          <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Danh mục
-           </a>
-           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Chung cư</a></li>
-            <li><a class="dropdown-item" href="#">Nhà ở</a></li>
-            <li><a class="dropdown-item" href="#">Phòng trọ</a></li>
-           </ul>
-          </li>
-         </ul>
-         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control me-2" type="search" placeholder="Nhập từ khóa tìm kiếm" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-         </form>
-         <ul class="navbar-nav me-auto">
-         <li class="nav-item">
-           <a class="nav-link" href="index.php?page=login">Đăng nhập</a>
-          </li>
-          </ul>
-          <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-           <a class="nav-link" href="index.php?page=signup">Đăng ký</a>
-          </li>
-          </ul>
-         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-           <a class="nav-link" href="#">
-            <img src="https://storage.googleapis.com/a1aa/image/hb5Nzm6NNdYaPJTIStmWgEycMxfReJur7GbB6Bf5Bd1ypQZnA.jpg" alt="User avatar" width="30" height="30" class="rounded-circle">
-           </a>
-          </li>
-         </ul>
+            <!-- Các nút bên trái -->
+            <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=dangtin-cda">Đăng tin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=danhsachduan-cda">Quản lý dự án</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=baocaokinhdoanh-cda">Xem báo cáo kinh doanh</a>
+                </li>
+            </ul>
+            <!-- Avatar người dùng và dropdown menu -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://storage.googleapis.com/a1aa/image/hb5Nzm6NNdYaPJTIStmWgEycMxfReJur7GbB6Bf5Bd1ypQZnA.jpg" alt="User avatar" width="30" height="30" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="index.php?page=profile">Hồ sơ cá nhân</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=settings">Cài đặt</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="index.php?page=logout">Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-       </nav>
-    </header>
-
+    </nav>
+</header>

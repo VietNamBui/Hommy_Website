@@ -255,3 +255,17 @@
             </div>
         </div>
             </div>
+            <script>
+    document.getElementById("categorySelect").addEventListener("change", function() {
+        // Ẩn tất cả các form
+        document.querySelectorAll('.form-section').forEach(function(section) {
+            section.style.display = 'none';
+        });
+        
+        // Hiển thị form tương ứng
+        var selectedValue = this.value;
+        if (selectedValue) {
+            document.getElementById(selectedValue + 'Form').style.display = 'block';
+        }
+    });
+</script>

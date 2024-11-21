@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 08:45 AM
+-- Generation Time: Nov 21, 2024 at 05:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -169,10 +169,17 @@ CREATE TABLE `taikhoan` (
   `maTK` int(11) NOT NULL,
   `tenTK` varchar(50) NOT NULL,
   `matKhau` varchar(50) NOT NULL,
-  `maGoi` int(11) NOT NULL,
+  `maGoi` int(11) DEFAULT NULL,
   `maLoai` int(11) NOT NULL,
   `ngayTao` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `taikhoan`
+--
+
+INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`) VALUES
+(2, 'nguyentrongphu@gmail.com', '123456', NULL, 2, '2024-11-21');
 
 --
 -- Indexes for dumped tables
@@ -296,7 +303,7 @@ ALTER TABLE `quantrihethong`
 -- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `maTK` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `maTK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
