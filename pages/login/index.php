@@ -12,7 +12,10 @@ if (isset($_POST["btDangnhap"])) {
     if ($result) {
         $_SESSION["dangnhap"] = $result['maTK'];
         $_SESSION["maLoai"] = $result['maLoai'];
-        header("Location: index.php?page=chitietduan-cda");
+        $_SESSION["maChuDuAn"] = $result['maChuDuAn'];
+        if(isset($_SESSION["maLoai"])==2){
+        header("Location: index.php?page=trang_chu");
+    }
         exit(); // Thêm exit để dừng xử lý
     } else {    
         // Hiển thị thông báo lỗi
@@ -22,7 +25,7 @@ if (isset($_POST["btDangnhap"])) {
 ?>
     <div class="video-background">
         <video autoplay loop muted playsinline>
-            <source src="../assets/video/login-bg.mp4" type="video/mp4">
+            <source src="assets/video/login-bg.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video.
         </video>
         <div class="login-box" style="margin-top:7%">

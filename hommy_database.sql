@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 05:07 AM
+-- Generation Time: Nov 21, 2024 at 12:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -36,6 +36,40 @@ CREATE TABLE `chuduan` (
   `maTK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
+--
+-- Dumping data for table `chuduan`
+--
+
+INSERT INTO `chuduan` (`maChuDuAn`, `tenCDA`, `soDT`, `email`, `diaChi`, `maTK`) VALUES
+(7, 'Nguyễn Trọng Phú', '0869761738', 'dsdsdsdsds', 'sdsdsds', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chungcu`
+--
+
+CREATE TABLE `chungcu` (
+  `maChuDuAn` int(11) NOT NULL,
+  `tinhTP` varchar(1000) NOT NULL,
+  `quanHuyen` varchar(1000) NOT NULL,
+  `phuongXa` varchar(1000) NOT NULL,
+  `soNha` varchar(1000) NOT NULL,
+  `tenDuong` varchar(1000) NOT NULL,
+  `dienTich` varchar(1000) NOT NULL,
+  `maCan` varchar(50) NOT NULL,
+  `loaiNha` varchar(1000) NOT NULL,
+  `soPhongNgu` varchar(1000) NOT NULL,
+  `soNhaVS` varchar(1000) NOT NULL,
+  `huongCua` varchar(100) NOT NULL,
+  `phapLy` varchar(100) NOT NULL,
+  `maDA` int(11) NOT NULL,
+  `hinhAnh` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `chungcu`
+--
 -- --------------------------------------------------------
 
 --
@@ -44,13 +78,15 @@ CREATE TABLE `chuduan` (
 
 CREATE TABLE `duan` (
   `maDA` int(11) NOT NULL,
-  `tenDA` varchar(50) NOT NULL,
-  `diaChiDA` varchar(50) NOT NULL,
-  `giaThue` varchar(100) NOT NULL,
-  `hoaHong` varchar(100) NOT NULL,
-  `ngayTao` date NOT NULL,
-  `ngayXacThuc` date DEFAULT NULL,
-  `maChuDuAn` int(11) NOT NULL
+  `tenDA` varchar(1000) NOT NULL,
+  `diaChiDA` varchar(1000) NOT NULL,
+  `giaThue` varchar(1000) NOT NULL,
+  `hoaHong` varchar(1000) NOT NULL,
+  `ngayTao` datetime NOT NULL,
+  `ngayXacThuc` datetime DEFAULT NULL,
+  `maChuDuAn` int(11) NOT NULL,
+  `tienCoc` varchar(100) NOT NULL,
+  `maLoaiDA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -90,6 +126,26 @@ CREATE TABLE `khachhang` (
   `diaChi` varchar(50) NOT NULL,
   `maTK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loaiduan`
+--
+
+CREATE TABLE `loaiduan` (
+  `maLoaiDA` int(11) NOT NULL,
+  `tenLoai` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `loaiduan`
+--
+
+INSERT INTO `loaiduan` (`maLoaiDA`, `tenLoai`) VALUES
+(1, 'Nhà ở'),
+(2, 'Phòng Trọ'),
+(3, 'Chung cư');
 
 -- --------------------------------------------------------
 
@@ -147,6 +203,25 @@ CREATE TABLE `nhanvienmoigioi` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `phongtro`
+--
+
+CREATE TABLE `phongtro` (
+  `maPhongTro` int(11) NOT NULL,
+  `tinhTP` varchar(1000) NOT NULL,
+  `quanHuyen` varchar(1000) NOT NULL,
+  `phuongXa` varchar(1000) NOT NULL,
+  `soNha` varchar(1000) NOT NULL,
+  `tenDuong` varchar(1000) NOT NULL,
+  `dienTich` varchar(1000) NOT NULL,
+  `noiThat` varchar(1000) NOT NULL,
+  `maDA` int(11) NOT NULL,
+  `hinhAnh` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `quantrihethong`
 --
 
@@ -193,11 +268,19 @@ ALTER TABLE `chuduan`
   ADD KEY `maTK` (`maTK`);
 
 --
+-- Indexes for table `chungcu`
+--
+ALTER TABLE `chungcu`
+  ADD PRIMARY KEY (`maChuDuAn`),
+  ADD KEY `maDA` (`maDA`);
+
+--
 -- Indexes for table `duan`
 --
 ALTER TABLE `duan`
   ADD PRIMARY KEY (`maDA`),
-  ADD KEY `maCDA` (`maChuDuAn`);
+  ADD KEY `maCDA` (`maChuDuAn`),
+  ADD KEY `maLoaiDA` (`maLoaiDA`);
 
 --
 -- Indexes for table `goithanhvien`
@@ -211,6 +294,12 @@ ALTER TABLE `goithanhvien`
 ALTER TABLE `khachhang`
   ADD PRIMARY KEY (`maKH`),
   ADD KEY `maTK` (`maTK`);
+
+--
+-- Indexes for table `loaiduan`
+--
+ALTER TABLE `loaiduan`
+  ADD PRIMARY KEY (`maLoaiDA`);
 
 --
 -- Indexes for table `loaitk`
@@ -231,6 +320,13 @@ ALTER TABLE `nhanviendieuhanh`
 ALTER TABLE `nhanvienmoigioi`
   ADD PRIMARY KEY (`maNVMG`),
   ADD KEY `maTK` (`maTK`);
+
+--
+-- Indexes for table `phongtro`
+--
+ALTER TABLE `phongtro`
+  ADD PRIMARY KEY (`maPhongTro`),
+  ADD KEY `maDA` (`maDA`);
 
 --
 -- Indexes for table `quantrihethong`
@@ -255,13 +351,19 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT for table `chuduan`
 --
 ALTER TABLE `chuduan`
-  MODIFY `maChuDuAn` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `maChuDuAn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `chungcu`
+--
+ALTER TABLE `chungcu`
+  MODIFY `maChuDuAn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `duan`
 --
 ALTER TABLE `duan`
-  MODIFY `maDA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `maDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `goithanhvien`
@@ -274,6 +376,12 @@ ALTER TABLE `goithanhvien`
 --
 ALTER TABLE `khachhang`
   MODIFY `maKH` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `loaiduan`
+--
+ALTER TABLE `loaiduan`
+  MODIFY `maLoaiDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `loaitk`
@@ -292,6 +400,12 @@ ALTER TABLE `nhanviendieuhanh`
 --
 ALTER TABLE `nhanvienmoigioi`
   MODIFY `maNVMG` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `phongtro`
+--
+ALTER TABLE `phongtro`
+  MODIFY `maPhongTro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `quantrihethong`
@@ -316,10 +430,17 @@ ALTER TABLE `chuduan`
   ADD CONSTRAINT `chuduan_ibfk_1` FOREIGN KEY (`maTK`) REFERENCES `taikhoan` (`maTK`);
 
 --
+-- Constraints for table `chungcu`
+--
+ALTER TABLE `chungcu`
+  ADD CONSTRAINT `chungcu_ibfk_1` FOREIGN KEY (`maDA`) REFERENCES `duan` (`maDA`);
+
+--
 -- Constraints for table `duan`
 --
 ALTER TABLE `duan`
-  ADD CONSTRAINT `duan_ibfk_1` FOREIGN KEY (`maChuDuAn`) REFERENCES `chuduan` (`maChuDuAn`);
+  ADD CONSTRAINT `duan_ibfk_1` FOREIGN KEY (`maChuDuAn`) REFERENCES `chuduan` (`maChuDuAn`),
+  ADD CONSTRAINT `duan_ibfk_2` FOREIGN KEY (`maLoaiDA`) REFERENCES `loaiduan` (`maLoaiDA`);
 
 --
 -- Constraints for table `khachhang`
@@ -338,6 +459,12 @@ ALTER TABLE `nhanviendieuhanh`
 --
 ALTER TABLE `nhanvienmoigioi`
   ADD CONSTRAINT `nhanvienmoigioi_ibfk_1` FOREIGN KEY (`maTK`) REFERENCES `taikhoan` (`maTK`);
+
+--
+-- Constraints for table `phongtro`
+--
+ALTER TABLE `phongtro`
+  ADD CONSTRAINT `phongtro_ibfk_1` FOREIGN KEY (`maDA`) REFERENCES `duan` (`maDA`);
 
 --
 -- Constraints for table `quantrihethong`

@@ -6,6 +6,7 @@ require_once("class/clsdatabase.php");
 if(isset($_SESSION['maLoai'])==2){
     require("layout/header-cda.php");
 }
+
 else{
         if(isset($_SESSION['maLoai'])==3){
             require("layout/header-cda.php");
