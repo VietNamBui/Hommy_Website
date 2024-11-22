@@ -1,49 +1,49 @@
 <?php
 $obj = new database();
 if (isset($_POST["btdangtin"])) {
-    // Check if 'loaiduan' is set in the POST array    
-                    $tenDA = $_POST["tieude"];
-                    $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
-                    $giaThue = $_POST["giaThue"];
-                    $hoaHong = $_POST["hoaHong"];
-                    $ngayTao = date("Y-m-d H:i:s");
-                    $maChuDuAn = $_SESSION["maChuDuAn"];
-                    $tienCoc = $_POST["tienCoc"];
-                    $tinhTP = $_POST["tinhTP"];
-                    $quanHuyen = $_POST["quanHuyen"];
-                    $phuongXa = $_POST["phuongXa"];
-                    $soNha = $_POST["soNha"];
-                    $tenDuong = $_POST["tenDuong"];
-                    $dienTich = $_POST["dienTich"];
-                    $noiThat = $_POST["noiThat"];
-                    //SQL để thêm thông tin vào bảng `duan`
-                    $sqlDuan = "insert into  duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao,ngayXacThuc,maChuDuAn, tienCoc, maLoaiDA) 
-                                 values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', '2')";	
-                    //Giả sử bạn có phương thức $obj->themDuan để thực thi SQL`
-                    if ($maDA = $obj->themdulieuID($sqlDuan)) // Lấy ID của dự án vừa thêm
-                    {
-                     // Sau khi thêm dự án thành công, ta tiếp tục thêm phòng trọ
-                     // Lấy dữ liệu từ form để thêm vào bảng `phongtro`
-                     // Upload ảnh phòng trọ
-                     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
-                     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/".$filenamenew)) {
-                        // SQL để thêm thông tin vào bảng `phongtro`
-                         $sqlPhongTro = "insert into phongtro(tinhTP, quanHuyen, phuongXa, soNha, tenDuong, dienTich, noiThat, maDA, hinhAnh) 
-                                         values ('$tinhTP', '$quanHuyen', '$phuongXa', '$soNha', '$tenDuong', '$dienTich', '$noiThat', '$maDA', '$filenamenew')";
-                                        
-                         // Thực thi SQL để thêm phòng trọ
-                         if ($obj->themdulieu($sqlPhongTro)) {
-                             echo "<script type='text/javascript'>alert('Thêm phòng trọ thành công!');</script>";
-                         } else {
-                             echo "<script type='text/javascript'>alert('Thêm phòng trọ thất bại!');</script>";
-                         }
-                         } else {
-                            echo "<script type='text/javascript'>alert('Upload ảnh phòng trọ thất bại!');</script>";
-                         }
-                         } else {
-                             echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
-                         }
+    // Lấy thông tin từ form
+    $tenDA = $_POST["tieude"];
+    $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
+    $giaThue = $_POST["giaThue"];
+    $hoaHong = $_POST["hoaHong"];
+    $ngayTao = date("Y-m-d H:i:s");
+    $maChuDuAn = $_SESSION["maChuDuAn"];
+    $tienCoc = $_POST["tienCoc"];
+    $tinhTP = $_POST["tinhTP"];
+    $quanHuyen = $_POST["quanHuyen"];
+    $phuongXa = $_POST["phuongXa"];
+    $soNha = $_POST["soNha"];
+    $tenDuong = $_POST["tenDuong"];
+    $dienTich = $_POST["dienTich"];
+    $noiThat = $_POST["noiThat"];
+
+    // Upload ảnh dự án và lưu vào bảng `duan`
+    $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
+    if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
+        // SQL để thêm thông tin vào bảng `duan`
+        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue) 
+                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '2', '$filenamenew','1','1')";
+
+        // Thực thi thêm vào bảng `duan`
+        if ($maDA = $obj->themdulieuID($sqlDuan)) { // Lấy ID của dự án vừa thêm
+            // Sau khi thêm dự án thành công, thêm thông tin phòng trọ
+            $sqlPhongTro = "INSERT INTO phongtro(noiThat, maDA) 
+                            VALUES ('$noiThat', '$maDA')";
+
+            // Thực thi SQL để thêm phòng trọ
+            if ($obj->themdulieu($sqlPhongTro)) {
+                echo "<script type='text/javascript'>alert('Thêm dự án và phòng trọ thành công!');</script>";
+            } else {
+                echo "<script type='text/javascript'>alert('Thêm phòng trọ thất bại!');</script>";
+            }
+        } else {
+            echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
+        }
+    } else {
+        echo "<script type='text/javascript'>alert('Upload ảnh dự án thất bại!');</script>";
+    }
 }
+
 //include("pages/dangtin-cda/xuly.php");
 ?>
 <div class="container mt-4">

@@ -2,67 +2,55 @@
 $obj = new database();
 if (isset($_POST["btdangtin"])) {
     // Check if 'loaiduan' is set in the POST array    
-                    $tenDA = $_POST["tieude"];
-                     $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
-                     $giaThue = $_POST["giaThue"];
-                     $hoaHong = $_POST["hoaHong"];
-                     $ngayTao = date("Y-m-d H:i:s");
-                     $maChuDuAn = $_SESSION["maChuDuAn"];
-                     $tienCoc = $_POST["tienCoc"];
-    
-                     // SQL để thêm thông tin vào bảng `duan`
-                     $sqlDuan = "insert into  duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao,ngayXacThuc,maChuDuAn, tienCoc, maLoaiDA) 
-                                 values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', '3')";	
-                     // Giả sử bạn có phương thức $obj->themDuan để thực thi SQL
-                     if ($maDA = $obj->themdulieuID($sqlDuan)) // Lấy ID của dự án vừa thêm
-                     {
-                        // Sau khi thêm dự án thành công, ta tiếp tục thêm phòng trọ
-                        // Lấy dữ liệu từ form để thêm vào bảng `phongtro`
-                        $tinhTP = $_POST["tinhTP"];
-                        $quanHuyen = $_POST["quanHuyen"];
-                        $phuongXa = $_POST["phuongXa"];
-                        $soNha = $_POST["soNha"];
-                        $block = $_POST["block"];
-                        $tenDuong = $_POST["tenDuong"];
-                        $dienTich = $_POST["dienTich"];
-                        $maCan = $_POST["maCan"];
-                        $soPN = $_POST["soPN"];
-                        $soNhaVS = $_POST["soNhaVS"];
-                        $phapLy = $_POST["phapLy"];
-                    
-                         // Upload ảnh chung cư
-                        $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
-                        if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/".$filenamenew)) {
-                              //SQL để thêm thông tin vào bảng `phongtro`
-                               $sqlChungcu = "insert into chungcu(tinhTP, quanHuyen, phuongXa, dienTich, maCan,soPhongNgu, soNhaVS, phapLy, maDA, block, soNha, hinhAnh, tenDuong) 
-                                                        values ('$tinhTP', '$quanHuyen', '$phuongXa', '$dienTich','$maCan' ,'$soPN', '$soNhaVS', '$phapLy', '$maDA','$block','$soNha', '$filenamenew', '$tenDuong')";
-            
-                              //Thực thi SQL để thêm chung cư
-                             if ($obj->themdulieu($sqlChungcu)) {
-                                 echo "<script type='text/javascript'>alert('Thêm chung cư thành công!');</script>";
-                             } else {
-                                 echo "<script type='text/javascript'>alert('Thêm chung cư thất bại!');</script>";
-                             }
-                             } else {
-                                 echo "<script type='text/javascript'>alert('Upload ảnh chung cư thất bại!');</script>";
-                             }
-                             } else {
-                                 echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
-                             }
+    $tenDA = $_POST["tieude"];
+    $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
+    $giaThue = $_POST["giaThue"];
+    $hoaHong = $_POST["hoaHong"];
+    $ngayTao = date("Y-m-d H:i:s");
+    $maChuDuAn = $_SESSION["maChuDuAn"];
+    $tienCoc = $_POST["tienCoc"];
+
+    // Upload image and get the file name
+    $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
+    if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
+        // Image uploaded successfully, now insert into `duan`
+        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue) 
+                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '3', '$filenamenew','1','1')";
+
+        // Execute the query and get the project ID
+        if ($maDA = $obj->themdulieuID($sqlDuan)) { // Get the ID of the newly added project
+            // After successfully adding the project, continue to add `chungcu`
+            $tinhTP = $_POST["tinhTP"];
+            $quanHuyen = $_POST["quanHuyen"];
+            $phuongXa = $_POST["phuongXa"];
+            $soNha = $_POST["soNha"];
+            $block = $_POST["block"];
+            $tenDuong = $_POST["tenDuong"];
+            $dienTich = $_POST["dienTich"];
+            $maCan = $_POST["maCan"];
+            $soPN = $_POST["soPN"];
+            $soNhaVS = $_POST["soNhaVS"];
+            $phapLy = $_POST["phapLy"];
+
+            // Insert into `chungcu` without the image column
+            $sqlChungcu = "insert into chungcu(maCan, soPhongNgu, soNhaVS, phapLy, maDA, block) 
+                           VALUES ('$maCan', '$soPN', '$soNhaVS', '$phapLy', '$maDA', '$block')";
+
+            // Execute the query for `chungcu`
+            if ($obj->themdulieu($sqlChungcu)) {
+                echo "<script type='text/javascript'>alert('Thêm dự án và chung cư thành công!');</script>";
+            } else {
+                echo "<script type='text/javascript'>alert('Thêm chung cư thất bại!');</script>";
+            }
+        } else {
+            echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
+        }
+    } else {
+        echo "<script type='text/javascript'>alert('Upload ảnh dự án thất bại!');</script>";
+    }
 }
+
 //include("pages/dangtin-cda/xuly.php");
-echo $maDA;
-echo "Tỉnh/Thành phố: " . $tinhTP . "<br>";
-echo "Quận/Huyện: " . $quanHuyen . "<br>";
-echo "Phường/Xã: " . $phuongXa . "<br>";
-echo "Số nhà: " . $soNha . "<br>";
-echo "Block: " . $block . "<br>";
-echo "Tên đường: " . $tenDuong . "<br>";
-echo "Diện tích: " . $dienTich . "<br>";
-echo "Mã căn: " . $maCan . "<br>";
-echo "Số phòng ngủ: " . $soPN . "<br>";
-echo "Số nhà vệ sinh: " . $soNhaVS . "<br>";
-echo "Giấy tờ pháp lý: " . $phapLy . "<br>";
 ?>
 <div class="container mt-4">
     <div class="row">

@@ -10,19 +10,45 @@ if (isset($_POST["btDangnhap"])) {
     $result = $obj->dangnhaptaikhoan($taikhoan, $matkhau);
 
     if ($result) {
-        $_SESSION["dangnhap"] = $result['maTK'];
-        $_SESSION["maLoai"] = $result['maLoai'];
-        $_SESSION["maChuDuAn"] = $result['maChuDuAn'];
-        if(isset($_SESSION["maLoai"])==2){
-        header("Location: index.php?page=trang_chu");
-    }
-        exit(); // Thêm exit để dừng xử lý
-    } else {    
-        // Hiển thị thông báo lỗi
-        echo "Đăng nhập không thành công";
+        // Lưu thông tin vào session với đúng tên trường
+        $_SESSION["dangnhap"] = $result['maTK'];  // maTK
+        $_SESSION["maLoai"] = $result['maLoai'];  // maLoai
+        $_SESSION["maNVMG"] = $result['maNVMG'] ?? null;  // maNVMG
+        $_SESSION["maNVDH"] = $result['maNVDH'] ?? null; // maNVDH
+        $_SESSION["maKH"] = $result['maKH'] ?? null;            // maKH
+        $_SESSION["maChuDuAn"] = $result['maChuDuAn'] ?? null;        // maChuDuAn
+        $_SESSION["maAdmin"] = $result['maAdmin'] ?? null;            // maAdmin
+        // Điều hướng dựa trên loại tài khoản
+        switch ($_SESSION["maLoai"]) {
+            case '5': // Loại tài khoản là Quản Lý Hệ Thống
+                header("Location: index.php?page=admin_dashboard");
+                break;
+            case '4': // Loại tài khoản là Nhân Viên Điều Hành
+                header("Location: index.php?page=nhanvien_dieuhanh_dashboard");
+                break;
+            case '2': // Loại tài khoản là Chủ Dự Án
+                header("Location: index.php?page=trang_chu");
+                break;
+            case '3': // Loại tài khoản là Nhân Viên Môi Giới
+                header("Location: index.php?page=nhanvien_moigioi_dashboard");
+                break;
+            case '1': // Loại tài khoản là Khách Hàng
+                header("Location: index.php?page=khachhang_dashboard");
+                break;
+            default:
+                // Xử lý trường hợp không xác định
+                echo "<script type='text/javascript'>alert('Loại tài khoản không hợp lệ');</script>";
+                break;
+        }
+
+        exit(); // Kết thúc xử lý sau khi điều hướng
+    } else {
+        // Hiển thị thông báo lỗi nếu đăng nhập thất bại
+        echo "<script type='text/javascript'>alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');</script>";
     }
 }
 ?>
+
     <div class="video-background">
         <video autoplay loop muted playsinline>
             <source src="assets/video/login-bg.mp4" type="video/mp4">

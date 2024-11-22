@@ -1,5 +1,5 @@
 <?php
-//error_reporting(1);
+error_reporting(1);
 ob_start(); 
 session_start();
 require_once("class/clsdatabase.php");
