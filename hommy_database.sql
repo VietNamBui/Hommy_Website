@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 12:37 PM
+-- Generation Time: Nov 22, 2024 at 09:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -50,26 +50,22 @@ INSERT INTO `chuduan` (`maChuDuAn`, `tenCDA`, `soDT`, `email`, `diaChi`, `maTK`)
 --
 
 CREATE TABLE `chungcu` (
-  `maChuDuAn` int(11) NOT NULL,
+  `maCC` int(11) NOT NULL,
   `tinhTP` varchar(1000) NOT NULL,
   `quanHuyen` varchar(1000) NOT NULL,
   `phuongXa` varchar(1000) NOT NULL,
-  `soNha` varchar(1000) NOT NULL,
-  `tenDuong` varchar(1000) NOT NULL,
   `dienTich` varchar(1000) NOT NULL,
-  `maCan` varchar(50) NOT NULL,
-  `loaiNha` varchar(1000) NOT NULL,
+  `maCan` varchar(1000) NOT NULL,
   `soPhongNgu` varchar(1000) NOT NULL,
   `soNhaVS` varchar(1000) NOT NULL,
-  `huongCua` varchar(100) NOT NULL,
-  `phapLy` varchar(100) NOT NULL,
+  `phapLy` varchar(1000) NOT NULL,
   `maDA` int(11) NOT NULL,
-  `hinhAnh` varchar(1000) NOT NULL
+  `block` varchar(1000) NOT NULL,
+  `soNha` varchar(1000) NOT NULL,
+  `hinhAnh` varchar(1000) NOT NULL,
+  `tenDuong` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
---
--- Dumping data for table `chungcu`
---
 -- --------------------------------------------------------
 
 --
@@ -203,6 +199,29 @@ CREATE TABLE `nhanvienmoigioi` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nhao`
+--
+
+CREATE TABLE `nhao` (
+  `maNO` int(11) NOT NULL,
+  `tinhTP` varchar(1000) NOT NULL,
+  `quanHuyen` varchar(1000) NOT NULL,
+  `phuongXa` varchar(1000) NOT NULL,
+  `soNha` varchar(1000) NOT NULL,
+  `tenDuong` varchar(1000) NOT NULL,
+  `dienTich` varchar(1000) NOT NULL,
+  `loaiNha` varchar(1000) NOT NULL,
+  `soPhongNgu` varchar(1000) NOT NULL,
+  `soNhaVS` varchar(1000) NOT NULL,
+  `huongCua` varchar(100) NOT NULL,
+  `phapLy` varchar(100) NOT NULL,
+  `maDA` int(11) NOT NULL,
+  `hinhAnh` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `phongtro`
 --
 
@@ -271,7 +290,7 @@ ALTER TABLE `chuduan`
 -- Indexes for table `chungcu`
 --
 ALTER TABLE `chungcu`
-  ADD PRIMARY KEY (`maChuDuAn`),
+  ADD PRIMARY KEY (`maCC`),
   ADD KEY `maDA` (`maDA`);
 
 --
@@ -322,6 +341,13 @@ ALTER TABLE `nhanvienmoigioi`
   ADD KEY `maTK` (`maTK`);
 
 --
+-- Indexes for table `nhao`
+--
+ALTER TABLE `nhao`
+  ADD PRIMARY KEY (`maNO`),
+  ADD KEY `maDA` (`maDA`);
+
+--
 -- Indexes for table `phongtro`
 --
 ALTER TABLE `phongtro`
@@ -357,13 +383,13 @@ ALTER TABLE `chuduan`
 -- AUTO_INCREMENT for table `chungcu`
 --
 ALTER TABLE `chungcu`
-  MODIFY `maChuDuAn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `maCC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `duan`
 --
 ALTER TABLE `duan`
-  MODIFY `maDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `maDA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `goithanhvien`
@@ -402,10 +428,16 @@ ALTER TABLE `nhanvienmoigioi`
   MODIFY `maNVMG` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `nhao`
+--
+ALTER TABLE `nhao`
+  MODIFY `maNO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `phongtro`
 --
 ALTER TABLE `phongtro`
-  MODIFY `maPhongTro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `maPhongTro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `quantrihethong`
@@ -459,6 +491,12 @@ ALTER TABLE `nhanviendieuhanh`
 --
 ALTER TABLE `nhanvienmoigioi`
   ADD CONSTRAINT `nhanvienmoigioi_ibfk_1` FOREIGN KEY (`maTK`) REFERENCES `taikhoan` (`maTK`);
+
+--
+-- Constraints for table `nhao`
+--
+ALTER TABLE `nhao`
+  ADD CONSTRAINT `nhao_ibfk_1` FOREIGN KEY (`maDA`) REFERENCES `duan` (`maDA`);
 
 --
 -- Constraints for table `phongtro`

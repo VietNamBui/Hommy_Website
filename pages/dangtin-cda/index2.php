@@ -5,53 +5,108 @@ if (isset($_POST["btdangtin"])) {
     
     if (isset($_POST["loaiduan"])) {
         $loaiduan = $_POST["loaiduan"];
-                if($loaiduan == "2")
-                {
-                    $tenDA = $_POST["tieude"];
-                    $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
-                    $giaThue = $_POST["giaThue"];
-                    $hoaHong = $_POST["hoaHong"];
-                    $ngayTao = date("Y-m-d H:i:s");
-                    $maChuDuAn = $_SESSION["maChuDuAn"];
-                    $tienCoc = $_POST["tienCoc"];
-                    $tinhTP = $_POST["tinhTP"];
-                    $quanHuyen = $_POST["quanHuyen"];
-                    $phuongXa = $_POST["phuongXa"];
-                    $soNha = $_POST["soNha"];
-                    $tenDuong = $_POST["tenDuong"];
-                    $dienTich = $_POST["dienTich"];
-                    $noiThat = $_POST["noiThat"];
-                    //SQL để thêm thông tin vào bảng `duan`
-                    $sqlDuan = "insert into  duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao,ngayXacThuc,maChuDuAn, tienCoc, maLoaiDA) 
-                                 values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', $loaiduan)";	
-                    //Giả sử bạn có phương thức $obj->themDuan để thực thi SQL`
-                    if ($maDA = $obj->themdulieuID($sqlDuan)) // Lấy ID của dự án vừa thêm
-                    {
-                     // Sau khi thêm dự án thành công, ta tiếp tục thêm phòng trọ
-                     // Lấy dữ liệu từ form để thêm vào bảng `phongtro`
-                     // Upload ảnh phòng trọ
-                     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
-                     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/".$filenamenew)) {
-                        // SQL để thêm thông tin vào bảng `phongtro`
-                         $sqlPhongTro = "insert into phongtro(tinhTP, quanHuyen, phuongXa, soNha, tenDuong, dienTich, noiThat, maDA, hinhAnh) 
-                                         values ('$tinhTP', '$quanHuyen', '$phuongXa', '$soNha', '$tenDuong', '$dienTich', '$noiThat', '$maDA', '$filenamenew')";
-                                        
-                         // Thực thi SQL để thêm phòng trọ
-                         if ($obj->themdulieu($sqlPhongTro)) {
-                             echo "<script type='text/javascript'>alert('Thêm phòng trọ thành công!');</script>";
-                         } else {
-                             echo "<script type='text/javascript'>alert('Thêm phòng trọ thất bại!');</script>";
-                         }
-                         } else {
-                            echo "<script type='text/javascript'>alert('Upload ảnh phòng trọ thất bại!');</script>";
-                         }
-                         } else {
-                             echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
-                         }
-                }
-    }
+        if ($loaiduan == "2") {
+            // Xử lý khi "Phòng trọ" được chọn
+                // Lấy dữ liệu từ form để thêm vào bảng `duan`
+                $tenDA = $_POST["tieude"];
+                $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
+                $giaThue = $_POST["giaThue"];
+                $hoaHong = $_POST["hoaHong"];
+                $ngayTao = date("Y-m-d H:i:s");
+                $maChuDuAn = $_SESSION["maChuDuAn"];
+                $tienCoc = $_POST["tienCoc"];
+                $tinhTP = $_POST["tinhTP"];
+                $quanHuyen = $_POST["quanHuyen"];
+                $phuongXa = $_POST["phuongXa"];
+                $soNha = $_POST["soNha"];
+                $tenDuong = $_POST["tenDuong"];
+                $dienTich = $_POST["dienTich"];
+                $noiThat = $_POST["noiThat"];
 
-        // Echo the variables with line breaks
+                // // SQL để thêm thông tin vào bảng `duan`
+                // $sqlDuan = "insert into  duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao,ngayXacThuc,maChuDuAn, tienCoc, maLoaiDA) 
+                //             values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', $loaiduan)";	
+                // // Giả sử bạn có phương thức $obj->themDuan để thực thi SQL
+                // if ($maDA = $obj->themdulieuID($sqlDuan)) // Lấy ID của dự án vừa thêm
+                // {
+                //     // Sau khi thêm dự án thành công, ta tiếp tục thêm phòng trọ
+                //     // Lấy dữ liệu từ form để thêm vào bảng `phongtro`
+                //     // Upload ảnh phòng trọ
+                //     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
+                //     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/".$filenamenew)) {
+                //         // SQL để thêm thông tin vào bảng `phongtro`
+                //         $sqlPhongTro = "insert into phongtro(tinhTP, quanHuyen, phuongXa, soNha, tenDuong, dienTich, noiThat, maDA, hinhAnh) 
+                //                         values ('$tinhTP', '$quanHuyen', '$phuongXa', '$soNha', '$tenDuong', '$dienTich', '$noiThat', '$maDA', '$filenamenew')";
+                                        
+                //         // Thực thi SQL để thêm phòng trọ
+                //         if ($obj->themdulieu($sqlPhongTro)) {
+                //             echo "<script type='text/javascript'>alert('Thêm phòng trọ thành công!');</script>";
+                //         } else {
+                //             echo "<script type='text/javascript'>alert('Thêm phòng trọ thất bại!');</script>";
+                //         }
+                //         } else {
+                //             echo "<script type='text/javascript'>alert('Upload ảnh phòng trọ thất bại!');</script>";
+                //         }
+                //         } else {
+                //             echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
+                //         }
+        }   
+            // else{
+            //         if ($loaiduan == "1") {
+            //             // Xử lý khi "Nhà ở" được chọn
+            //                 // Lấy dữ liệu từ form để thêm vào bảng `duan`
+            //                 $tenDA = $_POST["tieude"];
+            //                 $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
+            //                 $giaThue = $_POST["giaThue"];
+            //                 $hoaHong = $_POST["hoaHong"];
+            //                 $ngayTao = date("Y-m-d H:i:s");
+            //                 $maChuDuAn = $_SESSION["maChuDuAn"];
+            //                 $tienCoc = $_POST["tienCoc"];
+            
+            //                 // SQL để thêm thông tin vào bảng `duan`
+            //                 $sqlDuan = "insert into  duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao,ngayXacThuc,maChuDuAn, tienCoc, maLoaiDA) 
+            //                             values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', $loaiduan)";	
+            //                 // Giả sử bạn có phương thức $obj->themDuan để thực thi SQL
+            //                 if ($maDA = $obj->themdulieuID($sqlDuan)) // Lấy ID của dự án vừa thêm
+            //                 {
+            //                     // Sau khi thêm dự án thành công, ta tiếp tục thêm phòng trọ
+            //                     // Lấy dữ liệu từ form để thêm vào bảng `phongtro`
+            //                     $tinhTP = $_POST["tinhTP"];
+            //                     $quanHuyen = $_POST["quanHuyen"];
+            //                     $phuongXa = $_POST["phuongXa"];
+            //                     $soNha = $_POST["soNha"];
+            //                     $tenDuong = $_POST["tenDuong"];
+            //                     $dienTich = $_POST["dienTich"];
+            //                     $maCan = $_POST["maCan"];
+            //                     $loaiNha = $_POST["loaiNha"];
+            //                     $soPN = $_POST["soPN"];
+            //                     $soNhaVS = $_POST["soNhaVS"];
+            //                     $huongCua = $_POST["huongCua"];
+            //                     $phapLy = $_POST["phapLy"];
+                            
+            //                     // Upload ảnh nhà ở
+            //                     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
+            //                     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/".$filenamenew)) {
+            //                         // SQL để thêm thông tin vào bảng `phongtro`
+            //                         $sqlChungCu = "INSERT INTO chungcu(tinhTP, quanHuyen, phuongXa, soNha, tenDuong, dienTich, maCan, loaiNha, soPhongNgu, soNhaVS, huongCua, phapLy, maDA, hinhAnh) 
+            //                                             VALUES ('$tinhTP', '$quanHuyen', '$phuongXa', '$soNha', '$tenDuong', '$dienTich', '$maCan', '$loaiNha', '$soPN', '$soNhaVS', '$huongCua', '$phapLy', '$maDA', '$filenamenew')";
+                                                    
+            //                         // Thực thi SQL để thêm nhà ở
+            //                         if ($obj->themdulieu($sqlChungCu)) {
+            //                             echo "<script type='text/javascript'>alert('Thêm nhà ở thành công!');</script>";
+            //                         } else {
+            //                             echo "<script type='text/javascript'>alert('Thêm nhà ở thất bại!');</script>";
+            //                         }
+            //                         } else {
+            //                             echo "<script type='text/javascript'>alert('Upload ảnh nhà ở thất bại!');</script>";
+            //                         }
+            //                         } else {
+            //                             echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
+            //                         }
+            //         }
+                }
+    } 
+        
         echo "Loại dự án: $loaiduan<br>";
         echo "Tên dự án: $tenDA<br>";
         echo "Địa chỉ dự án: $diaChiDA<br>";
@@ -67,8 +122,6 @@ if (isset($_POST["btdangtin"])) {
         echo "Tên đường: $tenDuong<br>";
         echo "Diện tích: $dienTich<br>";
         echo "Nội thất: $noiThat<br>";
-    }
-
 //include("pages/dangtin-cda/xuly.php");
 ?>
 <div class="container mt-4">
@@ -104,7 +157,7 @@ if (isset($_POST["btdangtin"])) {
                             <div id="2Form" class="form-section" style="display:none;">
                                 <div class="mb-3 mt-3">
                                     <label for="tieude">Tiêu đề đăng tin:</label>
-                                    <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
+                                    <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
                                 </div>
                                 <h5>Thông tin địa chỉ</h5>
                                 <div class="mb-3">
@@ -318,6 +371,110 @@ if (isset($_POST["btdangtin"])) {
                                             </select>
                                         </div>
                                     </div>
+                                    <div id="3Form" class="form-section" style="display:none;">
+                                        <div class="mb-3 mt-3">
+                                            <label for="tieude">Tiêu đề đăng tin:</label>
+                                            <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
+                                        </div>
+                                        <h5>Thông tin địa chỉ</h5>
+                                        <div class="mb-3">
+                                            <label for="province/city">Tỉnh/Thành phố:</label>
+                                            <select class="form-select" id="province/city" name="province/city">
+                                                <option>Tỉnh/Thành phố</option>
+                                                <option>Hồ Chí Minh</option>
+                                                <option>Bình Dương</option>
+                                                <option>Hà Nội</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="district">Quận/Huyện:</label>
+                                            <select class="form-select" id="district" name="district">
+                                                <option>Quận/Huyện</option>
+                                                <option>Quận 1</option>
+                                                <option>Quận 2</option>
+                                                <option>Quận 3</option>
+                                                <option>Quận 4</option>
+                                                <option>Quận 5</option>
+                                                <option>Quận 6</option>
+                                                <option>Quận 7</option>
+                                                <option>Quận Phú Nhuận</option>
+                                                <option>Quận Tân Phú</option>
+                                                <option>Quận Gò Vấp</option>
+                                                <option>Quận Bình Thạnh</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Wistrict">Phường/Xã:</label>
+                                            <select class="form-select" id="Wistrict" name="Wistrict">
+                                                <option>Phường/Xã</option>
+                                                <option>Phường 1</option>
+                                                <option>Phường 2</option>
+                                                <option>Phường 3</option>
+                                                <option>Phường 4</option>
+                                                <option>Phường 5</option>
+                                                <option>Phường 6</option>
+                                                <option>Phường 7</option>
+                                                <option>Phường 8</option>
+                                                <option>Phường 9</option>
+                                                <option>Phường 10</option>
+                                                <option>Phường 12</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="Sonha">Số nhà:</label>
+                                            <input type="text" class="form-control" id="Sonha" placeholder="Số nhà" name="Sonha">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="tenduong">Tên đường:</label>
+                                            <input type="text" class="form-control" id="tenduong" placeholder="Tên đường" name="tenduong">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="macan">Mã căn:</label>
+                                            <input type="text" class="form-control" id="macan" placeholder="Mã căn" name="macan">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="block">Block:</label>
+                                            <input type="text" class="form-control" id="block" placeholder="Block" name="block">
+                                        </div>
+                                        <h5>Thông tin chi tiết bất động sản</h5>
+                                        <div class="mb-3 mt-3">
+                                            <label for="dientich">Diện tích:</label>
+                                            <input type="text" class="form-control" id="dientich" placeholder="Diện tích" name="dientich">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="soPhongNgu">Số phòng ngủ:</label>
+                                            <input type="text" class="form-control" id="soPhongNgu" placeholder="Số phòng ngủ" name="soPhongNgu">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="soNhaVS">Số nhà vệ sinh:</label>
+                                            <input type="text" class="form-control" id="sonhvs" placeholder="Số nhà vệ sinh" name="sonhvs">
+                                        </div>
+                                        <h5>Thông tin khác</h5>
+                                        <div class="mb-3">
+                                            <label for="phapLy">Giấy tờ pháp lý:</label>
+                                            <select class="form-select" id="giaytopl" name="giaytopl">
+                                                <option>Giấy tờ pháp lý</option>
+                                            </select>
+                                        </div>
+                                        <h5>Thông tin cho thuê</h5>
+                                        <div class="mb-3 mt-3">
+                                            <label for="tiencoc">Tiền cọc:</label>
+                                            <input type="number" class="form-control" id="tiencoc" placeholder="Tiền cọc" name="tiencoc">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="giaThue">Tiền thuê:</label>
+                                            <input type="number" class="form-control" id="giaThue" placeholder="Tiền thuê" name="giaThue">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="hoaHong">Phí hoa hồng:</label>
+                                            <select class="form-select" id="hoaHong" name="hoaHong">
+                                                <option>Phí hoa hồng</option>
+                                                <option>30%</option>
+                                                <option>40%</option>
+                                                <option>50%</option>
+                                            </select>
+                                        </div>
+                            </div>
                             <!-- Buttons -->
                             <button type="submit" class="btn btn-primary" name="btdangtin">Submit</button>
                             <button type="reset" class="btn btn-danger" name="reset">Reset</button>
@@ -328,6 +485,7 @@ if (isset($_POST["btdangtin"])) {
         </div>
     </div>
 </div>
+
 <script>
                 document.getElementById("categorySelect").addEventListener("change", function() {
                     // Ẩn tất cả các form
@@ -341,4 +499,4 @@ if (isset($_POST["btdangtin"])) {
                         document.getElementById(selectedValue + 'Form').style.display = 'block';
                     }
                 });
-</script>
+            </script>

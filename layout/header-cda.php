@@ -144,7 +144,7 @@
             <!-- Các nút bên trái -->
             <ul class="navbar-nav me-auto">
             <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=dangtin-cda">Đăng tin</a>
+                    <a class="nav-link" href="index.php?page=chonloaiDA">Đăng tin</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=danhsachduan-cda">Quản lý dự án</a>

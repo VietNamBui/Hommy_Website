@@ -1,12 +1,7 @@
 <?php
 $obj = new database();
 if (isset($_POST["btdangtin"])) {
-    // Check if 'loaiduan' is set in the POST array
-    
-    if (isset($_POST["loaiduan"])) {
-        $loaiduan = $_POST["loaiduan"];
-                if($loaiduan == "2")
-                {
+    // Check if 'loaiduan' is set in the POST array    
                     $tenDA = $_POST["tieude"];
                     $diaChiDA = $_POST["soNha"] . ', ' . $_POST["tenDuong"] . ', ' . $_POST["phuongXa"] . ', ' . $_POST["quanHuyen"] . ', ' . $_POST["tinhTP"];
                     $giaThue = $_POST["giaThue"];
@@ -23,7 +18,7 @@ if (isset($_POST["btdangtin"])) {
                     $noiThat = $_POST["noiThat"];
                     //SQL để thêm thông tin vào bảng `duan`
                     $sqlDuan = "insert into  duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao,ngayXacThuc,maChuDuAn, tienCoc, maLoaiDA) 
-                                 values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', $loaiduan)";	
+                                 values ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao','$ngayTao','$maChuDuAn', '$tienCoc', '2')";	
                     //Giả sử bạn có phương thức $obj->themDuan để thực thi SQL`
                     if ($maDA = $obj->themdulieuID($sqlDuan)) // Lấy ID của dự án vừa thêm
                     {
@@ -48,27 +43,7 @@ if (isset($_POST["btdangtin"])) {
                          } else {
                              echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
                          }
-                }
-    }
-
-        // Echo the variables with line breaks
-        echo "Loại dự án: $loaiduan<br>";
-        echo "Tên dự án: $tenDA<br>";
-        echo "Địa chỉ dự án: $diaChiDA<br>";
-        echo "Giá thuê: $giaThue<br>";
-        echo "Hoa hồng: $hoaHong<br>";
-        echo "Ngày tạo: $ngayTao<br>";
-        echo "Mã chủ dự án: $maChuDuAn<br>";
-        echo "Tiền cọc: $tienCoc<br>";
-        echo "Tỉnh/Thành phố: $tinhTP<br>";
-        echo "Quận/Huyện: $quanHuyen<br>";
-        echo "Phường/Xã: $phuongXa<br>";
-        echo "Số nhà: $soNha<br>";
-        echo "Tên đường: $tenDuong<br>";
-        echo "Diện tích: $dienTich<br>";
-        echo "Nội thất: $noiThat<br>";
-    }
-
+}
 //include("pages/dangtin-cda/xuly.php");
 ?>
 <div class="container mt-4">
@@ -93,15 +68,7 @@ if (isset($_POST["btdangtin"])) {
 
                         <!-- Thông tin đăng tin -->
                         <div class="col-8 mt-3 mb-3">
-                            <select class="form-select" name="loaiduan" id="categorySelect">
-                                <option value="#">Danh Mục Đăng Tin *</option>
-                                <option value="2">Phòng trọ</option>
-                                <option value="1">Nhà ở</option>
-                                <option value="3">Chung cư</option>
-                            </select>
-
-                            <!-- Form cho phòng trọ -->
-                            <div id="2Form" class="form-section" style="display:none;">
+                            <div class="form-section">
                                 <div class="mb-3 mt-3">
                                     <label for="tieude">Tiêu đề đăng tin:</label>
                                     <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
@@ -196,131 +163,9 @@ if (isset($_POST["btdangtin"])) {
                                     </select>
                                 </div>
                             </div>
-                            <div id="1Form" class="form-section" style="display:none;">
-                                        <div class="mb-3 mt-3" >
-                                            <label for="tieude">Tiêu đề đăng tin:</label>
-                                            <input type="email" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
-                                        </div>
-                                        <h5>Thông tin địa chỉ</h5>
-                                        <div class="mb-3">
-                                            <label for="tinhTP">Tỉnh/Thành phố:</label>
-                                            <select class="form-select" id="tinhTP" name="tinhTP">
-                                                <option>Tỉnh/Thành phố</option>
-                                                <option>Hồ Chí Minh</option>
-                                                <option>Bình Dương</option>
-                                                <option>Hà Nội</option>
-                                              </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="quanHuyen">Quận/Huyện:</label>
-                                            <select class="form-select" id="quanHuyen" name="quanHuyen">
-                                                <option>Quận/Huyện</option>
-                                                <option>Quận 1</option>
-                                                <option>Quận 2</option>
-                                                <option>Quận 3</option>
-                                                <option>Quận 4</option>
-                                                <option>Quận 5</option>
-                                                <option>Quận 6</option>
-                                                <option>Quận 1</option>
-                                                <option>Quận 2</option>
-                                                <option>Quận 7</option>
-                                                <option>Quận Phú Nhuận</option>
-                                                <option>Quận Tân Phú</option>
-                                                <option>Quận Gò Vấp</option>
-                                                <option>Quận Bình Thạnh</option>
-                                              </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="phuongXa">Phường/Xã:</label>
-                                            <select class="form-select" id="phuongXa" name="phuongXa">
-                                                <option>Phường/Xã</option>
-                                                <option>Phường 1</option>
-                                                <option>Phường 2</option>
-                                                <option>Phường 3</option>
-                                                <option>Phường 4</option>
-                                                <option>Phường 5</option>
-                                                <option>Phường 6</option>
-                                                <option>Phường 1</option>
-                                                <option>Phường 2</option>
-                                                <option>Phường 7</option>
-                                                <option>Phường 8</option>
-                                                <option>Phường 9</option>
-                                                <option>Phường 10</option>
-                                                <option>Phường 12</option>
-                                              </select>
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="soNha">Số nhà:</label>
-                                            <input type="text" class="form-control" id="soNha" placeholder="Số nhà" name="soNha">
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="tenDuong">Tên đường:</label>
-                                            <input type="text" class="form-control" id="tenDuong" placeholder="Tên đường" name="tenDuong">
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="maCan">Mã căn:</label>
-                                            <input type="text" class="form-control" id="maCan" placeholder="Mã căn" name="maCan">
-                                        </div>
-                                        <h5>Thông tin chi tiết bất động sản</h5>
-                                        <div class="mb-3 mt-3">
-                                            <label for="dienTich">Diện tích:</label>
-                                            <input type="text" class="form-control" id="dienTich" placeholder="Diện tích" name="dienTich">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="loaiNha">Loại nhà ở:</label>
-                                            <select class="form-select" id="loaiNha" name="loaiNha">
-                                                <option>Loại nhà ở</option>
-                                                <option>Nhà cấp 4</option>
-                                                <option>Biệt thự</option>
-                                              </select>
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="soPN">Số phòng ngủ:</label>
-                                            <input type="text" class="form-control" id="soPN" placeholder="Số phòng ngủ" name="soPN">
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="soNhaVS">Số nhà vệ sinh:</label>
-                                            <input type="text" class="form-control" id="soNhaVS" placeholder="Số nhà vệ sinh" name="soNhaVS">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="huongCua">Hướng cửa chính:</label>
-                                            <select class="form-select" id="huongCua" name="huongCua">
-                                                <option>Hướng cửa chính</option>
-                                                <option>Đông</option>
-                                                <option>Tây</option>
-                                                <option>Nam</option>
-                                                <option>Bắc</option>
-                                              </select>
-                                        </div>
-                                        <h5>Thông tin khác</h5>
-                                        <div class="mb-3">
-                                            <label for="phapLy">Giấy tờ pháp lý:</label>
-                                            <select class="form-select" id="phapLy" name="phapLy">
-                                                <option>Giấy tờ pháp lý</option>
-                                              </select>
-                                        </div>
-                                        <h5>Thông tin cho thuê</h5>
-                                        <div class="mb-3 mt-3">
-                                            <label for="tienCoc">Tiền cọc:</label>
-                                            <input type="number" class="form-control" id="tienCoc" placeholder="Tiền cọc" name="tienCoc">
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="giaThue">Tiền thuê:</label>
-                                            <input type="number" class="form-control" id="giaThue" placeholder="Tiền thuê" name="giaThue">
-                                        </div>
-                                        <div class="mb-3 mt-3">
-                                            <label for="hoaHong">Phí hoa hồng:</label>
-                                            <select class="form-select" id="hoaHong" name="hoaHong">
-                                                <option>Phí hoa hồng</option>
-                                                <option>30%</option>
-                                                <option>40%</option>
-                                                <option>50%</option>
-                                            </select>
-                                        </div>
-                                    </div>
                             <!-- Buttons -->
-                            <button type="submit" class="btn btn-primary" name="btdangtin">Submit</button>
-                            <button type="reset" class="btn btn-danger" name="reset">Reset</button>
+                            <button type="submit" class="btn btn-primary mt-3" name="btdangtin">Đăng tin</button>
+                            <button type="reset" class="btn btn-danger mt-3" name="reset">Hủy bỏ</button>
                         </div>
                     </div>
                 </form>
@@ -328,17 +173,3 @@ if (isset($_POST["btdangtin"])) {
         </div>
     </div>
 </div>
-<script>
-                document.getElementById("categorySelect").addEventListener("change", function() {
-                    // Ẩn tất cả các form
-                    document.querySelectorAll('.form-section').forEach(function(section) {
-                        section.style.display = 'none';
-                    });
-                    
-                    // Hiển thị form tương ứng
-                    var selectedValue = this.value;
-                    if (selectedValue) {
-                        document.getElementById(selectedValue + 'Form').style.display = 'block';
-                    }
-                });
-</script>
