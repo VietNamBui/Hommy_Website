@@ -21,8 +21,8 @@ if (isset($_POST["btdangtin"])) {
     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
         // SQL để thêm thông tin vào bảng `duan`
-        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue) 
-                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '2', '$filenamenew','1','1')";
+        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
+                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '2', '$filenamenew','1','1','$dienTich')";
 
         // Thực thi thêm vào bảng `duan`
         if ($maDA = $obj->themdulieuID($sqlDuan)) { // Lấy ID của dự án vừa thêm

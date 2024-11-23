@@ -9,28 +9,29 @@ if (isset($_POST["btdangtin"])) {
     $ngayTao = date("Y-m-d H:i:s");
     $maChuDuAn = $_SESSION["maChuDuAn"];
     $tienCoc = $_POST["tienCoc"];
+    $tinhTP = $_POST["tinhTP"];
+    $quanHuyen = $_POST["quanHuyen"];
+    $phuongXa = $_POST["phuongXa"];
+    $soNha = $_POST["soNha"];
+    $block = $_POST["block"];
+    $tenDuong = $_POST["tenDuong"];
+    $dienTich = $_POST["dienTich"];
+    $maCan = $_POST["maCan"];
+    $soPN = $_POST["soPN"];
+    $soNhaVS = $_POST["soNhaVS"];
+    $phapLy = $_POST["phapLy"];
 
     // Upload image and get the file name
     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
         // Image uploaded successfully, now insert into `duan`
-        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue) 
-                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '3', '$filenamenew','1','1')";
+        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
+                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '3', '$filenamenew','1','1','$dienTich')";
 
         // Execute the query and get the project ID
         if ($maDA = $obj->themdulieuID($sqlDuan)) { // Get the ID of the newly added project
             // After successfully adding the project, continue to add `chungcu`
-            $tinhTP = $_POST["tinhTP"];
-            $quanHuyen = $_POST["quanHuyen"];
-            $phuongXa = $_POST["phuongXa"];
-            $soNha = $_POST["soNha"];
-            $block = $_POST["block"];
-            $tenDuong = $_POST["tenDuong"];
-            $dienTich = $_POST["dienTich"];
-            $maCan = $_POST["maCan"];
-            $soPN = $_POST["soPN"];
-            $soNhaVS = $_POST["soNhaVS"];
-            $phapLy = $_POST["phapLy"];
+
 
             // Insert into `chungcu` without the image column
             $sqlChungcu = "insert into chungcu(maCan, soPhongNgu, soNhaVS, phapLy, maDA, block) 

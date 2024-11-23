@@ -33,6 +33,12 @@ else
 if(isset($_GET["cate"]))
     $cate=$_GET["cate"];
 
+if(isset($_GET["mada"]))
+    $mada=$_GET["mada"];
+
+if(isset($_GET["maloai"]))
+    $maloai=$_GET["maloai"];
+
 if(file_exists("pages/".$page."/index.php"))
     include("pages/".$page."/index.php");
 

@@ -9,28 +9,28 @@ if (isset($_POST["btdangtin"])) {
     $ngayTao = date("Y-m-d H:i:s");
     $maChuDuAn = $_SESSION["maChuDuAn"];
     $tienCoc = $_POST["tienCoc"];
-
+    $tinhTP = $_POST["tinhTP"];
+    $quanHuyen = $_POST["quanHuyen"];
+    $phuongXa = $_POST["phuongXa"];
+    $soNha = $_POST["soNha"];
+    $tenDuong = $_POST["tenDuong"];
+    $dienTich = $_POST["dienTich"];
+    $loaiNha = $_POST["loaiNha"];
+    $soPN = $_POST["soPN"];
+    $soNhaVS = $_POST["soNhaVS"];
+    $huongCua = $_POST["huongCua"];
+    $phapLy = $_POST["phapLy"];
     // Upload ảnh nhà ở và lưu vào bảng `duan`
     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
     if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
         // SQL để thêm thông tin vào bảng `duan`
-        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue) 
-                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '1', '$filenamenew','1','1')";
+        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
+                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '1', '$filenamenew','1','1','$dienTich')";
 
         // Thực thi thêm vào bảng `duan`
         if ($maDA = $obj->themdulieuID($sqlDuan)) { // Lấy ID của dự án vừa thêm
             // Lấy dữ liệu để thêm vào bảng `nhao`
-            $tinhTP = $_POST["tinhTP"];
-            $quanHuyen = $_POST["quanHuyen"];
-            $phuongXa = $_POST["phuongXa"];
-            $soNha = $_POST["soNha"];
-            $tenDuong = $_POST["tenDuong"];
-            $dienTich = $_POST["dienTich"];
-            $loaiNha = $_POST["loaiNha"];
-            $soPN = $_POST["soPN"];
-            $soNhaVS = $_POST["soNhaVS"];
-            $huongCua = $_POST["huongCua"];
-            $phapLy = $_POST["phapLy"];
+
 
             // SQL để thêm thông tin vào bảng `nhao` (không cần hình ảnh)
             $sqlNhao = "INSERT INTO nhao(loaiNha, soPhongNgu, soNhaVS, huongCua, phapLy, maDA) 

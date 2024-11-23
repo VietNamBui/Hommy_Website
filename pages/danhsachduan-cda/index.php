@@ -1,88 +1,88 @@
 <?php
 $obj = new database();
-if($cate)
-    $sql1="SELECT * 
+if($mada)
+    $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where maLoaiDA = '$cate' ";
+    where maLoaiDA = '$mada' ";
 else
-    $sql1="SELECT * 
+    $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA";
 
-if($cate)
-    $sql2="SELECT * 
+if($mada)
+    $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where maLoaiDA = '$cate' and trangThaiDuyet = '1'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+    where maLoaiDA = '$mada' and trangThaiDuyet = '1'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
-    $sql2="SELECT * 
+    $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
     where trangThaiDuyet = '1'";
 
-if($cate)
-$sql3="SELECT * 
+if($mada)
+$sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$cate' and trangThaiDuyet = '2'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '2'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
-$sql3="SELECT * 
+$sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '2'";
 
-if($cate)
-$sql4="SELECT * 
+if($mada)
+$sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$cate' and trangThaiDuyet = '3'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '3'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
-$sql4="SELECT * 
+$sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '3'";
 
-if($cate)
-$sql5="SELECT * 
+if($mada)
+$sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$cate' and trangThaiDuyet = '1' and trangThaiThue ='2'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='2'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
-$sql5="SELECT * 
+$sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '1' and trangThaiThue ='2'";
 
-if($cate)
-$sql6="SELECT * 
+if($mada)
+$sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$cate' and trangThaiDuyet = '1' and trangThaiThue ='1'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='1'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
-$sql6="SELECT * 
+$sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
@@ -99,36 +99,36 @@ $duan5=$obj->xuatdulieu($sql6);
     <!-- Content Sections -->
     <div class="container" style="margin-top: 80px;">
         <div class="d-flex justify-content-between" style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
-        <div id="tab-all" class="text-dark fw-bold" onclick="showTab('all')" style="cursor: pointer; margin: 0 8px;">Tất cả (1)</div>
-        <div id="tab-approved" class="text-muted" onclick="showTab('approved')" style="cursor: pointer; margin: 0 8px;">Đã duyệt (0)</div>
-        <div id="tab-pending" class="text-muted" onclick="showTab('pending')" style="cursor: pointer; margin: 0 8px;">Chờ duyệt (1)</div>
-        <div id="tab-rejected" class="text-muted" onclick="showTab('rejected')" style="cursor: pointer; margin: 0 8px;">Từ chối (0)</div>
-        <div id="tab-rented" class="text-muted" onclick="showTab('rented')" style="cursor: pointer; margin: 0 8px;">Đã thuê (0)</div>
-        <div id="tab-unrented" class="text-muted" onclick="showTab('unrented')" style="cursor: pointer; margin: 0 8px;">Chưa thuê (0)</div>
+        <div id="tab-all" class="text-dark fw-bold" onclick="showTab('all')" style="cursor: pointer; margin: 0 8px;">Tất cả (<?php echo count($sanpham);?>)</div>
+        <div id="tab-approved" class="text-muted" onclick="showTab('approved')" style="cursor: pointer; margin: 0 8px;">Đã duyệt (<?php echo count($duan);?>)</div>
+        <div id="tab-pending" class="text-muted" onclick="showTab('pending')" style="cursor: pointer; margin: 0 8px;">Chờ duyệt (<?php echo count($duan1);?>)</div>
+        <div id="tab-rejected" class="text-muted" onclick="showTab('rejected')" style="cursor: pointer; margin: 0 8px;">Từ chối (<?php echo count($duan3);?>)</div>
+        <div id="tab-rented" class="text-muted" onclick="showTab('rented')" style="cursor: pointer; margin: 0 8px;">Đã thuê (<?php echo count($duan4);?>)</div>
+        <div id="tab-unrented" class="text-muted" onclick="showTab('unrented')" style="cursor: pointer; margin: 0 8px;">Chưa thuê (<?php echo count($duan5);?>)</div>
     </div>
         <!-- All Listings -->
         <div id="content-all" class="content-section active-content" style="display: block;">
-            <?php
-                if($sanpham)
-                {
-                    for($i=0;$i<count($sanpham);$i++) // hien tat ca du lieu ra
-                    {
-                        echo '<div class="card" style="padding: 15px; margin-bottom: 15px;">
+        <?php
+            if($sanpham) {
+                for($i = 0; $i < count($sanpham); $i++) {
+                    echo '<a href="index.php?page=chitietduan-cda&mada='.$sanpham[$i]["maDA"].'&maloai=' .$sanpham[$i]['maLoaiDA'].'" style="text-decoration: none; color: inherit;">
+                            <div class="card" style="padding: 15px; margin-bottom: 15px;">
                                 <div class="d-flex align-items-center">
-                                    <img src="assets/video/'.$sanpham[$i]["hinhAnh"].'" alt="1" style=" background-color: #f8f9fa; width: 200px; height: 150px;">
+                                    <img src="assets/video/'.$sanpham[$i]["hinhAnh"].'" alt="1" style="background-color: #f8f9fa; width: 200px; height: 150px;">
                                     <div style="margin-left: 15px;">
-                                    <p style="margin-bottom: 5px;"><a href="index.php?page=chitietduan-cda&cate='.$sanpham[$i]["maDA"].'">'.$sanpham[$i]["tenDA"].'</a></p>
-                                    <p style="margin-bottom: 5px;">'.number_format($sanpham[$i]["giaThue"]).'</p>
-                                    <p style="margin-bottom: 5px;">22:00 04/01/2020</p>
+                                        <p style="margin-bottom: 5px;">'.$sanpham[$i]["tenDA"].'</p>
+                                        <p style="margin-bottom: 5px;">'.number_format($sanpham[$i]["giaThue"]).'   VND</p>
+                                        <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($sanpham[$i]["ngayTao"])).'</p>
+                                    </div>
+                                    <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
-                                <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
-                                </div>
-                            </div>';
-                    }
+                            </div>
+                        </a>';
                 }
-                else
-                    echo "Hien tai chua co san pham nao";
-            ?>
+            } else {
+                echo "Hien tai chua co san pham nao";
+            }
+        ?>
         </div>
 
         <!-- Approved Listings -->
@@ -138,22 +138,24 @@ $duan5=$obj->xuatdulieu($sql6);
                 {
                     for($i=0;$i<count($duan);$i++) // hien tat ca du lieu ra
                     {
-                        echo '<div class="card" style="padding: 15px; margin-bottom: 15px;">
+                        echo '<a href="index.php?page=chitietduan-cda&mada='.$duan[$i]["maDA"].'&maloai=' .$duan[$i]['maLoaiDA'].'" style="text-decoration: none; color: inherit;">
+                                <div class="card" style="padding: 15px; margin-bottom: 15px;">
                                 <div class="d-flex align-items-center">
                                     <img src="assets/video/'.$duan[$i]["hinhAnh"].'" alt="1" style=" background-color: #f8f9fa; width: 200px; height: 150px;">
                                     <div style="margin-left: 15px;">
-                                    <p style="margin-bottom: 5px;"><a href="index.php?page=chitietduan-cda&cate='.$duan[$i]["maDA"].'">'.$duan[$i]["tenDA"].'</a></p>
-                                    <p style="margin-bottom: 5px;">'.number_format($duan[$i]["giaThue"]).'</p>
-                                    <p style="margin-bottom: 5px;">22:00 04/01/2020</p>
+                                    <p style="margin-bottom: 5px;">'.$duan[$i]["tenDA"].'</p>
+                                    <p style="margin-bottom: 5px;">'.number_format($duan[$i]["giaThue"]).'   VND</p>
+                                    <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan[$i]["ngayTao"])).'</p>
                                 </div>
                                 <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
-                            </div>';
+                            </div>
+                                </a>';
                     }
                 }
                 else
                     echo "Hien tai chua co san pham nao";
-            ?>
+        ?>
         </div>
          <!--Pending Listings -->
         <div id="content-pending" class="content-section" style="display: none;">
@@ -162,22 +164,24 @@ $duan5=$obj->xuatdulieu($sql6);
                 {
                     for($i=0;$i<count($duan1);$i++) // hien tat ca du lieu ra
                     {
-                        echo '<div class="card" style="padding: 15px; margin-bottom: 15px;">
+                        echo '<a href="index.php?page=chitietduan-cda&mada='.$duan1[$i]["maDA"].'&maloai=' .$duan1[$i]['maLoaiDA'].'" style="text-decoration: none; color: inherit;">
+                                <div class="card" style="padding: 15px; margin-bottom: 15px;">
                                 <div class="d-flex align-items-center">
                                     <img src="assets/video/'.$duan1[$i]["hinhAnh"].'" alt="1" style=" background-color: #f8f9fa; width: 200px; height: 150px;">
                                     <div style="margin-left: 15px;">
-                                    <p style="margin-bottom: 5px;"><a href="index.php?page=chitietduan-cda&cate='.$duan1[$i]["maDA"].'">'.$duan1[$i]["tenDA"].'</a></p>
-                                    <p style="margin-bottom: 5px;">'.number_format($duan1[$i]["giaThue"]).'</p>
-                                    <p style="margin-bottom: 5px;">22:00 04/01/2020</p>
+                                    <p style="margin-bottom: 5px;">'.$duan1[$i]["tenDA"].'</p>
+                                    <p style="margin-bottom: 5px;">'.number_format($duan1[$i]["giaThue"]).'   VND</p>
+                                    <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan1[$i]["ngayTao"])).'</p>
                                 </div>
                                 <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
-                            </div>';
+                            </div>
+                                </a>';
                     }
                 }
                 else
                     echo "Hien tai chua co san pham nao";
-            ?>
+    ?>
         </div>
         <!-- Rejected Listings -->
         <div id="content-rejected" class="content-section" style="display: none;">
@@ -186,22 +190,24 @@ $duan5=$obj->xuatdulieu($sql6);
                 {
                     for($i=0;$i<count($duan3);$i++) // hien tat ca du lieu ra
                     {
-                        echo '<div class="card" style="padding: 15px; margin-bottom: 15px;">
+                        echo '<a href="index.php?page=chitietduan-cda&mada='.$duan3[$i]["maDA"].'&maloai=' .$duan3[$i]['maLoaiDA'].'" style="text-decoration: none; color: inherit;">
+                                <div class="card" style="padding: 15px; margin-bottom: 15px;">
                                 <div class="d-flex align-items-center">
                                     <img src="assets/video/'.$duan3[$i]["hinhAnh"].'" alt="1" style=" background-color: #f8f9fa; width: 200px; height: 150px;">
                                     <div style="margin-left: 15px;">
-                                    <p style="margin-bottom: 5px;"><a href="index.php?page=chitietduan-cda&cate='.$duan3[$i]["maDA"].'">'.$duan3[$i]["tenDA"].'</a></p>
-                                    <p style="margin-bottom: 5px;">'.number_format($duan3[$i]["giaThue"]).'</p>
-                                    <p style="margin-bottom: 5px;">22:00 04/01/2020</p>
+                                    <p style="margin-bottom: 5px;">'.$duan3[$i]["tenDA"].'</p>
+                                    <p style="margin-bottom: 5px;">'.number_format($duan3[$i]["giaThue"]).'   VND</p>
+                                    <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan3[$i]["ngayTao"])).'</p>
                                 </div>
                                 <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
-                            </div>';
+                            </div>
+                                </a>';
                     }
                 }
                 else
                     echo "Hien tai chua co san pham nao";
-            ?>
+    ?>
         </div>
 
         <!-- Rented Listings -->
@@ -211,22 +217,24 @@ $duan5=$obj->xuatdulieu($sql6);
                 {
                     for($i=0;$i<count($duan4);$i++) // hien tat ca du lieu ra
                     {
-                        echo '<div class="card" style="padding: 15px; margin-bottom: 15px;">
+                        echo '<a href="index.php?page=chitietduan-cda&mada='.$duan4[$i]["maDA"].'&maloai=' .$duan4[$i]['maLoaiDA'].'" style="text-decoration: none; color: inherit;">
+                                <div class="card" style="padding: 15px; margin-bottom: 15px;">
                                 <div class="d-flex align-items-center">
                                     <img src="assets/video/'.$duan4[$i]["hinhAnh"].'" alt="1" style=" background-color: #f8f9fa; width: 200px; height: 150px;">
                                     <div style="margin-left: 15px;">
-                                    <p style="margin-bottom: 5px;"><a href="index.php?page=chitietduan-cda&cate='.$duan4[$i]["maDA"].'">'.$duan4[$i]["tenDA"].'</a></p>
-                                    <p style="margin-bottom: 5px;">'.number_format($duan4[$i]["giaThue"]).'</p>
-                                    <p style="margin-bottom: 5px;">22:00 04/01/2020</p>
+                                    <p style="margin-bottom: 5px;">'.$duan4[$i]["tenDA"].'</p>
+                                    <p style="margin-bottom: 5px;">'.number_format($duan4[$i]["giaThue"]).'   VND</p>
+                                    <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan4[$i]["ngayTao"])).'</p>
                                 </div>
                                 <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
-                            </div>';
+                            </div>
+                                </a>';
                     }
                 }
                 else
                     echo "Hien tai chua co san pham nao";
-            ?>
+        ?>
         </div>
 
         <!-- Unrented Listings -->
@@ -236,22 +244,24 @@ $duan5=$obj->xuatdulieu($sql6);
                 {
                     for($i=0;$i<count($duan5);$i++) // hien tat ca du lieu ra
                     {
-                        echo '<div class="card" style="padding: 15px; margin-bottom: 15px;">
+                        echo '<a href="index.php?page=chitietduan-cda&mada='.$duan5[$i]["maDA"].'&maloai=' .$duan5[$i]['maLoaiDA'].'" style="text-decoration: none; color: inherit;">
+                                <div class="card" style="padding: 15px; margin-bottom: 15px;">
                                 <div class="d-flex align-items-center">
                                     <img src="assets/video/'.$duan5[$i]["hinhAnh"].'" alt="1" style=" background-color: #f8f9fa; width: 200px; height: 150px;">
                                     <div style="margin-left: 15px;">
-                                    <p style="margin-bottom: 5px;"><a href="index.php?page=chitietduan-cda&cate='.$duan5[$i]["maDA"].'">'.$duan5[$i]["tenDA"].'</a></p>
-                                    <p style="margin-bottom: 5px;">'.number_format($duan5[$i]["giaThue"]).'</p>
-                                    <p style="margin-bottom: 5px;">22:00 04/01/2020</p>
+                                    <p style="margin-bottom: 5px;">'.$duan5[$i]["tenDA"].'</p>
+                                    <p style="margin-bottom: 5px;">'.number_format($duan5[$i]["giaThue"]).'   VND</p>
+                                    <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan5[$i]["ngayTao"])).'</p>
                                 </div>
                                 <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
-                            </div>';
+                            </div>
+                                </a>';
                     }
                 }
                 else
                     echo "Hien tai chua co san pham nao";
-            ?>
+    ?>
         </div>
     </div>
     <!-- JavaScript for Tab Switching -->
@@ -277,5 +287,7 @@ $duan5=$obj->xuatdulieu($sql6);
         }
     </script>
     <!-- Bootstrap JavaScript Bundle (including Popper) -->
-
-
+        
+        
+        
+        
