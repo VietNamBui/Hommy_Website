@@ -20,7 +20,7 @@ if($_SESSION['maLoai']=='2'){
                     }
                         else{
                             if($_SESSION['maLoai']=='1'){
-                                require("layout/header-cda.php");
+                                require("layout/header_khachang.php");
                             }else{
                                 require("layout/header.php");
                             }

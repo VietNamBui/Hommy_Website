@@ -10,19 +10,6 @@ if (isset($_POST["btDangnhap"])) {
     $result = $obj->dangnhaptaikhoan($taikhoan, $matkhau);
 
     if ($result) {
-<<<<<<< HEAD
-        $_SESSION["dangnhap"] = $result['maTK'];
-        $_SESSION["id_taikhoan"] = $result['maTK'];
-        $_SESSION["maLoai"] = $result['maLoai'];
-        $_SESSION["maChuDuAn"] = $result['maChuDuAn'];
-        if(isset($_SESSION["maLoai"])==2){
-        header("Location: index.php?page=trang_chu");
-    }
-        exit(); // Thêm exit để dừng xử lý
-    } else {    
-        // Hiển thị thông báo lỗi
-        echo "Đăng nhập không thành công";
-=======
         // Lưu thông tin vào session với đúng tên trường
         $_SESSION["dangnhap"] = $result['maTK'];  // maTK
         $_SESSION["maLoai"] = $result['maLoai'];  // maLoai
@@ -31,6 +18,7 @@ if (isset($_POST["btDangnhap"])) {
         $_SESSION["maKH"] = $result['maKH'] ?? null;            // maKH
         $_SESSION["maChuDuAn"] = $result['maChuDuAn'] ?? null;        // maChuDuAn
         $_SESSION["maAdmin"] = $result['maAdmin'] ?? null;            // maAdmin
+        $_SESSION["id_taikhoan"] = $result['maTK'];
         // Điều hướng dựa trên loại tài khoản
         switch ($_SESSION["maLoai"]) {
             case '5': // Loại tài khoản là Quản Lý Hệ Thống
@@ -58,7 +46,6 @@ if (isset($_POST["btDangnhap"])) {
     } else {
         // Hiển thị thông báo lỗi nếu đăng nhập thất bại
         echo "<script type='text/javascript'>alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');</script>";
->>>>>>> 56ddbee6f9419e6cddde7bc52288ed3bd7e58590
     }
 }
 ?>
