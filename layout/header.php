@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Chọn Time Hẹn Lịch</title>
+    <link rel="stylesheet" href="assets/css/muagoithanhvien.css">
+    <title>Hommy - Bạn của mọi Nhà</title>
     <style>
                     body {
                     background-color: #f8f8f8;
@@ -141,7 +142,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
          <ul class="navbar-nav me-auto">
           <li class="nav-item">
-           <a class="nav-link" href="#">Mua gói</a>
+           <a class="nav-link" href="index.php?page=muagoithanhvien">Mua gói</a>
           </li>
           <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

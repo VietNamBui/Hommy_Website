@@ -11,6 +11,7 @@ if (isset($_POST["btDangnhap"])) {
 
     if ($result) {
         $_SESSION["dangnhap"] = $result['maTK'];
+        $_SESSION["id_taikhoan"] = $result['maTK'];
         $_SESSION["maLoai"] = $result['maLoai'];
         $_SESSION["maChuDuAn"] = $result['maChuDuAn'];
         if(isset($_SESSION["maLoai"])==2){
