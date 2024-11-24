@@ -21,19 +21,19 @@ if (isset($_POST["btDangnhap"])) {
         // Điều hướng dựa trên loại tài khoản
         switch ($_SESSION["maLoai"]) {
             case '5': // Loại tài khoản là Quản Lý Hệ Thống
-                header("Location: index.php?page=admin_dashboard");
+                header("Location: index.php?page=trang_chu");
                 break;
             case '4': // Loại tài khoản là Nhân Viên Điều Hành
-                header("Location: index.php?page=nhanvien_dieuhanh_dashboard");
+                header("Location: index.php?page=trang_chu");
                 break;
             case '2': // Loại tài khoản là Chủ Dự Án
                 header("Location: index.php?page=trang_chu");
                 break;
             case '3': // Loại tài khoản là Nhân Viên Môi Giới
-                header("Location: index.php?page=nhanvien_moigioi_dashboard");
+                header("Location: index.php?page=trang_chu");
                 break;
             case '1': // Loại tài khoản là Khách Hàng
-                header("Location: index.php?page=khachhang_dashboard");
+                header("Location: index.php?page=trang_chu");
                 break;
             default:
                 // Xử lý trường hợp không xác định
