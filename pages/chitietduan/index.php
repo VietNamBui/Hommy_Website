@@ -33,6 +33,7 @@ if ($maloai == "1") { // nha o
     }
 }
 $sanpham = $obj->xuatdulieu($sql);
+include('pages/chitietduan/xuly.php');
 ?>
 <div class="container mt-4">
     <?php
@@ -313,8 +314,8 @@ $sanpham = $obj->xuatdulieu($sql);
 
             <!-- Contact Buttons -->
             <div class="contact-buttons mt-2" style="margin-top: 0.5em;">
-                <button class="btn btn-danger" style="background-color: #fc011a; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Hẹn lịch</button>
                 <form action="" method="POST">
+                    <button class="btn btn-danger" style="background-color: #fc011a; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;" type="submit" name="henlich">Hẹn lịch</button>
                     <button class="btn btn-info" style="background-color: #000101; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;" type="submit" name="yeuthich">Yêu thích</button>
                 </form>
             </div>
