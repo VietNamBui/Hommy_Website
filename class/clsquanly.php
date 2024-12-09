@@ -39,6 +39,36 @@ class quanly extends database
         return $this->suadulieu($sql);
     }
 
+    public function selectngaylamviecnv($value='')
+    {
+        $str='';
+        $sql="select * from lichlamviec";
+        $arr=$this->xuatdulieu($sql);
+        for($i=0;$i<count($arr);$i++)
+        {
+            if($arr[$i]["idcty"]==$value)
+                $str.='<option selected value="'.$arr[$i]["STT"].'">'.$arr[$i]["ngayDangKy"].'</option>';
+            else
+            $str.='<option value="'.$arr[$i]["STT"].'">'.$arr[$i]["ngayDangKy"].'</option>';
+        }
+        return $str;
+    }
+
+    public function selectgiolamviecnv($value='')
+    {
+        $str='';
+        $sql="select * from lichlamviec";
+        $arr=$this->xuatdulieu($sql);
+        for($i=0;$i<count($arr);$i++)
+        {
+            if($arr[$i]["idcty"]==$value)
+                $str.='<option selected value="'.$arr[$i]["STT"].'">'.$arr[$i]["gioBatDau"].' -> '.$arr[$i]["gioKetThuc"].' </option>';
+            else
+            $str.='<option value="'.$arr[$i]["STT"].'">'.$arr[$i]["gioBatDau"].'</option>';
+        }
+        return $str;
+    }
+
 
 }
 
