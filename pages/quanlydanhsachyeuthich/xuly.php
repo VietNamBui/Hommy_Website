@@ -1,9 +1,10 @@
 <?php
     if(isset($_POST["btXoa"])) {
         $idsp=$_POST["btXoa"];
-        if($obj->xoadulieu($idsp))
-            echo "xoa thanh cong";
+        $sql = "DELETE FROM danhsachduanyeuthich WHERE maDuAn = '$idsp'";
+        if($obj->xoadulieu($sql))
+        echo "<script>alert('Xóa thành công!');</script>";
         else
-            echo "xoa that bai";  
+            echo "<script>alert('Xóa thất bại!');</script>";
     }
 ?>

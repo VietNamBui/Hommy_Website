@@ -27,22 +27,14 @@
                                         <p class="mb-1 text-muted">123 Green Avenue, New York, NY</p>
                                         <p class="mb-1"><strong>Price:</strong>' . $duan[$i]["giaThue"] . '</p>
                                     </div>
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm(\'Ban co chac muon xoa sp nay khong?\')" type="submit" name="btXoa" value="'.$sanpham[$i]["idsp"].'">Remove</button>
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm(\'Ban co chac muon xoa sp nay khong?\')" type="submit" name="btXoa" value="'.$duan[$i]["maDuAn"].'">Remove</button>
                                 </div>
                             </li>';
                     }
+                } else {
+                    echo '<h1 style="text-align: center;">Hiện tại chưa có dự án yêu thích nào!</h1>';
                 }
                 ?>
-                <li class="list-group-item">
-                    <div class="d-flex justify-content-between align-items-start">
-                        <div>
-                            <h5 class="mb-1">Modern Apartment</h5>
-                            <p class="mb-1 text-muted">456 Sunset Blvd, Los Angeles, CA</p>
-                            <p class="mb-1"><strong>Price:</strong> $850,000</p>
-                        </div>
-                        <button class="btn btn-danger btn-sm" onclick="return confirm(\'Bạn có chắc muốn xóa sản phẩm này không?\')" type="submit" name="btXoa" value="<?php echo $sanpham[$i]['idsp']; ?>">Remove</button>
-                    </div>
-                </li>
             </ul>
         </form>
     </div>
