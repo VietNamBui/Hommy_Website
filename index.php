@@ -3,6 +3,7 @@ error_reporting(1);
 ob_start(); 
 session_start();
 require_once("class/clsdatabase.php");
+require_once("class/clsquanly.php");
 
 if($_SESSION['maLoai']=='2'){
     require("layout/header-cda.php");
