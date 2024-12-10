@@ -38,9 +38,9 @@ if (isset($maTK)) {
     <div class="container-fluid bg-dark text-white py-3">
         <div class="container d-flex justify-content-center align-items-center position-relative">
             <div class="header-logo d-flex align-items-center position-absolute start-0">
-                <a href="index.php?page=trangchu"><img src="logo.png" alt="Logo" class="me-2" style="height: 40px;"> </a>
+                <a href="index.php?page=trangchu"><img src="assets/video/HommyHommy.jpg" alt="Logo" class="me-2" style="height: 40px;"> </a>
             </div>
-            <h2 class="mb-0 text-center">Trang chủ - Quản lý <i><?php echo htmlspecialchars($tenAdmin); ?></i></h2>
+            <h2 class="mb-0 text-center">Xin chào, Quản lý <i><?php echo htmlspecialchars($tenAdmin); ?></i></h2>
             <!-- Nút đăng xuất -->
             <button class="btn btn-light position-absolute end-0" onclick="window.location.href='index.php?page=logout';">
                 <i class="fas fa-sign-out-alt"></i> Đăng xuất

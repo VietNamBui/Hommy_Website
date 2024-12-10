@@ -1,14 +1,14 @@
 <?php
 // Kết nối với class quanly
-include("pages/quan_li_he_thong/class/clsquanly.php");
-$quanly = new Quanly();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include_once('pages/quan_li_he_thong/class/clsquanlyDA.php');
+$quanly = new QuanlyDA();
 // Kiểm tra nếu đã bấm nút "Chưa duyệt" hay không
 $filterChuaDuyet = isset($_GET['chua_duyet']) && $_GET['chua_duyet'] == 'true';
-
 // Lấy danh sách dự án, nếu filterChuaDuyet là true thì chỉ lấy dự án có trạng thái Chưa duyệt (trangThaiDuyet = 2)
 $duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
 ?>
-
 <body>
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-3">

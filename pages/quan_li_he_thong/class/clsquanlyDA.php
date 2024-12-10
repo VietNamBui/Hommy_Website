@@ -1,5 +1,5 @@
 <?php
-class Quanly extends Database
+class QuanlyDA extends Database
 {
     // Lấy danh sách khách hàng hoặc thông tin chi tiết của khách hàng
     public function danhsachkhachhang($id = '')
