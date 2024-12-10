@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2024 at 09:40 AM
+-- Generation Time: Dec 10, 2024 at 09:10 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,6 +65,30 @@ CREATE TABLE `chungcu` (
 
 INSERT INTO `chungcu` (`maCC`, `maCan`, `soPhongNgu`, `soNhaVS`, `phapLy`, `maDA`, `block`) VALUES
 (4, '123', '2', '2', 'Giấy chứng nhận quyền sở hữu nhà', 148, '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cuochen`
+--
+
+CREATE TABLE `cuochen` (
+  `maCuocHen` int(11) NOT NULL,
+  `thoiGian` time NOT NULL,
+  `ngayDienRa` date NOT NULL,
+  `maKH` int(11) NOT NULL,
+  `maDA` int(11) NOT NULL,
+  `maNhanVienMG` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `cuochen`
+--
+
+INSERT INTO `cuochen` (`maCuocHen`, `thoiGian`, `ngayDienRa`, `maKH`, `maDA`, `maNhanVienMG`) VALUES
+(2, '15:07:39', '2024-12-10', 0, 0, NULL),
+(4, '15:07:39', '2024-12-10', 0, 0, NULL),
+(5, '15:07:39', '2024-12-10', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -334,6 +358,15 @@ ALTER TABLE `chungcu`
   ADD KEY `maDA` (`maDA`);
 
 --
+-- Indexes for table `cuochen`
+--
+ALTER TABLE `cuochen`
+  ADD PRIMARY KEY (`maCuocHen`),
+  ADD KEY `maDA` (`maDA`),
+  ADD KEY `maKH` (`maKH`),
+  ADD KEY `maNhanVienMG` (`maNhanVienMG`);
+
+--
 -- Indexes for table `danhsachduanyeuthich`
 --
 ALTER TABLE `danhsachduanyeuthich`
@@ -430,6 +463,12 @@ ALTER TABLE `chuduan`
 --
 ALTER TABLE `chungcu`
   MODIFY `maCC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `cuochen`
+--
+ALTER TABLE `cuochen`
+  MODIFY `maCuocHen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `danhsachduanyeuthich`
