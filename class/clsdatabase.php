@@ -38,10 +38,10 @@
             if($result->num_rows)
             {
                 $row=$result->fetch_assoc();
-                return [
+                return array(
                     'maTK' => $row['maTK'],
                     'maLoai' => $row['maLoai']
-                ];
+                );
             }
             else
                 return 0;

@@ -12,17 +12,20 @@ if (isset($_POST["btDangnhap"])) {
     if ($result) {
         $_SESSION["dangnhap"] = $result['maTK'];
         $_SESSION["maLoai"] = $result['maLoai'];
-        header("Location: index.php?page=chitietduan-cda");
+        header("Location: index.php?page=trangchu");
+        // Lưu maTK vào cookie, thời gian hết hạn là 10 ngày
+        setcookie("maTK", $result['maTK'], time() + (10 * 24 * 60 * 60), "/"); // Thời gian hết hạn là 10 ngày
+
         exit(); // Thêm exit để dừng xử lý
     } else {    
         // Hiển thị thông báo lỗi
-        echo "Đăng nhập không thành công";
+        echo "<script>alert('Tài khoản hoặc mật khẩu không đúng !') ;</script>";
     }
 }
 ?>
     <div class="video-background">
         <video autoplay loop muted playsinline>
-            <source src="../assets/video/login-bg.mp4" type="video/mp4">
+            <source src="assets/video/login-bg.mp4" type="video/mp4">
             Trình duyệt của bạn không hỗ trợ video.
         </video>
         <div class="login-box" style="margin-top:7%">
