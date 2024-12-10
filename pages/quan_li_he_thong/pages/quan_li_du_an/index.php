@@ -1,21 +1,22 @@
 <?php
-// Kết nối với class CongTy
-include_once("pages/quan_li_he_thong/class/clsquanly.php");
-$congty = new Quanly();
-
+// Kết nối với class quanly
+include("pages/quan_li_he_thong/class/clsquanly.php");
+$quanly = new Quanly();
 // Kiểm tra nếu đã bấm nút "Chưa duyệt" hay không
-$filterChuaDuyet = isset($_GET['chua_duyet']) ? $_GET['chua_duyet'] : false;
+$filterChuaDuyet = isset($_GET['chua_duyet']) && $_GET['chua_duyet'] == 'true';
 
-// Lấy danh sách dự án, nếu filterChuaDuyet là true thì chỉ lấy dự án có trang thái Chưa duyệt (trangThaiDuyet = 2)
-$duan_list = $congty->danhsachduan($filterChuaDuyet);
-
+// Lấy danh sách dự án, nếu filterChuaDuyet là true thì chỉ lấy dự án có trạng thái Chưa duyệt (trangThaiDuyet = 2)
+$duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
 ?>
+
 <body>
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-dark" style="font-style: italic;">DỰ ÁN</h4>
             <div class="toolbar">
-                <button class="btn btn-outline-secondary" onclick="toggleChuaDuyet()">Chưa duyệt</button>
+            <button class="btn btn-outline-secondary" onclick="toggleChuaDuyet()">
+                <?php echo $filterChuaDuyet ? "Hiển thị tất cả" : "Chưa duyệt"; ?>
+            </button>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Nhập mã, địa chỉ">
                     <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
@@ -67,7 +68,7 @@ $duan_list = $congty->danhsachduan($filterChuaDuyet);
                             }
 
                             // Gọi hàm docTrangThaiDuyet để lấy trạng thái duyệt
-                            $trangThai = $congty->docTrangThaiDuyet($duan['maDA']);
+                            $trangThai = $quanly->docTrangThaiDuyet($duan['maDA']);
                             
                             echo "<tr class='" . ($trangThai == 'Chưa duyệt' && $filterChuaDuyet ? 'highlight' : '') . "'>";
                             echo "<td>" . $duan['maDA'] . "</td>";
@@ -111,8 +112,13 @@ $duan_list = $congty->danhsachduan($filterChuaDuyet);
 <script>
 // JavaScript xử lý lọc dự án "Chưa duyệt" và hiển thị lại tất cả
 function toggleChuaDuyet() {
-    var currentUrl = window.location.href;
-    var newUrl = currentUrl.includes('chua_duyet=true') ? currentUrl.replace('chua_duyet=true', '') : currentUrl + (currentUrl.includes('?') ? '&chua_duyet=true' : '?chua_duyet=true');
-    window.location.href = newUrl;
+    var currentUrl = new URL(window.location.href);
+    if (currentUrl.searchParams.get('chua_duyet') === 'true') {
+        currentUrl.searchParams.delete('chua_duyet'); // Xóa tham số nếu đã có
+    } else {
+        currentUrl.searchParams.set('chua_duyet', 'true'); // Thêm tham số nếu chưa có
+    }
+    window.location.href = currentUrl.href;
 }
 </script>
+

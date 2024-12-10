@@ -5,22 +5,21 @@ include_once('pages/quan_li_he_thong/class/clsdb.php'); // Đảm bảo đã bao
 // Lấy maTK từ cookie (nếu có)
 $maTK = isset($_COOKIE['maTK']) ? $_COOKIE['maTK'] : null;
 
-$tenTK = "Khách";  // Mặc định là "Khách" nếu không có maTK
+$tenAdmin = "Khách";  // Mặc định là "Khách" nếu không có maTK
 
-// Nếu maTK tồn tại trong cookie, thực hiện truy vấn để lấy tenTK
+// Nếu maTK tồn tại trong cookie, thực hiện truy vấn để lấy tenAdmin
 if (isset($maTK)) {
-    // Tạo đối tượng Database và truy vấn lấy tenTK
+    // Tạo đối tượng Database và truy vấn lấy tenAdmin
     $db = new Database();
-    // Thực hiện truy vấn để lấy tenTK từ cơ sở dữ liệu
-    $sql = "SELECT tenTK FROM taikhoan WHERE maTK = $maTK";
+    // Thực hiện truy vấn để lấy tenAdmin từ cơ sở dữ liệu
+    $sql = "SELECT tenAdmin FROM quantrihethong WHERE maTK = $maTK";
     $params = array($maTK); // Tham số truyền vào câu lệnh SQL
-
     // Gọi phương thức xuatdulieu để lấy dữ liệu
     $result = $db->xuatdulieu($sql, $params);
 
     // Kiểm tra kết quả trả về
     if ($result) {
-        $tenTK = $result[0]['tenTK'];  // Lấy tên tài khoản từ kết quả truy vấn
+        $tenAdmin = $result[0]['tenAdmin'];  // Lấy tên tài khoản từ kết quả truy vấn
     }
 }
 ?>
@@ -41,7 +40,7 @@ if (isset($maTK)) {
             <div class="header-logo d-flex align-items-center position-absolute start-0">
                 <a href="index.php?page=trangchu"><img src="logo.png" alt="Logo" class="me-2" style="height: 40px;"> </a>
             </div>
-            <h2 class="mb-0 text-center">Trang chủ - Quản lý <i><?php echo htmlspecialchars($tenTK); ?></i></h2>
+            <h2 class="mb-0 text-center">Trang chủ - Quản lý <i><?php echo htmlspecialchars($tenAdmin); ?></i></h2>
             <!-- Nút đăng xuất -->
             <button class="btn btn-light position-absolute end-0" onclick="window.location.href='index.php?page=logout';">
                 <i class="fas fa-sign-out-alt"></i> Đăng xuất

@@ -72,26 +72,23 @@ class Quanly extends Database
     }
 
     // Lấy danh sách các dự án
-    public function danhsachduan($id = '', $filterChuaDuyet = '')
+    public function danhsachduan($id = '', $filterChuaDuyet = false)
     {
         if ($id) {
-            // Truy vấn lấy thông tin dự án với tên chủ dự án
             $sql = "SELECT duan.*, chuduan.tenCDA FROM duan 
                     LEFT JOIN chuduan ON duan.maChuDuAn = chuduan.maChuDuAn 
                     WHERE duan.maDA = '$id'";
         } else {
-            // Truy vấn lấy thông tin tất cả các dự án với tên chủ dự án
             $sql = "SELECT duan.*, chuduan.tenCDA FROM duan 
                     LEFT JOIN chuduan ON duan.maChuDuAn = chuduan.maChuDuAn";
-    
-            // Nếu lọc "Chưa duyệt" thì thêm điều kiện lọc vào câu truy vấn
-            if ($filterChuaDuyet == true) {
-                $sql .= " WHERE duan.trangThaiDuyet = 2"; // Chỉ lấy các dự án có trang thái Chưa duyệt
+            
+            if ($filterChuaDuyet) {
+                $sql .= " WHERE duan.trangThaiDuyet = 2";
             }
         }
-    
         return $this->xuatdulieu($sql);
     }
+    
     
     
 

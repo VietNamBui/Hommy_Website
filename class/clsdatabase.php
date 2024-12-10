@@ -65,6 +65,7 @@
             tk.maTK,
             tk.maLoai,
             tk.tenTK,
+            tk.trangThai,
             nvmg.maNVMG,
             nvmg.tenNVMG,
             nvhd.maNVDH,
@@ -118,6 +119,7 @@
                 return [
                     'maTK' => $row['maTK'],
                     'maLoai' => $row['maLoai'],
+                    'trangThai' => $row['trangThai'],
                     'maNVMG' => $row['maNVMG'] ?? null,
                     'maNVDH' => $row['maNVDH'] ?? null,
                     'maKH' => $row['maKH'] ?? null,
