@@ -22,31 +22,34 @@ if (isset($_POST["btdangtin"])) {
     $phapLy = $_POST["phapLy"];
     // Upload ảnh nhà ở và lưu vào bảng `duan`
     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
-    if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
-        // SQL để thêm thông tin vào bảng `duan`
-        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
-                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '1', '$filenamenew','1','1','$dienTich')";
+    if($_FILES["hinhanh"]["name"]){
+        if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
+            // SQL để thêm thông tin vào bảng `duan`
+            $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
+                        VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '1', '$filenamenew','2','1','$dienTich')";
 
-        // Thực thi thêm vào bảng `duan`
-        if ($maDA = $obj->themdulieuID($sqlDuan)) { // Lấy ID của dự án vừa thêm
-            // Lấy dữ liệu để thêm vào bảng `nhao`
+            // Thực thi thêm vào bảng `duan`
+            if ($maDA = $obj->themdulieuID($sqlDuan)) { 
+                // Lấy ID của dự án vừa thêm
+                // Lấy dữ liệu để thêm vào bảng `nhao`
+                // SQL để thêm thông tin vào bảng `nhao`
+                $sqlNhao = "INSERT INTO nhao(loaiNha, soPhongNgu, soNhaVS, huongCua, phapLy, maDA) 
+                            VALUES ('$loaiNha', '$soPN', '$soNhaVS', '$huongCua', '$phapLy', '$maDA')";
 
-
-            // SQL để thêm thông tin vào bảng `nhao` (không cần hình ảnh)
-            $sqlNhao = "INSERT INTO nhao(loaiNha, soPhongNgu, soNhaVS, huongCua, phapLy, maDA) 
-                        VALUES ('$loaiNha', '$soPN', '$soNhaVS', '$huongCua', '$phapLy', '$maDA')";
-
-            // Thực thi SQL để thêm `nhao`
-            if ($obj->themdulieu($sqlNhao)) {
-                echo "<script type='text/javascript'>alert('Thêm dự án và nhà ở thành công!');</script>";
+                // Thực thi SQL để thêm `nhao`
+                if ($obj->themdulieu($sqlNhao)) {
+                    echo "<script type='text/javascript'>alert('Thêm dự án và nhà ở thành công!');</script>";
+                } else {
+                    echo "<script type='text/javascript'>alert('Thêm nhà ở thất bại!');</script>";
+                }
             } else {
-                echo "<script type='text/javascript'>alert('Thêm nhà ở thất bại!');</script>";
+                echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
             }
         } else {
-            echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
+            echo "<script type='text/javascript'>alert('Upload ảnh dự án thất bại!');</script>";
         }
-    } else {
-        echo "<script type='text/javascript'>alert('Upload ảnh dự án thất bại!');</script>";
+    }else{
+        echo "<script type='text/javascript'>alert('Vui lòng upload ảnh dự án');</script>";
     }
 }
 
@@ -77,118 +80,120 @@ if (isset($_POST["btdangtin"])) {
                         <div  class="form-section">
                                         <div class="mb-3 mt-3" >
                                             <label for="tieude">Tiêu đề đăng tin:</label>
-                                            <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude">
+                                            <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude" required>
                                         </div>
                                         <h5>Thông tin địa chỉ</h5>
                                         <div class="mb-3">
                                             <label for="tinhTP">Tỉnh/Thành phố:</label>
-                                            <select class="form-select" id="tinhTP" name="tinhTP">
-                                                <option>Tỉnh/Thành phố</option>
-                                                <option>Hồ Chí Minh</option>
-                                                <option>Bình Dương</option>
-                                                <option>Hà Nội</option>
-                                              </select>
+                                            <select class="form-select" id="tinhTP" name="tinhTP" required>
+                                                <option value="" disabled selected>Tỉnh/Thành phố</option>
+                                                <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                                <option value="Bình Dương">Bình Dương</option>
+                                                <option value="Hà Nội">Hà Nội</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="quanHuyen">Quận/Huyện:</label>
-                                            <select class="form-select" id="quanHuyen" name="quanHuyen">
-                                                <option>Quận/Huyện</option>
-                                                <option>Quận 1</option>
-                                                <option>Quận 2</option>
-                                                <option>Quận 3</option>
-                                                <option>Quận 4</option>
-                                                <option>Quận 5</option>
-                                                <option>Quận 6</option>
-                                                <option>Quận 1</option>
-                                                <option>Quận 2</option>
-                                                <option>Quận 7</option>
-                                                <option>Quận Phú Nhuận</option>
-                                                <option>Quận Tân Phú</option>
-                                                <option>Quận Gò Vấp</option>
-                                                <option>Quận Bình Thạnh</option>
-                                              </select>
+                                            <select class="form-select" id="quanHuyen" name="quanHuyen" required>
+                                                <option value="" disabled selected>Quận/Huyện</option>
+                                                <option value="Quận 1">Quận 1</option>
+                                                <option value="Quận 2">Quận 2</option>
+                                                <option value="Quận 3">Quận 3</option>
+                                                <option value="Quận 4">Quận 4</option>
+                                                <option value="Quận 5">Quận 5</option>
+                                                <option value="Quận 6">Quận 6</option>
+                                                <option value="Quận 7">Quận 7</option>
+                                                <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+                                                <option value="Quận Tân Phú">Quận Tân Phú</option>
+                                                <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+                                                <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="phuongXa">Phường/Xã:</label>
-                                            <select class="form-select" id="phuongXa" name="phuongXa">
-                                                <option>Phường/Xã</option>
-                                                <option>Phường 1</option>
-                                                <option>Phường 2</option>
-                                                <option>Phường 3</option>
-                                                <option>Phường 4</option>
-                                                <option>Phường 5</option>
-                                                <option>Phường 6</option>
-                                                <option>Phường 1</option>
-                                                <option>Phường 2</option>
-                                                <option>Phường 7</option>
-                                                <option>Phường 8</option>
-                                                <option>Phường 9</option>
-                                                <option>Phường 10</option>
-                                                <option>Phường 12</option>
-                                              </select>
+                                            <select class="form-select" id="phuongXa" name="phuongXa" required>
+                                                <option value="" disabled selected>Phường/Xã</option>
+                                                <option value="Phường 1">Phường 1</option>
+                                                <option value="Phường 2">Phường 2</option>
+                                                <option value="Phường 3">Phường 3</option>
+                                                <option value="Phường 4">Phường 4</option>
+                                                <option value="Phường 5">Phường 5</option>
+                                                <option value="Phường 6">Phường 6</option>
+                                                <option value="Phường 7">Phường 7</option>
+                                                <option value="Phường 8">Phường 8</option>
+                                                <option value="Phường 9">Phường 9</option>
+                                                <option value="Phường 10">Phường 10</option>
+                                                <option value="Phường 12">Phường 12</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="soNha">Số nhà:</label>
-                                            <input type="text" class="form-control" id="soNha" placeholder="Số nhà" name="soNha">
+                                            <input type="text" class="form-control" id="soNha" placeholder="Số nhà" name="soNha" required> 
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="tenDuong">Tên đường:</label>
-                                            <input type="text" class="form-control" id="tenDuong" placeholder="Tên đường" name="tenDuong">
+                                            <input type="text" class="form-control" id="tenDuong" placeholder="Tên đường" name="tenDuong" required>
                                         </div>
                                         <h5>Thông tin chi tiết bất động sản</h5>
                                         <div class="mb-3 mt-3">
                                             <label for="dienTich">Diện tích:</label>
-                                            <input type="text" class="form-control" id="dienTich" placeholder="Diện tích" name="dienTich">
+                                            <input type="text" class="form-control" id="dienTich" placeholder="Diện tích" name="dienTich" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="loaiNha">Loại nhà ở:</label>
-                                            <select class="form-select" id="loaiNha" name="loaiNha">
-                                                <option>Loại nhà ở</option>
-                                                <option>Nhà cấp 4</option>
-                                                <option>Biệt thự</option>
-                                              </select>
+                                            <label for="phapLy">Loại nhà:</label>
+                                            <select class="form-select" id="loaiNha" name="loaiNha" required>
+                                                <option value="" disabled selected>Loại nhà ở</option>
+                                                <option value="Nhà cấp 4">Nhà cấp 4</option>
+                                                <option value="Biệt thự">Biệt thự</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="soPN">Số phòng ngủ:</label>
-                                            <input type="text" class="form-control" id="soPN" placeholder="Số phòng ngủ" name="soPN">
+                                            <input type="text" class="form-control" id="soPN" placeholder="Số phòng ngủ" name="soPN" required>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="soNhaVS">Số nhà vệ sinh:</label>
-                                            <input type="text" class="form-control" id="soNhaVS" placeholder="Số nhà vệ sinh" name="soNhaVS">
+                                            <input type="text" class="form-control" id="soNhaVS" placeholder="Số nhà vệ sinh" name="soNhaVS" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="huongCua">Hướng cửa chính:</label>
-                                            <select class="form-select" id="huongCua" name="huongCua">
-                                                <option>Hướng cửa chính</option>
-                                                <option>Đông</option>
-                                                <option>Tây</option>
-                                                <option>Nam</option>
-                                                <option>Bắc</option>
-                                              </select>
+                                            <select class="form-select" id="huongCua" name="huongCua" required>
+                                                <option value="" disabled selected>Hướng cửa chính</option>
+                                                <option value="Đông">Đông</option>
+                                                <option value="Tây">Tây</option>
+                                                <option value="Nam">Nam</option>
+                                                <option value="Bắc">Bắc</option>
+                                            </select>
                                         </div>
                                         <h5>Thông tin khác</h5>
                                         <div class="mb-3">
                                             <label for="phapLy">Giấy tờ pháp lý:</label>
-                                            <select class="form-select" id="phapLy" name="phapLy">
-                                                <option>Giấy tờ pháp lý</option>
-                                              </select>
+                                            <select class="form-select" id="phapLy" name="phapLy" required>
+                                                <option value="" disabled selected>Giấy tờ pháp lý</option>
+                                                <option value="Sổ đỏ">Sổ đỏ</option>
+                                                <option value="Sổ hồng">Sổ hồng</option>
+                                                <option value="Giấy chứng nhận quyền sử dụng đất">Giấy chứng nhận quyền sử dụng đất</option>
+                                                <option value="Giấy phép xây dựng">Giấy phép xây dựng</option>
+                                                <option value="Hợp đồng mua bán">Hợp đồng mua bán</option>
+                                                <option value="Giấy chứng nhận quyền sở hữu nhà">Giấy chứng nhận quyền sở hữu nhà</option>
+                                            </select>
                                         </div>
                                         <h5>Thông tin cho thuê</h5>
                                         <div class="mb-3 mt-3">
                                             <label for="tienCoc">Tiền cọc:</label>
-                                            <input type="number" class="form-control" id="tienCoc" placeholder="Tiền cọc" name="tienCoc">
+                                            <input type="number" class="form-control" id="tienCoc" placeholder="Tiền cọc" name="tienCoc" required>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="giaThue">Tiền thuê:</label>
-                                            <input type="number" class="form-control" id="giaThue" placeholder="Tiền thuê" name="giaThue">
+                                            <input type="number" class="form-control" id="giaThue" placeholder="Tiền thuê" name="giaThue" required>
                                         </div>
                                         <div class="mb-3 mt-3">
                                             <label for="hoaHong">Phí hoa hồng:</label>
-                                            <select class="form-select" id="hoaHong" name="hoaHong">
-                                                <option>Phí hoa hồng</option>
-                                                <option>30%</option>
-                                                <option>40%</option>
-                                                <option>50%</option>
+                                            <select class="form-select" id="hoaHong" name="hoaHong" required>
+                                                <option value="" disabled selected>Phí hoa hồng</option>
+                                                <option value="30%">30%</option>
+                                                <option value="40%">40%</option>
+                                                <option value="50%">50%</option>
                                             </select>
                                         </div>
                                     </div>

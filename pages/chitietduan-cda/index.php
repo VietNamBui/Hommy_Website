@@ -34,6 +34,72 @@
                     }
     }
     $sanpham=$obj->xuatdulieu($sql);
+if (isset($_POST["btxoa"])) {
+    if ($maloai == '1') {
+        $sql1 = "DELETE FROM nhao WHERE maDA='$mada'";
+        $sql2 = "DELETE FROM duan WHERE maDA='$mada'";
+        if ($obj->xoadulieu($sql1)) {
+            if ($obj->xoadulieu($sql2)) {
+                echo "<script>
+                        alert('Xóa thành công!');
+                        window.location.href = 'index.php?page=danhsachduan-cda';
+                      </script>";
+            } else {
+                echo "<script>
+                        alert('Xóa thất bại!');
+                        window.location.href = 'index.php?page=danhsachduan-cda';
+                      </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Xóa thất bại!');
+                    window.location.href = 'index.php?page=danhsachduan-cda';
+                  </script>";
+        }
+    } elseif ($maloai == '2') {
+        $sql1 = "DELETE FROM phongtro WHERE maDA='$mada'";
+        $sql2 = "DELETE FROM duan WHERE maDA='$mada'";
+        if ($obj->xoadulieu($sql1)) {
+            if ($obj->xoadulieu($sql2)) {
+                echo "<script>
+                        alert('Xóa thành công!');
+                        window.location.href = 'index.php?page=danhsachduan-cda';
+                      </script>";
+            } else {
+                echo "<script>
+                        alert('Xóa thất bại!');
+                        window.location.href = 'index.php?page=danhsachduan-cda';
+                      </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Xóa thất bại!');
+                    window.location.href = 'index.php?page=danhsachduan-cda';
+                  </script>";
+        }
+    } elseif ($maloai == '3') {
+        $sql1 = "DELETE FROM chungcu WHERE maDA='$mada'";
+        $sql2 = "DELETE FROM duan WHERE maDA='$mada'";
+        if ($obj->xoadulieu($sql1)) {
+            if ($obj->xoadulieu($sql2)) {
+                echo "<script>
+                        alert('Xóa thành công!');
+                        window.location.href = 'index.php?page=danhsachduan-cda';
+                      </script>";
+            } else {
+                echo "<script>
+                        alert('Xóa thất bại!');
+                        window.location.href = 'index.php?page=danhsachduan-cda';
+                      </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Xóa thất bại!');
+                    window.location.href = 'index.php?page=danhsachduan-cda';
+                  </script>";
+        }
+    }
+}
     echo "123123";
     echo $sanpham;
 ?>
@@ -315,33 +381,38 @@
                     </div>
                     
                     <!-- Contact Buttons -->
-                    <div class="contact-buttons mt-2" style="margin-top: 0.5em;">
+                    <div class="contact-buttons mt-2" style="margin-top: 0.5em; display: flex; gap: 1em; align-items: center;">
+                    <div class="contact-buttons mt-2" style="display: flex; gap: 1em; justify-content: center;">
                     <?php
                     if ($maloai == '1') {
-                        echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">
+                        echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
                                 <a href="index.php?page=suano-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
                             </button>
-                            <button class="btn btn-danger" style="background-color: #fc011a; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Xóa dự án</button>
-                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Xác nhận dự án</button>';
+                            <form action="" method="post" style="margin: 0; display: inline;">
+                                <button class="btn btn-danger" name="btxoa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa dự án này không?\')" style="background-color: #fc011a; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xóa dự án</button>
+                            </form>
+                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xác nhận dự án</button>';
+                    } else if ($maloai == '2') {
+                        echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                                <a href="index.php?page=suapt-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
+                            </button>
+                            <form action="" method="post" style="margin: 0; display: inline;">
+                                <button class="btn btn-danger" name="btxoa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa dự án này không?\')" style="background-color: #fc011a; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xóa dự án</button>
+                            </form>
+                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xác nhận dự án</button>';
                     } else {
-                        if ($maloai == '2') {
-                            echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">
-                                    <a href="index.php?page=suapt-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
-                                </button>
-                                <button class="btn btn-danger" style="background-color: #fc011a; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Xóa dự án</button>
-                                <button class="btn btn-info" style="background-color: #000101; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Xác nhận dự án</button>';
-                        } else {
-                            echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">
-                                    <a href="index.php?page=suacc-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
-                                </button>
-                                <button class="btn btn-danger" style="background-color: #fc011a; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Xóa dự án</button>
-                                <button class="btn btn-info" style="background-color: #000101; color: white; border: none; padding: 0.5em 1em; border-radius: 0.25rem;">Xác nhận dự án</button>';
-                        }
+                        echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                                <a href="index.php?page=suacc-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
+                            </button>
+                            <form action="" method="post" style="margin: 0; display: inline;">
+                                <button class="btn btn-danger" name="btxoa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa dự án này không?\')" style="background-color: #fc011a; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xóa dự án</button>
+                            </form>
+                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xác nhận dự án</button>';
                     }
                     ?>
+                </div>
 
-                        
-                    </div>   
+
                 </div>
             </div>
         </div>
