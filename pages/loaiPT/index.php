@@ -77,8 +77,6 @@ if (isset($_POST["btdangtin"])) {
                                     <select class="form-select" id="tinhTP" name="tinhTP" required>
                                             <option value="" disabled selected>Tỉnh/Thành phố</option>
                                             <option value="Hồ Chí Minh">Hồ Chí Minh</option>
-                                            <option value="Bình Dương">Bình Dương</option>
-                                            <option value="Hà Nội">Hà Nội</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">

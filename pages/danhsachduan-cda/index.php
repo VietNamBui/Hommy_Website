@@ -287,7 +287,6 @@ $duan5=$obj->xuatdulieu($sql6);
             document.getElementById('tab-' + tab).classList.remove('text-muted');
         }
     </script>
-    <!-- Bootstrap JavaScript Bundle (including Popper) -->
         
         
         

@@ -4,7 +4,7 @@
                 <div class="row">
                     <!-- Logo -->
                     <div class="col-lg-4 mb-4 mb-lg-0">
-                        <div class="rounded-circle bg-secondary d-inline-block p-3 text-white">Logo</div>
+                        <div class="rounded-circle bg-light d-inline-block p-3 text-white"><img src="assets/video/HommyHommy.jpg" alt="Hommy Logo" style="width: 70px;height: 70;"></div>
                     </div>
         
                     <!-- Hỗ trợ khách hàng -->
