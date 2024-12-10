@@ -1,5 +1,6 @@
 <?php
 $obj = new database();
+// tất cả dự án
 if($mada)
     $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
     FROM duan d 
@@ -13,7 +14,7 @@ else
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA";
-
+// dự án đã duyệt
 if($mada)
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
     FROM duan d 
@@ -28,7 +29,7 @@ else
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
     where trangThaiDuyet = '1'";
-
+// dự án chưa duyệt 
 if($mada)
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
@@ -43,7 +44,7 @@ LEFT JOIN chungcu cu ON d.maDA = cu.maDA
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '2'";
-
+// dự án bị từ chối
 if($mada)
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
@@ -58,7 +59,7 @@ LEFT JOIN chungcu cu ON d.maDA = cu.maDA
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '3'";
-
+// dự án đã duyệt và đã thuê
 if($mada)
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
@@ -73,7 +74,7 @@ LEFT JOIN chungcu cu ON d.maDA = cu.maDA
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '1' and trangThaiThue ='2'";
-
+// dự án đã duyệt và chưa thuê
 if($mada)
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
@@ -88,6 +89,7 @@ LEFT JOIN chungcu cu ON d.maDA = cu.maDA
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
 where trangThaiDuyet = '1' and trangThaiThue ='1'";
+
 $sanpham=$obj->xuatdulieu($sql1);
 $duan=$obj->xuatdulieu($sql2);
 $duan1=$obj->xuatdulieu($sql3);
@@ -99,12 +101,12 @@ $duan5=$obj->xuatdulieu($sql6);
     <!-- Content Sections -->
     <div class="container" style="margin-top: 80px;">
         <div class="d-flex justify-content-between" style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
-        <div id="tab-all" class="text-dark fw-bold" onclick="showTab('all')" style="cursor: pointer; margin: 0 8px;">Tất cả (<?php echo count($sanpham);?>)</div>
-        <div id="tab-approved" class="text-muted" onclick="showTab('approved')" style="cursor: pointer; margin: 0 8px;">Đã duyệt (<?php echo count($duan);?>)</div>
-        <div id="tab-pending" class="text-muted" onclick="showTab('pending')" style="cursor: pointer; margin: 0 8px;">Chờ duyệt (<?php echo count($duan1);?>)</div>
-        <div id="tab-rejected" class="text-muted" onclick="showTab('rejected')" style="cursor: pointer; margin: 0 8px;">Từ chối (<?php echo count($duan3);?>)</div>
-        <div id="tab-rented" class="text-muted" onclick="showTab('rented')" style="cursor: pointer; margin: 0 8px;">Đã thuê (<?php echo count($duan4);?>)</div>
-        <div id="tab-unrented" class="text-muted" onclick="showTab('unrented')" style="cursor: pointer; margin: 0 8px;">Chưa thuê (<?php echo count($duan5);?>)</div>
+        <div id="tab-all" class="text-dark fw-bold" onclick="showTab('all')" style="cursor: pointer; margin: 0 8px;">Tất cả</div>
+        <div id="tab-approved" class="text-muted" onclick="showTab('approved')" style="cursor: pointer; margin: 0 8px;">Đã duyệt</div>
+        <div id="tab-pending" class="text-muted" onclick="showTab('pending')" style="cursor: pointer; margin: 0 8px;">Chờ duyệt</div>
+        <div id="tab-rejected" class="text-muted" onclick="showTab('rejected')" style="cursor: pointer; margin: 0 8px;">Từ chối</div>
+        <div id="tab-rented" class="text-muted" onclick="showTab('rented')" style="cursor: pointer; margin: 0 8px;">Đã thuê</div>
+        <div id="tab-unrented" class="text-muted" onclick="showTab('unrented')" style="cursor: pointer; margin: 0 8px;">Chưa thuê</div>
     </div>
         <!-- All Listings -->
         <div id="content-all" class="content-section active-content" style="display: block;">
@@ -120,13 +122,12 @@ $duan5=$obj->xuatdulieu($sql6);
                                         <p style="margin-bottom: 5px;">'.number_format($sanpham[$i]["giaThue"]).'   VND</p>
                                         <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($sanpham[$i]["ngayTao"])).'</p>
                                     </div>
-                                    <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
                                 </div>
                             </div>
                         </a>';
                 }
             } else {
-                echo "Hien tai chua co san pham nao";
+                echo "Hiện tại chưa có dự án nào được đăng";
             }
         ?>
         </div>
@@ -147,14 +148,14 @@ $duan5=$obj->xuatdulieu($sql6);
                                     <p style="margin-bottom: 5px;">'.number_format($duan[$i]["giaThue"]).'   VND</p>
                                     <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan[$i]["ngayTao"])).'</p>
                                 </div>
-                                <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
+                                <div class="ms-auto" style="color: #6c757d;">Đã duyệt</div>
                                 </div>
                             </div>
                                 </a>';
                     }
                 }
                 else
-                    echo "Hien tai chua co san pham nao";
+                    echo "Hiện tại chưa có dự án nào được đăng";
         ?>
         </div>
          <!--Pending Listings -->
@@ -180,7 +181,7 @@ $duan5=$obj->xuatdulieu($sql6);
                     }
                 }
                 else
-                    echo "Hien tai chua co san pham nao";
+                    echo "Hiện tại chưa có dự án nào được đăng";
     ?>
         </div>
         <!-- Rejected Listings -->
@@ -199,14 +200,14 @@ $duan5=$obj->xuatdulieu($sql6);
                                     <p style="margin-bottom: 5px;">'.number_format($duan3[$i]["giaThue"]).'   VND</p>
                                     <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan3[$i]["ngayTao"])).'</p>
                                 </div>
-                                <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
+                                <div class="ms-auto" style="color: #6c757d;">Bị từ chối</div>
                                 </div>
                             </div>
                                 </a>';
                     }
                 }
                 else
-                    echo "Hien tai chua co san pham nao";
+                    echo "Hiện tại chưa có dự án nào được đăng";
     ?>
         </div>
 
@@ -226,14 +227,14 @@ $duan5=$obj->xuatdulieu($sql6);
                                     <p style="margin-bottom: 5px;">'.number_format($duan4[$i]["giaThue"]).'   VND</p>
                                     <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan4[$i]["ngayTao"])).'</p>
                                 </div>
-                                <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
+                                <div class="ms-auto" style="color: #6c757d;">Đã thuê</div>
                                 </div>
                             </div>
                                 </a>';
                     }
                 }
                 else
-                    echo "Hien tai chua co san pham nao";
+                    echo "Hiện tại chưa có dự án nào được đăng";
         ?>
         </div>
 
@@ -253,14 +254,14 @@ $duan5=$obj->xuatdulieu($sql6);
                                     <p style="margin-bottom: 5px;">'.number_format($duan5[$i]["giaThue"]).'   VND</p>
                                     <p style="margin-bottom: 5px;">'.date("d/m/Y H:i", strtotime($duan5[$i]["ngayTao"])).'</p>
                                 </div>
-                                <div class="ms-auto" style="color: #6c757d;">Đang chờ duyệt</div>
+                                <div class="ms-auto" style="color: #6c757d;">Chưa thuê</div>
                                 </div>
                             </div>
                                 </a>';
                     }
                 }
                 else
-                    echo "Hien tai chua co san pham nao";
+                    echo "Hiện tại chưa có dự án nào được đăng";
     ?>
         </div>
     </div>

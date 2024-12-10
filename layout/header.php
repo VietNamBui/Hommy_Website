@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/muagoithanhvien.css">
     <title>Hommy - Bạn của mọi Nhà</title>
     <style>
@@ -24,36 +22,39 @@
                     font-weight: bold;
                 }
                 .navbar-nav .nav-link {
-                    color: #ffffff;
-                    border: 1px solid #cb0047;
+                    color: #c1e98a; /* Màu nhấn từ logo */
+                    border: 1px solid transparent;
                     border-radius: 10px;
-                    margin: 10px;
-                    background-color: #cb004763;
-                    box-shadow: 0px 0px 5px 1px #cb0047, 0px 0px 2px 4px #1b2e00;
-                    transition: transform 250ms, color 650ms;
+                    margin: 0 10px;
+                    padding: 8px 15px;
+                    background-color: #ffffff10; /* Màu nền trong suốt */
+                    transition: all 0.3s ease;
                 }
                 
                 .navbar-nav .nav-link:hover {
-                    transform: translate(0px) scale(1.1);
-                    color: rgb(255, 0, 89) !important; /* Thêm !important để đảm bảo hiệu lực */
+                    color: #ffffff; /* Màu sáng hơn khi hover */
+                    background-color: #c1e98a; /* Màu nền khi hover */
+                    border-color: #c1e98a;
                 }
         
                 /* CSS cho các mục bên trong dropdown */
-                .dropdown-menu .dropdown-item {
-                    color: #4f9000; /* Màu mặc định cho các mục trong dropdown */
-                    background-color: #ffffff; /* Màu nền cho mục trong dropdown */
-                    transition: tranform 650ms, background-color 650ms, color 250ms;
+                .dropdown-menu {
+                    background-color: #1b2e00; /* Màu nền dropdown */
                 }
-        
+
+                .dropdown-menu .dropdown-item {
+                    color: #c1e98a; /* Màu chữ trong dropdown */
+                    transition: all 0.3s ease;
+                }
+
                 .dropdown-menu .dropdown-item:hover {
-                    transform: translate(5px) scale(1.1);
-                    color: rgb(238, 255, 205); /* Màu chữ khi trỏ vào mục */
-                    background-color:#1b2e00; /* Màu nền khi trỏ vào mục */
+                    color: #ffffff; /* Màu sáng hơn khi hover */
+                    background-color: #c1e98a; /* Màu nền khi hover */
                 }
                 .video-background {
                     position: relative;
                     width: 100%;
-                    height: 100vh; /* Chiều cao bằng chiều cao của viewport */
+                    height: 130vh; /* Chiều cao bằng chiều cao của viewport */
                     overflow: hidden;
                 }
                 
@@ -63,7 +64,7 @@
                     top: 50%;
                     left: 50%;
                     min-width: 100%;
-                    min-height: 100%;
+                    min-height: 200%;
                     transform: translate(-50%, -50%);
                     z-index: -1; /* Đặt video dưới các nội dung khác */
                 }
@@ -96,7 +97,8 @@
                     margin-bottom: 20px;
                 }
                 .login-box input[type="email"],
-                .login-box input[type="password"] {
+                .login-box input[type="password"],
+                .login-box input[type="text"] {
                     width: 100%;
                     padding: 10px;
                     margin: 10px 0;
@@ -132,51 +134,44 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">
-         Logo Hommy
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-           <a class="nav-link" href="index.php?page=muagoithanhvien">Mua gói</a>
-          </li>
-          <li class="nav-item dropdown">
-           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Danh mục
-           </a>
-           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Chung cư</a></li>
-            <li><a class="dropdown-item" href="#">Nhà ở</a></li>
-            <li><a class="dropdown-item" href="#">Phòng trọ</a></li>
-           </ul>
-          </li>
-         </ul>
-         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control me-2" type="search" placeholder="Nhập từ khóa tìm kiếm" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-         </form>
-         <ul class="navbar-nav me-auto">
-         <li class="nav-item">
-           <a class="nav-link" href="index.php?page=login">Đăng nhập</a>
-          </li>
-          </ul>
-          <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-           <a class="nav-link" href="index.php?page=signup">Đăng ký</a>
-          </li>
-          </ul>
-         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-           <a class="nav-link" href="#">
-            <img src="https://storage.googleapis.com/a1aa/image/hb5Nzm6NNdYaPJTIStmWgEycMxfReJur7GbB6Bf5Bd1ypQZnA.jpg" alt="User avatar" width="30" height="30" class="rounded-circle">
-           </a>
-          </li>
-         </ul>
-        </div>
-       </nav>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="logo">
+        <img class="rounded-1" src="assets/video/HommyHommy.jpg" alt="Logo" style="width: 70px;height: 70px;">
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=muagoithanhvien">Mua gói</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Danh mục
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Chung cư</a></li>
+                    <li><a class="dropdown-item" href="#">Nhà ở</a></li>
+                    <li><a class="dropdown-item" href="#">Phòng trọ</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control me-2" type="search" placeholder="Nhập từ khóa tìm kiếm" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search">Search</i></button>
+        </form>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=login">Đăng nhập</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=signup">Đăng ký</a>
+            </li>
+        </ul>
+    </div>
+</nav>
     </header>
 
