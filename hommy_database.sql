@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2024 at 06:03 PM
+-- Generation Time: Dec 09, 2024 at 09:40 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,6 +65,22 @@ CREATE TABLE `chungcu` (
 
 INSERT INTO `chungcu` (`maCC`, `maCan`, `soPhongNgu`, `soNhaVS`, `phapLy`, `maDA`, `block`) VALUES
 (4, '123', '2', '2', 'Giấy chứng nhận quyền sở hữu nhà', 148, '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `danhsachduanyeuthich`
+--
+
+CREATE TABLE `danhsachduanyeuthich` (
+  `STT` int(11) NOT NULL,
+  `maKH` int(11) DEFAULT NULL,
+  `maDuAn` int(11) DEFAULT NULL,
+  `tenDA` varchar(1000) DEFAULT NULL,
+  `diaChiDA` varchar(1000) DEFAULT NULL,
+  `giaThue` varchar(1000) DEFAULT NULL,
+  `maLoaiDA` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -318,6 +334,12 @@ ALTER TABLE `chungcu`
   ADD KEY `maDA` (`maDA`);
 
 --
+-- Indexes for table `danhsachduanyeuthich`
+--
+ALTER TABLE `danhsachduanyeuthich`
+  ADD PRIMARY KEY (`STT`);
+
+--
 -- Indexes for table `duan`
 --
 ALTER TABLE `duan`
@@ -408,6 +430,12 @@ ALTER TABLE `chuduan`
 --
 ALTER TABLE `chungcu`
   MODIFY `maCC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `danhsachduanyeuthich`
+--
+ALTER TABLE `danhsachduanyeuthich`
+  MODIFY `STT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `duan`
@@ -523,23 +551,10 @@ ALTER TABLE `nhao`
   ADD CONSTRAINT `nhao_ibfk_1` FOREIGN KEY (`maDA`) REFERENCES `duan` (`maDA`);
 
 --
--- Constraints for table `phongtro`
---
-ALTER TABLE `phongtro`
-  ADD CONSTRAINT `phongtro_ibfk_1` FOREIGN KEY (`maDA`) REFERENCES `duan` (`maDA`);
-
---
 -- Constraints for table `quantrihethong`
 --
 ALTER TABLE `quantrihethong`
   ADD CONSTRAINT `quantrihethong_ibfk_1` FOREIGN KEY (`maTK`) REFERENCES `taikhoan` (`maTK`);
-
---
--- Constraints for table `taikhoan`
---
-ALTER TABLE `taikhoan`
-  ADD CONSTRAINT `taikhoan_ibfk_1` FOREIGN KEY (`maGoi`) REFERENCES `goithanhvien` (`maGoi`),
-  ADD CONSTRAINT `taikhoan_ibfk_2` FOREIGN KEY (`maLoai`) REFERENCES `loaitk` (`maLoai`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
