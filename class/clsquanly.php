@@ -46,7 +46,7 @@ class quanly extends database
         $arr=$this->xuatdulieu($sql);
         for($i=0;$i<count($arr);$i++)
         {
-            if($arr[$i]["idcty"]==$value)
+            if($arr[$i]["STT"]==$value)
                 $str.='<option selected value="'.$arr[$i]["STT"].'">'.$arr[$i]["ngayDangKy"].'</option>';
             else
             $str.='<option value="'.$arr[$i]["STT"].'">'.$arr[$i]["ngayDangKy"].'</option>';
@@ -57,11 +57,11 @@ class quanly extends database
     public function selectgiolamviecnv($value='')
     {
         $str='';
-        $sql="select * from lichlamviec";
+        $sql="select * from lichlamviec where STT = $value";
         $arr=$this->xuatdulieu($sql);
         for($i=0;$i<count($arr);$i++)
         {
-            if($arr[$i]["idcty"]==$value)
+            if($arr[$i]["STT"]==$value)
                 $str.='<option selected value="'.$arr[$i]["STT"].'">'.$arr[$i]["gioBatDau"].' -> '.$arr[$i]["gioKetThuc"].' </option>';
             else
             $str.='<option value="'.$arr[$i]["STT"].'">'.$arr[$i]["gioBatDau"].'</option>';

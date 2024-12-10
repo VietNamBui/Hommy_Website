@@ -11,60 +11,28 @@
 
 <body>
     <!-- Navbar -->
-    <div class="container-fluid">
-        <div class="row navbar navbar-expand-lg navbar-light bg-light">
-            <div class="col-4">
-                <div class="row">
-                    <div class="col">
-                        <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-
-                    <div class="col">
-                        <a class="nav-link" href="#">Mua gói</a>
-                    </div>
-
-                    <div class="col">
-                        <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Danh mục
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Option 1</a></li>
-                                <li><a class="dropdown-item" href="#">Option 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+    <div class="container-fluid bg-light py-2">
+        <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-md-4 d-flex align-items-center">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-            <div class="col-4">
+
+            <!-- Search -->
+            <div class="col-md-4">
                 <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search">
                     <button class="btn btn-primary" type="button">Search</button>
                 </form>
             </div>
 
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-5">
-                        <div class="div"></div>
-                    </div>
-
-                    <div class="col-7">
-                        <div class="row">
-                            <div class="col">
-                                <a href="#" class="btn btn-outline-success">Đăng ký</a>
-                            </div>
-
-                            <div class="col">
-                                <a href="#" class="btn btn-outline-secondary">Đăng nhập</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- User actions -->
+            <div class="col-md-4 d-flex justify-content-end">
+                <a href="#" class="btn btn-outline-success me-2">Đăng ký</a>
+                <a href="#" class="btn btn-outline-secondary">Đăng nhập</a>
             </div>
         </div>
     </div>
@@ -74,38 +42,98 @@
         <h2 class="text-center mb-4">Giao diện chọn time</h2>
         <div class="row justify-content-center">
             <!-- Chọn ngày -->
-            <div class="col-lg-5 col-md-6 mb-4">
+             <?php
+             if(!isset($_POST['chongio'])) {
+                $obj = new quanly();
+                $options = $obj->selectngaylamviecnv();
+                echo '
+                                <div class="col-lg-5 col-md-6 mb-4">
                 <div class="card p-4 shadow-sm">
                     <h5 class="text-center mb-3">Chọn ngày</h5>
-                    <div class="d-flex justify-content-center align-items-center" style="height: 150px; background-color: #f0f4f8; border-radius: 10px;">
-                        <select name="idcty" required>
+                    <form action="" method="POST" class="d-flex flex-column align-items-center">
+                        <select name="STTchonngay" class="form-select mb-3" required>
                             <option value="">Chọn ngày</option>
-                            <?php $obj = new quanly();
-                            echo $obj->selectngaylamviecnv(); ?>
+                            '.$options.'
                         </select>
-                    </div>
+                        <button type="submit" name="chonngay" value="1" class="btn btn-primary">Chọn ngày</button>
+                    </form>
                 </div>
-            </div>
+                </div>
+
+
+                ';
+
+             }
+
+
+
+            ?>
+
 
             <!-- Chọn giờ -->
-            <div class="col-lg-5 col-md-6 mb-4">
-                <div class="card p-4 shadow-sm">
-                    <h5 class="text-center mb-3">Chọn giờ</h5>
-                    <div class="d-flex justify-content-center align-items-center" style="height: 150px; background-color: #f0f4f8; border-radius: 10px;">
-                        <select name="idcty" required>
-                            <option value="">Chọn giờ</option>
-                            <?php $obj = new quanly();
-                            echo $obj->selectgiolamviecnv(); ?>
-                        </select>
+            <?php
+            if (isset($_POST['chonngay'])) {
+                $obj = new quanly();
+                $options = $obj->selectgiolamviecnv($_POST['STTchonngay']);
+                echo '
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="card p-4 shadow-sm">
+                        <h5 class="text-center mb-3">Chọn giờ</h5>
+                        <form action="" method="POST" class="d-flex flex-column align-items-center">
+                            <input type="hidden" name="STTchonngay" value="' .$_POST['STTchonngay']. '">
+                            <select name="idcty" class="form-select mb-3" required>
+                                <option value="">Chọn giờ</option>
+                                ' . $options . '
+                            </select>
+                            <button type="submit" name="chongio" value="' .$_POST['STTchonngay']. '" class="btn btn-primary">Chọn giờ</button>
+                        </form>
                     </div>
-                </div>
-            </div>
+                </div>';
+            }
+            ?>
         </div>
 
+        <!-- Nút Đặt lịch -->
+        <?php
+        if (isset($_POST['chongio'])) {
+            echo '
+                <form action="" method="POST">
         <div class="text-center mt-4">
-            <button type="button" class="btn btn-primary btn-lg px-5">Đặt lịch</button>
+            <button type="submit" class="btn btn-primary btn-lg px-5" name="datlich" value="' .$_POST['chongio']. '">Đặt lịch</button>
         </div>
+    </form>';
+        }
+        ?>
+
+        <?php
+            if (isset($_POST['datlich'])) {
+                $obj = new database();
+                
+                // Lấy dữ liệu từ POST
+                $stt = $_POST['datlich'];
+
+                // Truy vấn lấy thông tin ngày, giờ
+                $sqlngay = "SELECT ngayDangKy FROM lichlamviec WHERE STT = '$stt'";
+                $sqlgiobatdau = "SELECT gioBatDau FROM lichlamviec WHERE STT = '$stt'";
+                $sqlgioketthuc = "SELECT gioKetThuc FROM lichlamviec WHERE STT = '$stt'";
+                
+                // Lấy kết quả
+                $ngay = $obj->xuatdulieu($sqlngay);
+                $giobatdau = $obj->xuatdulieu($sqlgiobatdau);
+                $gioketthuc = $obj->xuatdulieu($sqlgioketthuc);
+
+                $ngayDangKy = $ngay[0]["ngayDangKy"];
+                $thoiGianDienRa = $giobatdau[0]["gioBatDau"] . ' - ' . $gioketthuc[0]["gioKetThuc"];
+
+                
+                // Câu lệnh SQL
+                $sqlinsert = "INSERT INTO cuochen (ngayDienRa, thoiGianDienRa) 
+                              VALUES ('$ngayDangKy', '$thoiGianDienRa')";
+                $obj->themdulieu($sqlinsert);
+                echo "<script>alert('Bạn đã hẹn lịch thành công!');</script>";
+            }
+        ?>
+
     </div>
-
-
-    ?>
+</body>
+</html>
