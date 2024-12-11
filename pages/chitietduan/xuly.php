@@ -56,6 +56,7 @@
 
 
     if (isset($_POST['henlich'])) {
-
+        header("Location: index.php?page=henlich");
+        exit();
     }
 ?>
