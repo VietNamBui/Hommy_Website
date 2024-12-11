@@ -94,6 +94,8 @@ if (isset($_POST["btdangtin"])) {
                                                 <option value="Quận 5">Quận 5</option>
                                                 <option value="Quận 6">Quận 6</option>
                                                 <option value="Quận 7">Quận 7</option>
+                                                <option value="Quận 8">Quận 8</option>
+                                                <option value="Quận 10">Quận 10</option>
                                                 <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
                                                 <option value="Quận Tân Phú">Quận Tân Phú</option>
                                                 <option value="Quận Gò Vấp">Quận Gò Vấp</option>

@@ -92,7 +92,7 @@ if (isset($_POST["btdangtin"])) {
                                         <div class="mb-3">
                                             <label for="quanHuyen">Quận/Huyện:</label>
                                             <select class="form-select" id="quanHuyen" name="quanHuyen" required>
-                                                <option value="" disabled selected>Quận/Huyện</option>
+                                            <option value="" disabled selected>Quận/Huyện</option>
                                                 <option value="Quận 1">Quận 1</option>
                                                 <option value="Quận 2">Quận 2</option>
                                                 <option value="Quận 3">Quận 3</option>
@@ -100,6 +100,8 @@ if (isset($_POST["btdangtin"])) {
                                                 <option value="Quận 5">Quận 5</option>
                                                 <option value="Quận 6">Quận 6</option>
                                                 <option value="Quận 7">Quận 7</option>
+                                                <option value="Quận 8">Quận 8</option>
+                                                <option value="Quận 10">Quận 10</option>
                                                 <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
                                                 <option value="Quận Tân Phú">Quận Tân Phú</option>
                                                 <option value="Quận Gò Vấp">Quận Gò Vấp</option>

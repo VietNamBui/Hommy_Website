@@ -130,6 +130,8 @@
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 5") ? "selected" : "" ?>>Quận 5</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 6") ? "selected" : "" ?>>Quận 6</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 7") ? "selected" : "" ?>>Quận 7</option>
+                                                    <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 8") ? "selected" : "" ?>>Quận 8</option>
+                                                    <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 10") ? "selected" : "" ?>>Quận 10</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Phú Nhuận") ? "selected" : "" ?>>Quận Phú Nhuận</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Tân Phú") ? "selected" : "" ?>>Quận Tân Phú</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Gò Vấp") ? "selected" : "" ?>>Quận Gò Vấp</option>

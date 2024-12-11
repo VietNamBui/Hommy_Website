@@ -122,7 +122,7 @@
                                             <div class="mb-3">
                                                 <label for="quanHuyen">Quận/Huyện:</label>
                                                 <select class="form-select" id="quanHuyen" name="quanHuyen">
-                                                    <option <?= (!isset($quanHuyen1) || $quanHuyen1 == "Quận/Huyện") ? "selected" : "" ?>>Quận/Huyện</option>
+                                                <option <?= (!isset($quanHuyen1) || $quanHuyen1 == "Quận/Huyện") ? "selected" : "" ?>>Quận/Huyện</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 1") ? "selected" : "" ?>>Quận 1</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 2") ? "selected" : "" ?>>Quận 2</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 3") ? "selected" : "" ?>>Quận 3</option>
@@ -130,11 +130,12 @@
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 5") ? "selected" : "" ?>>Quận 5</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 6") ? "selected" : "" ?>>Quận 6</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 7") ? "selected" : "" ?>>Quận 7</option>
+                                                    <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 8") ? "selected" : "" ?>>Quận 8</option>
+                                                    <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận 10") ? "selected" : "" ?>>Quận 10</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Phú Nhuận") ? "selected" : "" ?>>Quận Phú Nhuận</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Tân Phú") ? "selected" : "" ?>>Quận Tân Phú</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Gò Vấp") ? "selected" : "" ?>>Quận Gò Vấp</option>
                                                     <option <?= (isset($quanHuyen1) && $quanHuyen1 == "Quận Bình Thạnh") ? "selected" : "" ?>>Quận Bình Thạnh</option>
-                                                    <!-- Add more options as needed -->
                                                 </select>
 
                                             </div>

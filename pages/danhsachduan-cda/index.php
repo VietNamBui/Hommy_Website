@@ -2,18 +2,21 @@
 $obj = new database();
 // tất cả dự án
 if($mada)
-    $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
-    FROM duan d 
-    LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-    LEFT JOIN nhao n ON d.maDA = n.maDA 
-    LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where maLoaiDA = '$mada' ";
+    $sql1="SELECT d.maDA, d.giaThue, d.maLoaiDA, d.hinhAnh, d.tenDA, d.ngayTao, cdu.tenChuDauTu, cdu.ngayBatDau
+            FROM duan d
+            LEFT JOIN chungcu cu ON d.maDA = cu.maDA
+            LEFT JOIN nhao n ON d.maDA = n.maDA
+            LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+            LEFT JOIN chuduand cdu ON d.maChuDuAn = cdu.maChuDuAn
+            where maLoaiDA = '$mada' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 else
     $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
-    FROM duan d 
-    LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-    LEFT JOIN nhao n ON d.maDA = n.maDA 
-    LEFT JOIN phongtro pt ON d.maDA = pt.maDA";
+            FROM duan d 
+            LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+            LEFT JOIN nhao n ON d.maDA = n.maDA 
+            LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+            where d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+
 // dự án đã duyệt
 if($mada)
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
@@ -21,14 +24,14 @@ if($mada)
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where maLoaiDA = '$mada' and trangThaiDuyet = '1'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+    where maLoaiDA = '$mada' and trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where trangThaiDuyet = '1'";
+    where trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án chưa duyệt 
 if($mada)
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
@@ -36,14 +39,14 @@ FROM duan d
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '2'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '2'";
+where trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án bị từ chối
 if($mada)
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
@@ -51,14 +54,14 @@ FROM duan d
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '3'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '3'";
+where trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án đã duyệt và đã thuê
 if($mada)
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
@@ -66,14 +69,14 @@ FROM duan d
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='2'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '1' and trangThaiThue ='2'";
+where trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án đã duyệt và chưa thuê
 if($mada)
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
@@ -81,14 +84,14 @@ FROM duan d
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='1'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '1' and trangThaiThue ='1'";
+where trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 
 $sanpham=$obj->xuatdulieu($sql1);
 $duan=$obj->xuatdulieu($sql2);
