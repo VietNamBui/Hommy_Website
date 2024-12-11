@@ -100,8 +100,6 @@ if (isset($_POST["btxoa"])) {
         }
     }
 }
-    echo "123123";
-    echo $sanpham;
 ?>
     <div class="container mt-4">
         <?php

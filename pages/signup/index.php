@@ -28,6 +28,7 @@ if (isset($_POST["btDangky"])) {
                 
                 if($obj->themdulieu($sqlthemkh)){
                     echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
+                    header("Location:index.php?page=login");
                 }else{
                     echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
                 }
@@ -37,6 +38,7 @@ if (isset($_POST["btDangky"])) {
                     
                     if($obj->themdulieu($sqlthemcda)){
                         echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
+                        header("Location:index.php?page=login");
                     }else{
                         echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
                     }

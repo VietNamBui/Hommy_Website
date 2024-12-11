@@ -1,42 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Chọn Time Hẹn Lịch</title>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <div class="container-fluid bg-light py-2">
-        <div class="row align-items-center">
-            <!-- Logo -->
-            <div class="col-md-4 d-flex align-items-center">
-                <a class="navbar-brand" href="#">Logo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-
-            <!-- Search -->
-            <div class="col-md-4">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search">
-                    <button class="btn btn-primary" type="button">Search</button>
-                </form>
-            </div>
-
-            <!-- User actions -->
-            <div class="col-md-4 d-flex justify-content-end">
-                <a href="#" class="btn btn-outline-success me-2">Đăng ký</a>
-                <a href="#" class="btn btn-outline-secondary">Đăng nhập</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Main content -->
     <div class="container mt-5">
         <h2 class="text-center mb-4">Giao diện chọn time</h2>
@@ -115,19 +76,17 @@
                 // Truy vấn lấy thông tin ngày, giờ
                 $sqlngay = "SELECT ngayDangKy FROM lichlamviec WHERE STT = '$stt'";
                 $sqlgiobatdau = "SELECT gioBatDau FROM lichlamviec WHERE STT = '$stt'";
-                $sqlgioketthuc = "SELECT gioKetThuc FROM lichlamviec WHERE STT = '$stt'";
                 
                 // Lấy kết quả
                 $ngay = $obj->xuatdulieu($sqlngay);
                 $giobatdau = $obj->xuatdulieu($sqlgiobatdau);
-                $gioketthuc = $obj->xuatdulieu($sqlgioketthuc);
 
                 $ngayDangKy = $ngay[0]["ngayDangKy"];
-                $thoiGianDienRa = $giobatdau[0]["gioBatDau"] . ' - ' . $gioketthuc[0]["gioKetThuc"];
+                $thoiGianDienRa = $giobatdau[0]["gioBatDau"];
 
                 
                 // Câu lệnh SQL
-                $sqlinsert = "INSERT INTO cuochen (ngayDienRa, thoiGianDienRa) 
+                $sqlinsert = "INSERT INTO cuochen (ngayDienRa, thoiGian) 
                               VALUES ('$ngayDangKy', '$thoiGianDienRa')";
                 $obj->themdulieu($sqlinsert);
                 echo "<script>alert('Bạn đã hẹn lịch thành công!');</script>";
@@ -135,5 +94,4 @@
         ?>
 
     </div>
-</body>
-</html>
+

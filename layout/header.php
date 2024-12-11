@@ -131,13 +131,17 @@
                 .no-underline a:hover {
                     text-decoration: underline;
                 }
+                #footer {
+                    background-color: #1b2e00;
+                    padding: 10px 20px;
+                }
     </style>
 </head>
 <body>
 <header>
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="logo">
-        <img class="rounded-1" src="assets/video/HommyHommy.jpg" alt="Logo" style="width: 70px;height: 70px;">
+        <a href="index.php?page=trangchu"><img class="rounded-1" src="assets/video/HommyHommy.jpg" alt="Logo" style="width: 70px;height: 70px;"></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -152,18 +156,18 @@
                     Danh mục
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Chung cư</a></li>
-                    <li><a class="dropdown-item" href="#">Nhà ở</a></li>
-                    <li><a class="dropdown-item" href="#">Phòng trọ</a></li>
+                    <li><a class="dropdown-item" href="index.php?page=chitiettimkiem&danhmuc=3">Chung cư</a></li>
+                    <li><a class="dropdown-item" href="index.php?page=chitiettimkiem&danhmuc=1">Nhà ở</a></li>
+                    <li><a class="dropdown-item" href="index.php?page=chitiettimkiem&danhmuc=2">Phòng trọ</a></li>
                 </ul>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="index.php?page=chitiettimkiem">
             <input class="form-control me-2" type="search" placeholder="Nhập từ khóa tìm kiếm" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search">Search</i></button>
         </form>
         <ul class="navbar-nav me-auto">
-            <li class="nav-item">
+            <li class="nav-item">   
                 <a class="nav-link" href="index.php?page=login">Đăng nhập</a>
             </li>
         </ul>
@@ -175,3 +179,9 @@
     </div>
 </nav>
     </header>
+
+    </header>   
+    
+
+
+
