@@ -17,8 +17,9 @@ if($_SESSION['maLoai']=='2'){
             }
                 else{
                         if($_SESSION['maLoai']=='5'){
-                            require("layout/header-cda.php");
-                    }
+                            require("pages/quan_li_he_thong/index.php");
+                            exit();
+                        }
                         else{
                             if($_SESSION['maLoai']=='1'){
                                 require("layout/header_khachang.php");
@@ -48,6 +49,4 @@ if(file_exists("pages/".$page."/index.php"))
     include("pages/".$page."/index.php");
 
 include("layout/footer.php");
-
 ?>
-

@@ -62,7 +62,32 @@
         .rounded-circle {
             border: 2px solid #c1e98a; /* Đường viền của avatar */
         }
-        /* header*/
+        /* banner*/
+        .banner {
+            background-image: url('assets/video/banner.jpg'); /* Thay thế bằng đường dẫn ảnh nền */
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .banner .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .banner h1 {
+            position: relative;
+            color: #fff;
+            z-index: 2;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -78,10 +103,16 @@
             <!-- Các nút bên trái -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=trangchu-cda">Trang chủ</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="index.php?page=chonloaiDA">Đăng tin</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=danhsachduan-cda">Quản lý dự án</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=xemlichhen-cda">Xem lịch hẹn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=baocaokinhdoanh-cda">Xem báo cáo kinh doanh</a>

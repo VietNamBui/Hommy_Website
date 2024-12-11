@@ -1,0 +1,28 @@
+.header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-logo img {
+    height: 40px;
+}
+.table thead th {
+    background-color: #f8f9fa;
+}
+.pagination-container {
+    display: flex;
+    justify-content: center;
+}
+.input-group {
+    max-width: 400px;
+    flex-grow: 1;
+}
+.toolbar {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

@@ -19,26 +19,30 @@ if (isset($_POST["btdangtin"])) {
 
     // Upload ảnh dự án và lưu vào bảng `duan`
     $filenamenew = rand(111, 999) . "_" . $_FILES["hinhanh"]["name"];
-    if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
-        // SQL để thêm thông tin vào bảng `duan`
-        $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
-                    VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '2', '$filenamenew','2','1','$dienTich')";
-        // Thực thi thêm vào bảng `duan`
-        if ($maDA = $obj->themdulieuID($sqlDuan)) { // Lấy ID của dự án vừa thêm
-            // Sau khi thêm dự án thành công, thêm thông tin phòng trọ
-            $sqlPhongTro = "INSERT INTO phongtro(noiThat, maDA) 
-                            VALUES ('$noiThat', '$maDA')";
-            // Thực thi SQL để thêm phòng trọ
-            if ($obj->themdulieu($sqlPhongTro)) {
-                echo "<script type='text/javascript'>alert('Thêm dự án và phòng trọ thành công!');</script>";
+    if($_FILES["hinhanh"]["name"]){
+            if (move_uploaded_file($_FILES["hinhanh"]["tmp_name"], "assets/video/" . $filenamenew)) {
+                // SQL để thêm thông tin vào bảng `duan`
+                $sqlDuan = "INSERT INTO duan(tenDA, diaChiDA, giaThue, hoaHong, ngayTao, ngayXacThuc, maChuDuAn, tienCoc, maLoaiDA, hinhAnh,trangThaiDuyet,trangThaiThue,dienTich) 
+                            VALUES ('$tenDA', '$diaChiDA', '$giaThue', '$hoaHong', '$ngayTao', '$ngayTao', '$maChuDuAn', '$tienCoc', '2', '$filenamenew','2','1','$dienTich')";
+                // Thực thi thêm vào bảng `duan`
+                if ($maDA = $obj->themdulieuID($sqlDuan)) { // Lấy ID của dự án vừa thêm
+                    // Sau khi thêm dự án thành công, thêm thông tin phòng trọ
+                    $sqlPhongTro = "INSERT INTO phongtro(noiThat, maDA) 
+                                    VALUES ('$noiThat', '$maDA')";
+                    // Thực thi SQL để thêm phòng trọ
+                    if ($obj->themdulieu($sqlPhongTro)) {
+                        echo "<script type='text/javascript'>alert('Thêm dự án và phòng trọ thành công!');</script>";
+                    } else {
+                        echo "<script type='text/javascript'>alert('Thêm phòng trọ thất bại!');</script>";
+                    }
+                } else {
+                    echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
+                }
             } else {
-                echo "<script type='text/javascript'>alert('Thêm phòng trọ thất bại!');</script>";
+                echo "<script type='text/javascript'>alert('Upload ảnh dự án thất bại!');</script>";
             }
-        } else {
-            echo "<script type='text/javascript'>alert('Thêm dự án thất bại!');</script>";
-        }
-    } else {
-        echo "<script type='text/javascript'>alert('Upload ảnh dự án thất bại!');</script>";
+    }else{
+        echo "<script type='text/javascript'>alert('Vui lòng upload ảnh dự án');</script>";
     }
 }
 
@@ -77,8 +81,6 @@ if (isset($_POST["btdangtin"])) {
                                     <select class="form-select" id="tinhTP" name="tinhTP" required>
                                             <option value="" disabled selected>Tỉnh/Thành phố</option>
                                             <option value="Hồ Chí Minh">Hồ Chí Minh</option>
-                                            <option value="Bình Dương">Bình Dương</option>
-                                            <option value="Hà Nội">Hà Nội</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">

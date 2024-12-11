@@ -116,8 +116,6 @@
                                                 <select class="form-select" id="tinhTP" name="tinhTP">
                                                     <option <?= (!isset($tinhTP1) || $tinhTP1 == "Tỉnh/Thành phố") ? "selected" : "" ?>>Tỉnh/Thành phố</option>
                                                     <option <?= (isset($tinhTP1) && $tinhTP1 == "Hồ Chí Minh") ? "selected" : "" ?>>Hồ Chí Minh</option>
-                                                    <option <?= (isset($tinhTP1) && $tinhTP1 == "Bình Dương") ? "selected" : "" ?>>Bình Dương</option>
-                                                    <option <?= (isset($tinhTP1) && $tinhTP1 == "Hà Nội") ? "selected" : "" ?>>Hà Nội</option>
                                                 </select>
 
                                             </div>

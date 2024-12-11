@@ -131,6 +131,10 @@
                 .no-underline a:hover {
                     text-decoration: underline;
                 }
+                #footer {
+                    background-color: #1b2e00;
+                    padding: 10px 20px;
+                }
     </style>
 </head>
 <body>
@@ -174,6 +178,8 @@
         </ul>
     </div>
 </nav>
+    </header>
+
     </header>   
     
 
