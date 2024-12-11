@@ -28,6 +28,7 @@ if (isset($_POST["btDangky"])) {
                 
                 if($obj->themdulieu($sqlthemkh)){
                     echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
+                    header("Location:index.php?page=login");
                 }else{
                     echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
                 }
@@ -37,6 +38,7 @@ if (isset($_POST["btDangky"])) {
                     
                     if($obj->themdulieu($sqlthemcda)){
                         echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
+                        header("Location:index.php?page=login");
                     }else{
                         echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
                     }
@@ -53,7 +55,7 @@ if (isset($_POST["btDangky"])) {
             Trình duyệt của bạn không hỗ trợ video.
         </video>
         <div class="login-box" style="margin-top:7%">
-            <h2 style="text-align: center; font-size: 35px;">ĐĂNG ký</h2>
+            <h2 style="text-align: center; font-size: 35px;">ĐĂNG KÝ</h2>
             <form action="#" method="POST">
                 <input type="text" name="taikhoan" placeholder="Tên tài khoản" required>
                 <input type="password" name="matkhau" placeholder="Mật khẩu" required>
