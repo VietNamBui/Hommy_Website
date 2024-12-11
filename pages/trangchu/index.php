@@ -20,20 +20,20 @@
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
             </div>
-          
+        
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./assets/images/real_estate_1.jpg" alt="Los Angeles" class="d-block w-100">
+                    <img src="./assets/img_trangchu_khachhang/Los_Angeles_Skyline.jpg" alt="Los Angeles" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;">
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/images/real_estate_2.jpg" alt="Chicago" class="d-block w-100">
+                    <img src="./assets/img_trangchu_khachhang/Chicago_River_ferry_b.jpg" alt="Chicago" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;">
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/images/real_estate_3.jpg" alt="New York" class="d-block w-100">
+                    <img src="./assets/img_trangchu_khachhang/newnycguidemain.jpeg" alt="New York" class="d-block w-100 img-fluid" style="height: 400px; object-fit: cover;">
                 </div>
             </div>
-          
+        
             <!-- Left and right controls/icons -->
             <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
@@ -53,7 +53,7 @@
                 <!-- Main Large Card -->
                 <div class="col-lg-6 col-12 mb-3">
                     <div class="card border-0 shadow-sm" style="width: 100%; border-radius: 10px; overflow: hidden;">
-                        <img class="card-img-top" src="./assets/images/hcm.jpg" alt="Card image" style="height: 335px; object-fit: cover;">
+                        <img class="card-img-top" src="./assets/img_trangchu_khachhang/thanh-pho-thu-duc-tp-ho-chi-minh.jpg" alt="Card image" style="height: 335px; object-fit: cover;">
                         <div class="card-img-overlay d-flex flex-column justify-content-end p-3" style="background: rgba(0, 0, 0, 0.5);">
                             <h5 class="text-light" style="font-size: 1.8em; font-weight: 600;">TP.Hồ Chí Minh</h5>
                             <h6 class="text-light" style="font-size: 1.4em;">1,900 dự án</h6>
@@ -65,7 +65,7 @@
                     <div class="row g-3">
                         <div class="col-md-6 col-12">
                             <div class="card border-0 shadow-sm" style="border-radius: 10px; overflow: hidden;">
-                                <img class="card-img-top" src="./assets/images/Bình dương.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
+                                <img class="card-img-top" src="./assets/img_trangchu_khachhang/binh-duong.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
                                 <div class="card-img-overlay d-flex flex-column justify-content-end p-2" style="background: rgba(0, 0, 0, 0.5);">
                                     <h5 class="text-light">Bình Dương</h5>
                                     <h6 class="text-light">1,900 dự án</h6>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="card border-0 shadow-sm" style="border-radius: 10px; overflow: hidden;">
-                                <img class="card-img-top" src="./assets/images/dragon-bridge-da-nang.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
+                                <img class="card-img-top" src="./assets/img_trangchu_khachhang/cau-rong-da-nang.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
                                 <div class="card-img-overlay d-flex flex-column justify-content-end p-2" style="background: rgba(0, 0, 0, 0.5);">
                                     <h5 class="text-light">Đà Nẵng</h5>
                                     <h6 class="text-light">1,900 dự án</h6>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="card border-0 shadow-sm" style="border-radius: 10px; overflow: hidden;">
-                                <img class="card-img-top" src="./assets/images/Vũng tàu.png" alt="Card image" style="height: 160px; object-fit: cover;">
+                                <img class="card-img-top" src="./assets/img_trangchu_khachhang/vungtau.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
                                 <div class="card-img-overlay d-flex flex-column justify-content-end p-2" style="background: rgba(0, 0, 0, 0.5);">
                                     <h5 class="text-light">Vũng Tàu</h5>
                                     <h6 class="text-light">1,900 dự án</h6>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="card border-0 shadow-sm" style="border-radius: 10px; overflow: hidden;">
-                                <img class="card-img-top" src="./assets/images/Hà nội.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
+                                <img class="card-img-top" src="./assets/img_trangchu_khachhang/ha-noi.jpg" alt="Card image" style="height: 160px; object-fit: cover;">
                                 <div class="card-img-overlay d-flex flex-column justify-content-end p-2" style="background: rgba(0, 0, 0, 0.5);">
                                     <h5 class="text-light">Hà Nội</h5>
                                     <h6 class="text-light">1,900 dự án</h6>

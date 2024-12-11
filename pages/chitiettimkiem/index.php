@@ -1,10 +1,20 @@
 <?php
 $obj = new database();
+$danhmuc = $_GET['danhmuc'];
 $search = $_POST["search"];
-$sql = "SELECT maDA, maLoaiDA, hinhAnh, tenDA, giaThue, ngayTao
+
+if(isset($_GET['danhmuc'])) {
+    $sql = "SELECT maDA, maLoaiDA, hinhAnh, tenDA, giaThue, ngayTao
+    FROM duan
+    WHERE tenDA LIKE '%" . $danhmuc . "%'";
+} else {
+    $sql = "SELECT maDA, maLoaiDA, hinhAnh, tenDA, giaThue, ngayTao
         FROM duan
         WHERE tenDA LIKE '%" . $search . "%'";
+}
+
 $sanpham = $obj->xuatdulieu($sql);
+
 ?>
 
 <div class="container" style="margin-top: 80px;">

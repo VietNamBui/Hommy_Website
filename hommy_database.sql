@@ -6,6 +6,10 @@
 -- Thời gian đã tạo: Th12 10, 2024 lúc 04:43 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
+-- Host: 127.0.0.1
+-- Generation Time: Dec 10, 2024 at 09:10 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -15,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Cơ sở dữ liệu: `hommy_database`
@@ -187,6 +191,7 @@ CREATE TABLE `goithanhvien` (
   `gia` float NOT NULL,
   `moTa` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `goithanhvien`
@@ -268,6 +273,7 @@ CREATE TABLE `nhanviendieuhanh` (
   `email` varchar(50) NOT NULL,
   `diaChi` varchar(50) NOT NULL,
   `maTK` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -381,6 +387,8 @@ CREATE TABLE `taikhoan` (
   `ngayTao` date NOT NULL,
   `trangThai` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `ngayTao` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `taikhoan`
@@ -409,6 +417,15 @@ ALTER TABLE `chuduan`
 ALTER TABLE `chungcu`
   ADD PRIMARY KEY (`maCC`),
   ADD KEY `maDA` (`maDA`);
+
+--
+-- Indexes for table `cuochen`
+--
+ALTER TABLE `cuochen`
+  ADD PRIMARY KEY (`maCuocHen`),
+  ADD KEY `maDA` (`maDA`),
+  ADD KEY `maKH` (`maKH`),
+  ADD KEY `maNhanVienMG` (`maNhanVienMG`);
 
 --
 -- Chỉ mục cho bảng `cuochen`
@@ -516,6 +533,12 @@ ALTER TABLE `chuduan`
 --
 ALTER TABLE `chungcu`
   MODIFY `maCC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `cuochen`
+--
+ALTER TABLE `cuochen`
+  MODIFY `maCuocHen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `cuochen`
