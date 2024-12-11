@@ -4,7 +4,7 @@ if (isset($_POST["btDangky"])) {
 
     // Lấy dữ liệu từ form
     $taikhoan = $_POST["taikhoan"];
-    $matkhau = $_POST["matkhau"];
+    $matkhau = md5($_POST["matkhau"]);
     $hovaten = $_POST["hovaten"];
     $email = $_POST["email"];
     $diachi = $_POST["diachi"];

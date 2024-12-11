@@ -8,7 +8,7 @@ if (!class_exists('Database')) {
         private function connect()
         {
             $this->conn = new mysqli("127.0.0.1", "root", "", "hommy_database");
-            $this->conn->set_charset("utf8");
+            $this->conn->set_charset("utf8mb4");
 
             if ($this->conn->connect_errno) {
                 die("Kết nối cơ sở dữ liệu thất bại: " . $this->conn->connect_error);
@@ -65,7 +65,6 @@ if (!class_exists('Database')) {
         public function thucthi($sql, $params = array())
         {
             $link = $this->connect();
-
             // Sử dụng prepared statement
             if ($stmt = $link->prepare($sql)) {
                 // Gắn các tham số nếu có
