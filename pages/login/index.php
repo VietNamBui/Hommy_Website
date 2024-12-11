@@ -34,7 +34,7 @@ if (isset($_POST["btDangnhap"])) {
                     header("Location: index.php?page=trang_chu");
                     break;
                 case '2': // Loại tài khoản là Chủ Dự Án
-                    header("Location: index.php?page=trangchu");
+                    header("Location: index.php?page=trangchu-cda");
                     break;
                 case '3': // Loại tài khoản là Nhân Viên Môi Giới
                     header("Location: index.php?page=trang_chu");
