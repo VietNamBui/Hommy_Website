@@ -229,5 +229,18 @@ class QuanLyTaiKhoan extends Database
         $params = array($maTK);
         return $this->xuatdulieu($sql, $params);
     }
+    public function ghiNhanHanhDongTaiKhoan($maTK, $loaiHanhDong, $liDo = null)
+    {
+        $sql = "INSERT INTO hanhdongtaikhoan (maHanhDong, loai, ngayThucHien, maTK, liDo)
+                VALUES (UUID(), '$loaiHanhDong', CURDATE(), '$maTK', '$liDo')";
+        return $this->thucthi($sql);
+    }
+        public function layHanhDongTaiKhoan($maTK)
+    {
+        $sql = "SELECT * FROM HanhDongTaiKhoan WHERE maTK = '$maTK' ORDER BY ngayThucHien DESC";
+        return $this->xuatdulieu($sql);
+    }
+
+
 }
 ?>

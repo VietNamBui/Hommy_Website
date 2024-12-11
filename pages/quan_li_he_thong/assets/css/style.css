@@ -17,7 +17,7 @@
     justify-content: center;
 }
 .input-group {
-    max-width: 400px;
+    max-width: 500px;
     flex-grow: 1;
 }
 .toolbar {

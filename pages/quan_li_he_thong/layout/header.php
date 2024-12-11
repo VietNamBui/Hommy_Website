@@ -9,7 +9,7 @@ $tenAdmin = "Khách";  // Mặc định là "Khách" nếu không có maTK
 
 // Nếu maTK tồn tại trong cookie, thực hiện truy vấn để lấy tenAdmin
 if (isset($maTK)) {
-    // Tạo đối tượng Database và truy vấn lấy tenAdmin
+    // Tạo đối tượng Database và truy vấn để lấy tenAdmin
     $db = new Database();
     // Thực hiện truy vấn để lấy tenAdmin từ cơ sở dữ liệu
     $sql = "SELECT tenAdmin FROM quantrihethong WHERE maTK = $maTK";
