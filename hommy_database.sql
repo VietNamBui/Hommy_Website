@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2024 at 08:38 AM
+-- Generation Time: Dec 11, 2024 at 08:44 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,7 +102,9 @@ INSERT INTO `cuochen` (`maCuocHen`, `thoiGian`, `ngayDienRa`, `maKH`, `maDA`, `m
 (4, '15:07:39', '2024-12-10', 0, 0, NULL),
 (5, '15:07:39', '2024-12-10', 0, 0, NULL),
 (6, '25:58:13', '2024-12-25', 0, 0, NULL),
-(7, '25:58:13', '2024-12-25', 0, 0, NULL);
+(7, '25:58:13', '2024-12-25', 0, 0, NULL),
+(8, '25:58:13', '2024-12-25', 0, 0, NULL),
+(9, '25:58:13', '2024-12-25', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +127,7 @@ CREATE TABLE `danhsachduanyeuthich` (
 --
 
 INSERT INTO `danhsachduanyeuthich` (`STT`, `maKH`, `maDuAn`, `tenDA`, `diaChiDA`, `giaThue`, `maLoaiDA`) VALUES
-(0, 0, 157, 'Phòng Trọ Hòa Bình - Căn Hộ Mini An Cư Hòa Mạng', '456/673, Lê Văn Sĩ, Phường 3, Quận Phú Nhuận, Hồ Chí Minh', '5000000', '2');
+(4, 0, 159, 'Phòng Trọ Cao Cấp Quận 1 - Chỗ Ở Sang Trọng Giữa Lòng Thành Phố', '456/67, Lê Duẩn, Phường 1, Quận 1, Hồ Chí Minh', '5000000', '2');
 
 -- --------------------------------------------------------
 
@@ -435,7 +437,8 @@ INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`
 (2, 'nguyentrongphu', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-11-21', 1),
 (3, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
 (5, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1);
+(6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
+(0, '123', '202cb962ac59075b964b07152d234b70', NULL, 1, '2024-12-11', 1);
 
 --
 -- Indexes for dumped tables
@@ -546,7 +549,13 @@ ALTER TABLE `quantrihethong`
 -- AUTO_INCREMENT for table `cuochen`
 --
 ALTER TABLE `cuochen`
-  MODIFY `maCuocHen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `maCuocHen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `danhsachduanyeuthich`
+--
+ALTER TABLE `danhsachduanyeuthich`
+  MODIFY `STT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
