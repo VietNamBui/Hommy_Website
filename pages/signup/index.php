@@ -12,42 +12,58 @@ if (isset($_POST["btDangky"])) {
     $loaitk = $_POST["loaitk"];
     $ngayTao = date("Y-m-d H:i:s");
 
-    // Kiểm tra xem tên tài khoản đã tồn tại trong bảng taikhoan chưa
+    // Kiểm tra trùng tên tài khoản
     $sqlkttk = "SELECT COUNT(*) AS count FROM taikhoan WHERE tenTK = '$taikhoan'";
-    $kt = $obj->xuatdulieu($sqlkttk); // Sử dụng hàm xuatdulieu đã có trong class
-    if ($kt && $kt[0]['count'] > 0) {
-        // Tên tài khoản đã tồn tại
+    $ktTk = $obj->xuatdulieu($sqlkttk);
+
+    // Kiểm tra trùng email và số điện thoại ở các bảng (khachhang và chuduan)
+    $sqlktemail = "
+        SELECT COUNT(*) AS count FROM khachhang WHERE email = '$email'
+        UNION ALL
+        SELECT COUNT(*) AS count FROM chuduan WHERE email = '$email'";
+    $sqlktsdt = "
+        SELECT COUNT(*) AS count FROM khachhang WHERE soDT = '$sodienthoai'
+        UNION ALL
+        SELECT COUNT(*) AS count FROM chuduan WHERE soDT = '$sodienthoai'";
+
+    $ktEmail = $obj->xuatdulieu($sqlktemail);
+    $ktSdt = $obj->xuatdulieu($sqlktsdt);
+
+    // Kiểm tra kết quả
+    if ($ktTk && $ktTk[0]['count'] > 0) {
         echo "<script type='text/javascript'>alert('Tên tài khoản đã tồn tại, vui lòng chọn tên khác.');</script>";
-    }else {
-        // Tên tài khoản chưa tồn tại, thực hiện đăng ký
+    } elseif ($ktEmail && array_sum(array_column($ktEmail, 'count')) > 0) {
+        echo "<script type='text/javascript'>alert('Email đã tồn tại, vui lòng sử dụng email khác.');</script>";
+    } elseif ($ktSdt && array_sum(array_column($ktSdt, 'count')) > 0) {
+        echo "<script type='text/javascript'>alert('Số điện thoại đã tồn tại, vui lòng sử dụng số khác.');</script>";
+    } else {
+        // Thực hiện thêm tài khoản
         $sqlthemtk = "INSERT INTO taikhoan (tenTK, matKhau, maLoai, ngayTao) VALUES ('$taikhoan', '$matkhau', '$loaitk','$ngayTao')";
         $themtk = $obj->themdulieuID($sqlthemtk);
-        if($themtk){
-            if($loaitk=='1'){
+
+        if ($themtk) {
+            if ($loaitk == '1') { // Khách hàng
                 $sqlthemkh = "INSERT INTO khachhang (tenKH,soDT,email,diaChi,maTK) VALUES ('$hovaten','$sodienthoai','$email','$diachi','$themtk')";
-                
-                if($obj->themdulieu($sqlthemkh)){
+                if ($obj->themdulieu($sqlthemkh)) {
                     echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
                     header("Location:index.php?page=login");
-                }else{
+                } else {
                     echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
                 }
-            }else{
-                if($loaitk=='2'){
-                    $sqlthemcda = "INSERT INTO chuduan (tenCDA,soDT,email,diaChi,maTK) VALUES ('$hovaten','$sodienthoai','$email','$diachi','$themtk')";
-                    
-                    if($obj->themdulieu($sqlthemcda)){
-                        echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
-                        header("Location:index.php?page=login");
-                    }else{
-                        echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
-                    }
+            } elseif ($loaitk == '2') { // Chủ dự án
+                $sqlthemcda = "INSERT INTO chuduan (tenCDA,soDT,email,diaChi,maTK) VALUES ('$hovaten','$sodienthoai','$email','$diachi','$themtk')";
+                if ($obj->themdulieu($sqlthemcda)) {
+                    echo "<script type='text/javascript'>alert('Thêm tài khoản thành công');</script>";
+                    header("Location:index.php?page=login");
+                } else {
+                    echo "<script type='text/javascript'>alert('Thêm tài khoản thất bại');</script>";
+                }
             }
         }
     }
 }
-}
 ?>
+
 
 <div class="video-background">
         <video autoplay loop muted playsinline>

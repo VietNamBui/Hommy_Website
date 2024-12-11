@@ -9,7 +9,7 @@ if($_SESSION['maLoai']=='2'){
     require("layout/header-cda.php");
 }else{
         if($_SESSION['maLoai']=='3'){
-            require("layout/header-cda.php");
+            require("layout/header_nvmg.php");
         }
         else{
             if($_SESSION['maLoai']=='4'){
