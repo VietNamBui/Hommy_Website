@@ -345,6 +345,9 @@ CREATE TABLE `nhanvienmoigioi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
+-- add dữ liệu nhân viên môi giới
+INSERT INTO nhanvienmoigioi (maNVMG, tenNVMG, soDT, email, diaChi, maTK) VALUES
+('null', 'PhamTienTrung', '0987654321', 'trungpham123@gmail.com', '123 Đường A, TP HCM', 10);
 
 --
 -- Table structure for table `nhao`
