@@ -97,14 +97,13 @@ CREATE TABLE `cuochen` (
 --
 
 INSERT INTO `cuochen` (`maCuocHen`, `thoiGian`, `ngayDienRa`, `maKH`, `maDA`, `maNhanVienMG`) VALUES
-(1, '25:58:13', '2024-12-25', 0, 0, NULL),
 (2, '15:07:39', '2024-12-10', 0, 0, NULL),
 (4, '15:07:39', '2024-12-10', 0, 0, NULL),
 (5, '15:07:39', '2024-12-10', 0, 0, NULL),
-(6, '25:58:13', '2024-12-25', 0, 0, NULL),
-(7, '25:58:13', '2024-12-25', 0, 0, NULL),
-(8, '25:58:13', '2024-12-25', 0, 0, NULL),
-(9, '25:58:13', '2024-12-25', 0, 0, NULL);
+(6, '21:49:26', '2024-12-15', 1, 159, NULL),
+(7, '21:06:54', '2024-12-08', 1, 159, NULL),
+(8, '21:49:26', '2024-12-29', 1, 159, NULL),
+(9, '21:06:54', '2024-12-08', 1, 159, NULL);
 
 -- --------------------------------------------------------
 
@@ -157,10 +156,10 @@ CREATE TABLE `duan` (
 --
 
 INSERT INTO `duan` (`maDA`, `tenDA`, `diaChiDA`, `giaThue`, `hoaHong`, `ngayTao`, `ngayXacThuc`, `maChuDuAn`, `tienCoc`, `maLoaiDA`, `hinhAnh`, `trangThaiDuyet`, `trangThaiThue`, `dienTich`) VALUES
-(157, 'Phòng Trọ Hòa Bình - Căn Hộ Mini An Cư Hòa Mạng', '456/673, Lê Văn Sĩ, Phường 3, Quận Phú Nhuận, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:32:03', '2024-12-11 06:32:03', 7, '5000000', 2, '464_2c8eea63bbd228f9979d4fc737b3115f.jpg', 2, 1, '8'),
-(158, 'Căn Hộ Mini Trung Tâm Quận 1 - Nơi An Cư Lý Tưởng', '456/673, Lê Duẩn, Phường 3, Quận 1, Hồ Chí Minh', '5000000', '40%', '2024-12-11 06:32:39', '2024-12-11 06:32:39', 7, '5000000', 2, '627_OIP (1).jpg', 2, 1, '8'),
-(159, 'Phòng Trọ Cao Cấp Quận 1 - Chỗ Ở Sang Trọng Giữa Lòng Thành Phố', '456/67, Lê Duẩn, Phường 1, Quận 1, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:33:09', '2024-12-11 06:33:09', 7, '5000000', 2, '124_e4e550a847e2dcbe21838e478abcdb56.jpg', 2, 1, '8'),
-(160, 'Văn Phòng Phòng Trọ Quận 7 - Sống Và Làm Việc Tiện Nghi', '456/67, Mai Chí Thọ, Phường 7, Quận 7, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:34:19', '2024-12-11 06:34:19', 7, '5000000', 2, '407_thiet-ke-nha-tro-dep-2020-bandon-0.jpg', 2, 1, '8'),
+(157, 'Phòng Trọ Hòa Bình - Căn Hộ Mini An Cư Hòa Mạng', '456/673, Lê Văn Sĩ, Phường 3, Quận Phú Nhuận, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:32:03', '2024-12-11 06:32:03', 7, '5000000', 2, '464_2c8eea63bbd228f9979d4fc737b3115f.jpg', 3, 1, '8'),
+(158, 'Căn Hộ Mini Trung Tâm Quận 1 - Nơi An Cư Lý Tưởng', '456/673, Lê Duẩn, Phường 3, Quận 1, Hồ Chí Minh', '5000000', '40%', '2024-12-11 06:32:39', '2024-12-11 06:32:39', 7, '5000000', 2, '627_OIP (1).jpg', 1, 1, '8'),
+(159, 'Phòng Trọ Cao Cấp Quận 1 - Chỗ Ở Sang Trọng Giữa Lòng Thành Phố', '456/67, Lê Duẩn, Phường 1, Quận 1, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:33:09', '2024-12-11 06:33:09', 7, '5000000', 2, '124_e4e550a847e2dcbe21838e478abcdb56.jpg', 1, 1, '8'),
+(160, 'Văn Phòng Phòng Trọ Quận 7 - Sống Và Làm Việc Tiện Nghi', '456/67, Mai Chí Thọ, Phường 7, Quận 7, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:34:19', '2024-12-11 06:34:19', 7, '5000000', 2, '407_thiet-ke-nha-tro-dep-2020-bandon-0.jpg', 1, 2, '8'),
 (161, 'Khu Phòng Trọ Dịch Vụ Chợ Lớn - An Cư Tiện Lợi, Giá Cả Hợp Lý', '123, Lê Đức Thọ, Phường 5, Quận Gò Vấp, Hồ Chí Minh', '4000000', '30%', '2024-12-11 06:46:37', '2024-12-11 06:46:37', 9, '4000000', 2, '291_2f84f521469c92dbece6d55158fa7e0d.jpg', 2, 1, '8'),
 (162, 'Phòng Trọ Green Living Quận 3 - Sống Xanh, Không Gian Tươi Mới', '123, Lê Đức Thọ, Phường 12, Quận 3, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:47:08', '2024-12-11 06:47:08', 9, '4000000', 2, '111_789f9b9231a67cc10d9bfde1e89cdb92.jpg', 2, 1, '8'),
 (163, 'Khu Phòng Trọ Tiện Nghi Quận 5 - Căn Hộ Mini, Tiện Ích Tối Ưu', '123, Hồng Hà, Phường 7, Quận 5, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:48:25', '2024-12-11 06:48:25', 9, '4000000', 2, '645_d6065dc49e7a11c9c51a322089ee81f1.jpg', 2, 1, '8'),
@@ -174,10 +173,10 @@ INSERT INTO `duan` (`maDA`, `tenDA`, `diaChiDA`, `giaThue`, `hoaHong`, `ngayTao`
 (171, 'Chung Cư The Garden View - Môi Trường Xanh, Không Gian Lý Tưởng', '456/67, Lê Văn Sĩ, Phường 7, Quận Gò Vấp, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:05:06', '2024-12-11 07:05:06', 9, '14000000', 3, '808_hinh-anh-can-ho-chung-cu-dep-6.jpg', 2, 1, '20'),
 (172, 'Căn Hộ Golden Palace - Sang Trọng Và Tiện Nghi', '456/67, Lê Văn Sĩ, Phường 1, Quận Gò Vấp, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:05:38', '2024-12-11 07:05:38', 9, '14000000', 3, '861_hinh-anh-can-ho-chung-cu-dep-7.jpg', 2, 1, '20'),
 (173, 'Chung Cư Sapphire Tower - Chạm Tới Đẳng Cấp', '456/67, Lê Văn Sĩ, Phường 5, Quận Phú Nhuận, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:06:06', '2024-12-11 07:06:06', 9, '14000000', 3, '216_hinh-anh-can-ho-chung-cu-dep-13.jpg', 2, 1, '20'),
-(174, 'Căn Hộ EcoPark View - Sống Xanh, Tận Hưởng Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 9, Quận 10, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:26', '2024-12-11 07:07:26', 7, '14000000', 3, '407_OIP (3).jpg', 2, 1, '20'),
-(175, 'Chung Cư Diamond City - Thành Phố Của Những Ước Mơ', '456/67, Lê Văn Sĩ, Phường 6, Quận 4, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:55', '2024-12-11 07:07:55', 7, '14000000', 3, '521_OIP.jpg', 2, 1, '20'),
-(176, 'The Horizon Residence - Vượt Ra Biên Giới Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 8, Quận Tân Phú, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:08:19', '2024-12-11 07:08:19', 7, '14000000', 3, '817_thiet-ke-noi-that-chung-cu7.jpg', 2, 1, '20'),
-(177, 'Khu Nhà Ở Vịnh Xanh - An Cư Lạc Nghiệp', '456/6733, Hồ Huy, Phường 10, Quận Gò Vấp, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:13:54', '2024-12-11 07:13:54', 7, '20000000', 1, '870_4bc9dc5f23be53163ccd87a75f13d46f.jpg', 2, 1, '56'),
+(174, 'Căn Hộ EcoPark View - Sống Xanh, Tận Hưởng Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 9, Quận 6, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:26', '2024-12-11 07:07:26', 7, '14000000', 3, '407_OIP (3).jpg', 1, 2, '20'),
+(175, 'Chung Cư Diamond City - Thành Phố Của Những Ước Mơ', '456/67, Lê Văn Sĩ, Phường 6, Quận 4, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:55', '2024-12-11 07:07:55', 7, '14000000', 3, '521_OIP.jpg', 1, 2, '20'),
+(176, 'The Horizon Residence - Vượt Ra Biên Giới Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 8, Quận Tân Phú, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:08:19', '2024-12-11 07:08:19', 7, '14000000', 3, '817_thiet-ke-noi-that-chung-cu7.jpg', 3, 1, '20'),
+(177, 'Khu Nhà Ở Vịnh Xanh - An Cư Lạc Nghiệp', '456/6733, Hồ Huy, Phường 10, Quận Gò Vấp, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:13:54', '2024-12-11 07:13:54', 7, '20000000', 1, '870_4bc9dc5f23be53163ccd87a75f13d46f.jpg', 3, 1, '56'),
 (178, 'Dự Án Home Paradise - Nơi Cuộc Sống Mới Bắt Đầu', '456/6733, Hồ Huy, Phường 7, Quận 10, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:14:23', '2024-12-11 07:14:23', 7, '20000000', 1, '441_4083-v3-800x538.jpg', 2, 1, '56'),
 (179, 'Khu Dân Cư An Bình - Nhà Ở Tiện Nghi, Giá Cả Hợp Lý', '456/6733, Hồ Huy, Phường 4, Quận 6, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:14:57', '2024-12-11 07:14:57', 7, '20000000', 1, '362_biet-thu-1-1.jpg', 2, 1, '56'),
 (180, 'Nhà Ở Eco Living - Sống Xanh, Sống Khỏe', '456/6733, Hồ Huy, Phường 5, Quận Tân Phú, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:15:51', '2024-12-11 07:15:51', 9, '20000000', 1, '481_biet-thu-san-vuon-mai-thai-binh-duong.jpg', 2, 1, '56'),
@@ -226,7 +225,10 @@ CREATE TABLE `khachhang` (
   `maTK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
--- --------------------------------------------------------
+-- ---------------
+INSERT INTO `khachhang` (`maKH`, `tenKH`, `soDT`, `email`, `diaChi`, `maTK`) VALUES
+(1, 'Phạm Tiến Chung', '0869761733', 'phamtienchungq222222@gmail.com', 'Ấp Bưng Thuốc', 10),
+(3, 'Nguyễn Văn A', '0901234500', 'nguyentrongphu111@gmail.com', '123 ABC, TP.HCM', 12);
 
 --
 -- Table structure for table `lichlamviec`
@@ -434,11 +436,11 @@ INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`
 (3, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
 (5, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
 (6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(2, 'nguyentrongphu', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-11-21', 1),
-(3, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
-(5, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(0, '123', '202cb962ac59075b964b07152d234b70', NULL, 1, '2024-12-11', 1);
+(7, 'phamtienchungdd', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
+(8, 'nguyentrongphuttt', 'e10adc3949ba59abbe56e057f20f883e', NULL, 3, '2024-12-11', 1),
+(9, 'nguyentrongphuttt', 'e10adc3949ba59abbe56e057f20f883e', NULL, 3, '2024-12-11', 1),
+(10, 'nguyentrongphu111@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, '2024-12-11', 1),
+(12, 'user_lock', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, '2024-12-12', 0);
 
 --
 -- Indexes for dumped tables
