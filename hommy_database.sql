@@ -466,6 +466,8 @@ INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`
 (7, 'hoangkim', MD5('123'), null, 1, '2024-12-02', 1),
 (8, 'lethanhphat', MD5('123'), null, 1, '2024-12-03', 1),
 (9, 'phamthithao', MD5('123'), NULL, 1, '2024-12-04', 1);
+---add thêm tài khoản nvmg
+(4, 'phamtrung' , MD5('12345'), NULL, 3, '2024-12-10', 1);
 
 
 --

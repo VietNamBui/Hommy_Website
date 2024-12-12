@@ -108,7 +108,6 @@
                     <a class="nav-link" href="index.php?page=trangchu-nvmg">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" href="index.php?page=dky_lich_lam_viec">Đăng ký lịch làm việc</a>
                 </li>
                 <li class="nav-item">
