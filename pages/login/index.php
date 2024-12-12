@@ -51,7 +51,7 @@ if (isset($_POST["btDangnhap"])) {
         }
     } else {
         // Hiển thị thông báo lỗi nếu đăng nhập thất bại
-        echo "<script type='text/javascript'>alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');</script>";
+        echo "<script type='text/javascript'>alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin thật chính xác.');</script>";
     }
 }
 ?>
@@ -64,8 +64,8 @@ if (isset($_POST["btDangnhap"])) {
     <div class="login-box" style="margin-top:7%">
         <h2 style="text-align: center; font-size: 35px;">ĐĂNG NHẬP</h2>
         <form action="#" method="POST">
-            <input type="text" name="taikhoan" placeholder="Tài khoản" required>
-            <input type="password" name="matkhau" placeholder="Mật khẩu" required>
+            <input type="text" name="taikhoan" placeholder="Tài khoản" required oninvalid="this.setCustomValidity('Vui lòng nhập tên tài khoản!')" oninput="setCustomValidity('')">
+            <input type="password" name="matkhau" placeholder="Mật khẩu" required oninvalid="this.setCustomValidity('Vui lòng nhập mạt khẩu!')" oninput="setCustomValidity('')">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="rememberMe">

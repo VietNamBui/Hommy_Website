@@ -73,13 +73,13 @@ if (isset($_POST["btDangky"])) {
         <div class="login-box" style="margin-top:7%">
             <h2 style="text-align: center; font-size: 35px;">ĐĂNG KÝ</h2>
             <form action="#" method="POST">
-                <input type="text" name="taikhoan" placeholder="Tên tài khoản" required>
-                <input type="password" name="matkhau" placeholder="Mật khẩu" required>
-                <input type="text" name="hovaten" placeholder="Họ và tên" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="text" name="sdt" placeholder="Số điện thoại" required>
-                <input type="text" name="diachi" placeholder="Địa chỉ" required>
-                <select class="form-select" id="loaitk" name="loaitk" required>
+                <input type="text" name="taikhoan" placeholder="Tên tài khoản" required oninvalid="this.setCustomValidity('Vui lòng nhập tên tài khoản!')" oninput="setCustomValidity('')">
+                <input type="password" name="matkhau" placeholder="Mật khẩu" required oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu!')" oninput="setCustomValidity('')">
+                <input type="text" name="hovaten" placeholder="Họ và tên" required oninvalid="this.setCustomValidity('Vui lòng nhập họ và tên!')" oninput="setCustomValidity('')">
+                <input type="email" name="email" placeholder="Email" required oninvalid="this.setCustomValidity('Vui lòng nhập email hoặc email bạn sai định dạng!')" oninput="setCustomValidity('')">
+                <input type="text" name="sdt" placeholder="Số điện thoại" required oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại!')" oninput="setCustomValidity('')">
+                <input type="text" name="diachi" placeholder="Địa chỉ" required oninvalid="this.setCustomValidity('Vui lòng nhập điạ chỉ!')" oninput="setCustomValidity('')">
+                <select class="form-select" id="loaitk" name="loaitk" required oninvalid="this.setCustomValidity('Vui lòng chọn loại tài khoản!')" oninput="setCustomValidity('')">
                         <option value="" disabled selected>Loại đối tượng</option>
                         <option value="1">Khách hàng</option>
                         <option value="2">Chủ dự án</option>

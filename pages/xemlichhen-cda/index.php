@@ -51,6 +51,9 @@ if(isset($_POST['ngayLoc'])){
     <form action="" method="POST" class="d-flex align-items-center gap-2">
         <input type="date" class="form-control" style="max-width: 150px;" name="ngayLoc">
         <button type="submit" class="btn btn-primary btn-block">Lọc</button>
+        <button class="btn btn-primary btn-block">
+                <a href="index.php?page=xemlichhen-cda" style="text-decoration: none; color: inherit;">All</a>
+            </button>
     </form>
     </div>
 </div>

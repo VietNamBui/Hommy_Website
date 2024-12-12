@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<<<<<<< HEAD
     <title>Trang chủ nvmg</title>
+=======
+    <title>Header Hommy</title>
+>>>>>>> a3ac88ff684903df8e0b0a525bf287703ffa0326
     <style>
         /* header
         /* Reset mặc định */
@@ -106,6 +110,7 @@
                     <a class="nav-link" href="index.php?page=trangchu-nvmg">Trang chủ</a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="index.php?page=dky_lich_lam_viec">Đăng ký lịch làm việc</a>
                 </li>
                 <li class="nav-item">
@@ -116,6 +121,18 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=xem_bao_cao_thu_nhap">Xem báo cáo thu nhập</a>
+=======
+                    <a class="nav-link" href="index.php?page=">Đăng tin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=danhsachduan-cda">Quản lý dự án</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=xemlichhen-cda">Xem lịch hẹn</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=baocaokinhdoanh-cda">Xem báo cáo kinh doanh</a>
+>>>>>>> a3ac88ff684903df8e0b0a525bf287703ffa0326
                 </li>
             </ul>
             <!-- Avatar người dùng và dropdown menu -->
