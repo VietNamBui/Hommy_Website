@@ -51,7 +51,7 @@ if (isset($_POST["btDangnhap"])) {
         }
     } else {
         // Hiển thị thông báo lỗi nếu đăng nhập thất bại
-        echo "<script type='text/javascript'>alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');</script>";
+        echo "<script type='text/javascript'>alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin thật chính xác.');</script>";
     }
 }
 ?>

@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-dark text-light text-center text-lg-start mt-5" style="background-color: #1b2e00;">
+<footer class="bg-dark text-light text-center text-lg-start" style="background-color: #1b2e00;">
     <div class="container py-5">
         <div class="row text-center text-md-start">
             <!-- Logo -->

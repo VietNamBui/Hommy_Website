@@ -93,7 +93,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php?page=trangchu-cda">
             <img src="assets/video/HommyHommy.jpg" alt="Hommy Logo" style="width: 70px;height: 70;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,9 +113,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=xemlichhen-cda">Xem lịch hẹn</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=baocaokinhdoanh-cda">Xem báo cáo kinh doanh</a>
                 </li>
             </ul>
             <!-- Avatar người dùng và dropdown menu -->

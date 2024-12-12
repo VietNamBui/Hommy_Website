@@ -4,22 +4,42 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include_once('pages/quan_li_he_thong/class/clsquanlyDA.php');
 $quanly = new QuanlyDA();
+
 // Kiểm tra nếu đã bấm nút "Chưa duyệt" hay không
 $filterChuaDuyet = isset($_GET['chua_duyet']) && $_GET['chua_duyet'] == 'true';
-// Lấy danh sách dự án, nếu filterChuaDuyet là true thì chỉ lấy dự án có trạng thái Chưa duyệt (trangThaiDuyet = 2)
-$duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
+
+// Lấy tham số tìm kiếm từ URL nếu có
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+// Lấy trang hiện tại từ URL (mặc định là trang 1 nếu không có tham số)
+$page = isset($_GET['pages']) ? (int)$_GET['pages'] : 1;
+
+// Số lượng dự án hiển thị trên mỗi trang
+$limit = 10;
+
+// Tính toán offset
+$offset = ($page - 1) * $limit;
+
+// Lấy danh sách dự án với phân trang và tìm kiếm
+$duan_list = $quanly->danhsachduan($search, $filterChuaDuyet, $limit, $offset);
+
+// Tính tổng số dự án
+$totalDuan = $quanly->getTotalDuan($search, $filterChuaDuyet);
+
+// Tính số trang
+$totalPages = ceil($totalDuan / $limit);
 ?>
 <body>
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-dark" style="font-style: italic;">DỰ ÁN</h4>
             <div class="toolbar">
-            <button class="btn btn-outline-secondary" onclick="toggleChuaDuyet()">
-                <?php echo $filterChuaDuyet ? "Hiển thị tất cả" : "Chưa duyệt"; ?>
-            </button>
+                <button class="btn btn-outline-secondary" onclick="toggleChuaDuyet()">
+                    <?php echo $filterChuaDuyet ? "Hiển thị tất cả" : "Chưa duyệt"; ?>
+                </button>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Nhập mã, địa chỉ">
-                    <button class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                    <input type="text" class="form-control" placeholder="Nhập mã, địa chỉ" id="searchInput" value="<?= htmlspecialchars($search); ?>">
+                    <button class="btn btn-outline-secondary" onclick="searchProjects()"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,6 +57,8 @@ $duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
                 <button class="btn btn-outline-secondary">Thêm mới</button>
             </div>
         </div>
+
+        <!-- Hiển thị danh sách dự án -->
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -57,29 +79,41 @@ $duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
                     if (is_array($duan_list) && !empty($duan_list)) {
                         // Duyệt qua các dự án và hiển thị dữ liệu vào bảng
                         foreach ($duan_list as $duan) {
-                            // Determine the type of the project (maLoaiDA)
+                            // Xác định loại dự án dựa trên maLoaiDA
                             $loaiDA = '';
-                            if ($duan['maLoaiDA'] == 1) {
-                                $loaiDA = 'Nhà ở';
-                            } elseif ($duan['maLoaiDA'] == 2) {
-                                $loaiDA = 'Phòng trọ';
-                            } elseif ($duan['maLoaiDA'] == 3) {
-                                $loaiDA = 'Chung cư';
+                            switch ($duan['maLoaiDA']) {
+                                case 1:
+                                    $loaiDA = 'Nhà ở';
+                                    break;
+                                case 2:
+                                    $loaiDA = 'Phòng trọ';
+                                    break;
+                                case 3:
+                                    $loaiDA = 'Chung cư';
+                                    break;
+                                default:
+                                    $loaiDA = 'Không xác định';
+                                    break;
                             }
 
                             // Gọi hàm docTrangThaiDuyet để lấy trạng thái duyệt
                             $trangThai = $quanly->docTrangThaiDuyet($duan['maDA']);
                             
                             echo "<tr class='" . ($trangThai == 'Chưa duyệt' && $filterChuaDuyet ? 'highlight' : '') . "'>";
-                            echo "<td>" . $duan['maDA'] . "</td>";
-                            echo "<td>" . $loaiDA . "</td>";  // Hiển thị loại dự án
-                            echo "<td>" . $duan['diaChiDA'] . "</td>";
-                            echo "<td>" . $duan['tenCDA'] . "</td>";  // Hiển thị tên chủ dự án
-                            echo "<td>" . $trangThai . "</td>";  // Hiển thị trạng thái duyệt
-                            echo "<td>" . $duan['giaThue'] . "</td>";
+                            echo "<td>" . htmlspecialchars($duan['maDA']) . "</td>";
+                            echo "<td>" . htmlspecialchars($loaiDA) . "</td>";  
+                            echo "<td>" . htmlspecialchars($duan['diaChiDA']) . "</td>";
+                            echo "<td>" . htmlspecialchars($duan['tenCDA']) . "</td>";  // Hiển thị tên chủ dự án
+                            echo "<td>" . htmlspecialchars($trangThai) . "</td>";  // Hiển thị trạng thái duyệt
+                            echo "<td>" . htmlspecialchars($duan['giaThue']) . "</td>";
                             echo "<td>";
-                            echo "<button class='btn btn-success btn-sm'>Duyệt</button>";
-                            echo "<button class='btn btn-warning btn-sm'>Sửa</button>";
+                            
+                            // Kiểm tra nếu trạng thái duyệt bằng 2 thì hiển thị nút "Duyệt"
+                            if ($trangThai == 'Chưa duyệt') {
+                                echo '<button class="btn btn-success btn-sm" onclick="window.location.href=\'index.php?page=duyet_du_an&maDA=' . $duan['maDA'] . '\';">Duyệt</button> ';
+                            }
+
+                            echo "<button class='btn btn-warning btn-sm'>Sửa</button> ";
                             echo "<button class='btn btn-danger btn-sm'>Xóa</button>";
                             echo "</td>";
                             echo "<td><button class='btn btn-light btn-sm'>Hình ảnh</button></td>";
@@ -93,16 +127,50 @@ $duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
                 </tbody>
             </table>
         </div>
+
+        <!-- Phân trang -->
         <div class="pagination-container mt-3">
             <nav>
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                    <!-- Nút quay lại trang trước -->
+                    <li class="page-item <?= $page <= 1 ? 'disabled' : ''; ?>">
+                        <a class="page-link" href="?page=quan_li_du_an&pages=<?= $page - 1; ?>&chua_duyet=<?= $filterChuaDuyet ? 'true' : 'false'; ?>&search=<?= urlencode($search); ?>"><i class="fas fa-angle-left"></i></a>
+                    </li>
+
+                    <!-- Hiển thị các trang -->
+                    <?php 
+                        // Hiển thị tối đa 5 trang, bao gồm trang hiện tại và 2 trang trước/sau
+                        $range = 2; // Số trang mỗi bên của trang hiện tại
+                        $start = max(1, $page - $range);
+                        $end = min($totalPages, $page + $range);
+
+                        if ($start > 1) {
+                            echo '<li class="page-item"><a class="page-link" href="?page=quan_li_du_an&pages=1&chua_duyet=' . ($filterChuaDuyet ? 'true' : 'false') . '&search=' . urlencode($search) . '">1</a></li>';
+                            if ($start > 2) {
+                                echo '<li class="page-item disabled"><a class="page-link" href="#">...</a></li>';
+                            }
+                        }
+
+                        for ($i = $start; $i <= $end; $i++):
+                    ?>
+                        <li class="page-item <?= $i == $page ? 'active' : ''; ?>">
+                            <a class="page-link" href="?page=quan_li_du_an&pages=<?= $i; ?>&chua_duyet=<?= $filterChuaDuyet ? 'true' : 'false'; ?>&search=<?= urlencode($search); ?>"><?= $i; ?></a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <?php
+                        if ($end < $totalPages) {
+                            if ($end < $totalPages - 1) {
+                                echo '<li class="page-item disabled"><a class="page-link" href="#">...</a></li>';
+                            }
+                            echo '<li class="page-item"><a class="page-link" href="?page=quan_li_duan&pages=' . $totalPages . '&chua_duyet=' . ($filterChuaDuyet ? 'true' : 'false') . '&search=' . urlencode($search) . '">' . $totalPages . '</a></li>';
+                        }
+                    ?>
+
+                    <!-- Nút quay lại trang sau -->
+                    <li class="page-item <?= $page >= $totalPages ? 'disabled' : ''; ?>">
+                        <a class="page-link" href="?page=quan_li_duan&pages=<?= $page + 1; ?>&chua_duyet=<?= $filterChuaDuyet ? 'true' : 'false'; ?>&search=<?= urlencode($search); ?>"><i class="fas fa-angle-right"></i></a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -110,7 +178,6 @@ $duan_list = $quanly->danhsachduan('', $filterChuaDuyet);
 </body>
 
 <script>
-// JavaScript xử lý lọc dự án "Chưa duyệt" và hiển thị lại tất cả
 function toggleChuaDuyet() {
     var currentUrl = new URL(window.location.href);
     if (currentUrl.searchParams.get('chua_duyet') === 'true') {
@@ -120,5 +187,20 @@ function toggleChuaDuyet() {
     }
     window.location.href = currentUrl.href;
 }
-</script>
 
+function searchProjects() {
+    var searchInput = document.getElementById('searchInput').value;
+    var currentUrl = new URL(window.location.href);
+    
+    if (searchInput) {
+        currentUrl.searchParams.set('search', searchInput); // Thêm tham số tìm kiếm vào URL
+    } else {
+        currentUrl.searchParams.delete('search'); // Xóa tham số tìm kiếm nếu ô tìm kiếm trống
+    }
+
+    // Khi thực hiện tìm kiếm, chuyển đến trang 1
+    currentUrl.searchParams.set('pages', 1);
+
+    window.location.href = currentUrl.href; // Tải lại trang với tham số tìm kiếm mới
+}
+</script>

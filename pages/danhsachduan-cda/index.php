@@ -1,14 +1,14 @@
 <?php
 $obj = new database();
 // tất cả dự án
-if($mada)
-    $sql1="SELECT d.maDA, d.giaThue, d.maLoaiDA, d.hinhAnh, d.tenDA, d.ngayTao, cdu.tenChuDauTu, cdu.ngayBatDau
+if($maloai)
+    $sql1="SELECT d.maDA, d.giaThue, d.maLoaiDA, d.hinhAnh, d.tenDA, d.ngayTao
             FROM duan d
             LEFT JOIN chungcu cu ON d.maDA = cu.maDA
             LEFT JOIN nhao n ON d.maDA = n.maDA
             LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-            LEFT JOIN chuduand cdu ON d.maChuDuAn = cdu.maChuDuAn
-            where maLoaiDA = '$mada' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+            LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+            where maLoaiDA = '$maloai' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 else
     $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
             FROM duan d 
@@ -18,79 +18,89 @@ else
             where d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 
 // dự án đã duyệt
-if($mada)
+if($maloai)
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where maLoaiDA = '$mada' and trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+    LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+    where maLoaiDA = '$maloai' and trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
     FROM duan d 
     LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
     LEFT JOIN nhao n ON d.maDA = n.maDA 
     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+    LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
     where trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án chưa duyệt 
-if($mada)
+if($maloai)
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+where maLoaiDA = '$maloai' and trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
 where trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án bị từ chối
-if($mada)
+if($maloai)
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+where maLoaiDA = '$maloai' and trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
 where trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án đã duyệt và đã thuê
-if($mada)
+if($maloai)
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+where maLoaiDA = '$maloai' and trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
 where trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án đã duyệt và chưa thuê
-if($mada)
+if($maloai)
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+where maLoaiDA = '$maloai' and trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
 FROM duan d 
 LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
 LEFT JOIN nhao n ON d.maDA = n.maDA 
 LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
 where trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 
 $sanpham=$obj->xuatdulieu($sql1);
@@ -100,9 +110,22 @@ $duan3=$obj->xuatdulieu($sql4);
 $duan4=$obj->xuatdulieu($sql5);
 $duan5=$obj->xuatdulieu($sql6);
 ?>
-
-    <!-- Content Sections -->
-    <div class="container" style="margin-top: 80px;">
+        <div class="container mt-2">
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda&maloai=1" style="text-decoration: none; color: inherit;">Nhà ở</a>
+            </button>
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda&maloai=2" style="text-decoration: none; color: inherit;">Phòng trọ</a>
+            </button>
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda&maloai=3" style="text-decoration: none; color: inherit;">Chung cư</a>
+            </button>
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda" style="text-decoration: none; color: inherit;">All</a>
+            </button>
+        </div>
+    <!-- Lựa chọn -->
+    <div class="container mt-5" style="margin-top: 80px;">
         <div class="d-flex justify-content-between" style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
         <div id="tab-all" class="text-dark fw-bold" onclick="showTab('all')" style="cursor: pointer; margin: 0 8px;">Tất cả</div>
         <div id="tab-approved" class="text-muted" onclick="showTab('approved')" style="cursor: pointer; margin: 0 8px;">Đã duyệt</div>

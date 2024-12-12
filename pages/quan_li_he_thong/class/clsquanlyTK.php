@@ -1,5 +1,5 @@
 <?php
-class QuanLyTaiKhoan extends Database
+class QuanLyTaiKhoan extends database
 {
     // Thêm tài khoản vào bảng tương ứng với từng loại tài khoản
     public function themTaiKhoan($tenTK, $matKhau, $maLoai, $trangThai, $ten, $soDT, $email, $diaChi, $khuVuc)
@@ -80,8 +80,8 @@ class QuanLyTaiKhoan extends Database
                 $table = 'khachhang';
                 $name = 'KH';
                 break;
-            case 'chuduan':
-                $table = '2';
+            case '2':
+                $table = 'chuduan';
                 $name = 'ChuDuAn';
                 break;
             case '3':
@@ -229,5 +229,18 @@ class QuanLyTaiKhoan extends Database
         $params = array($maTK);
         return $this->xuatdulieu($sql, $params);
     }
+    public function ghiNhanHanhDongTaiKhoan($maTK, $loaiHanhDong, $liDo = null)
+    {
+        $sql = "INSERT INTO hanhdongtaikhoan (maHanhDong, loai, ngayThucHien, maTK, liDo)
+                VALUES (UUID(), '$loaiHanhDong', CURDATE(), '$maTK', '$liDo')";
+        return $this->thucthi($sql);
+    }
+        public function layHanhDongTaiKhoan($maTK)
+    {
+        $sql = "SELECT * FROM HanhDongTaiKhoan WHERE maTK = '$maTK' ORDER BY ngayThucHien DESC";
+        return $this->xuatdulieu($sql);
+    }
+
+
 }
 ?>

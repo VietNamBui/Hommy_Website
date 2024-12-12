@@ -6,7 +6,7 @@ $search = $_POST["search"];
 if(isset($_GET['danhmuc'])) {
     $sql = "SELECT maDA, maLoaiDA, hinhAnh, tenDA, giaThue, ngayTao
     FROM duan
-    WHERE tenDA LIKE '%" . $danhmuc . "%'";
+    WHERE maLoaiDA = '" . $danhmuc . "'";
 } else {
     $sql = "SELECT maDA, maLoaiDA, hinhAnh, tenDA, giaThue, ngayTao
         FROM duan

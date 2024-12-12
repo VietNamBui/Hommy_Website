@@ -30,7 +30,7 @@ if (isset($_GET['action'])) {
 }
 
 // Xử lý thêm tài khoản
-if (isset($_POST["dangky"])) {
+if (isset($_POST["dangKy"])) {
     $tenTK = $_POST['tenTK'];
     $matKhau = $_POST['matKhau']; // Lấy mật khẩu từ form
     $maLoai = $_POST['maLoai'];
@@ -40,7 +40,6 @@ if (isset($_POST["dangky"])) {
     $email = $_POST['email'];
     $diaChi = $_POST['diaChi'];
     $khuVuc = isset($_POST['khuVuc']) ? $_POST['khuVuc'] : '';
-
     // Gọi phương thức thêm tài khoản
     $qlTaiKhoan->themTaiKhoan($tenTK, $matKhau, $maLoai, $trangThai, $ten, $soDT, $email, $diaChi, $khuVuc);
 
