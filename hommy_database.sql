@@ -97,14 +97,12 @@ CREATE TABLE `cuochen` (
 --
 
 INSERT INTO `cuochen` (`maCuocHen`, `thoiGian`, `ngayDienRa`, `maKH`, `maDA`, `maNhanVienMG`) VALUES
-(1, '25:58:13', '2024-12-25', 0, 0, NULL),
-(2, '15:07:39', '2024-12-10', 0, 0, NULL),
-(4, '15:07:39', '2024-12-10', 0, 0, NULL),
-(5, '15:07:39', '2024-12-10', 0, 0, NULL),
-(6, '25:58:13', '2024-12-25', 0, 0, NULL),
-(7, '25:58:13', '2024-12-25', 0, 0, NULL),
-(8, '25:58:13', '2024-12-25', 0, 0, NULL),
-(9, '25:58:13', '2024-12-25', 0, 0, NULL);
+(1, '15:00:13', '2024-12-25', 1, 157, NULL),
+(2, '10:00:39', '2024-12-10', 2, 158, NULL),
+(3, '14:07:39', '2024-12-10', 3, 159, NULL),
+(4, '16:07:39', '2024-12-10', 4, 160, NULL),
+(5, '08:07:39', '2024-12-11', 5, 161, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -225,8 +223,15 @@ CREATE TABLE `khachhang` (
   `diaChi` varchar(50) NOT NULL,
   `maTK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
 -- --------------------------------------------------------
+-- add dl kh
+INSERT INTO khachhang (maKH, tenKH, soDT, email, diaChi, maTK) VALUES
+(1, 'Nguyễn Trọng Phú', '0123456789', 'nguyentrongphu@gmail.com', '133 Lê Đức Thọ, TP HCM', 5),
+(2, 'Trần văn An', '0987654321', 'tranvanan@gmail.com', '201 Tân Bình, TP HCM', 6),
+(3, 'Hoàng Kim', '0912345678', 'hoangkim@gmail.com', '144 Phạm Văn Chiêu, TP HCM', 7),
+(4, 'Lê Thành Phát', '0123456789', 'lethanhphat@gmail.com', '203/19 Tân Sơn, TP HCM', 8),
+(5, 'Phạm Thị Thảo', '0987654321', 'phamthithao@gmail.com', '12 Nguyễn Văn Bảo, TP HCM', 9);
+
 
 --
 -- Table structure for table `lichlamviec`
@@ -438,7 +443,13 @@ INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`
 (3, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
 (5, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
 (6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(0, '123', '202cb962ac59075b964b07152d234b70', NULL, 1, '2024-12-11', 1);
+(0, '123', '202cb962ac59075b964b07152d234b70', NULL, 1, '2024-12-11', 1),
+(5, 'nguyenminh', MD5('123'), NULL, 1, '2024-11-21', 1),
+(6, 'tranvanan', MD5('123'), null, 1, '2024-12-01', 1),
+(7, 'hoangkim', MD5('123'), null, 1, '2024-12-02', 1),
+(8, 'lethanhphat', MD5('123'), null, 1, '2024-12-03', 1),
+(9, 'phamthithao', MD5('123'), NULL, 1, '2024-12-04', 1);
+
 
 --
 -- Indexes for dumped tables
