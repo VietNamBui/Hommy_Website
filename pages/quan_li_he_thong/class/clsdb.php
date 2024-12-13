@@ -1,6 +1,6 @@
 <?php
 if (!class_exists('Database')) {
-    class Database
+    class DatabaseQL
     {
         private $conn;
 
@@ -64,26 +64,35 @@ if (!class_exists('Database')) {
         // Thực thi câu lệnh SQL (INSERT, UPDATE, DELETE)
         public function thucthi($sql, $params = array())
         {
-            $link = $this->connect();
-            // Sử dụng prepared statement
-            if ($stmt = $link->prepare($sql)) {
+            try {
+                $link = $this->connect();
+                // Chuẩn bị câu truy vấn
+                $stmt = $link->prepare($sql);
+                if (!$stmt) {
+                    throw new Exception("Chuẩn bị câu lệnh thất bại: " . $link->error);
+                }
+        
                 // Gắn các tham số nếu có
                 if (!empty($params)) {
                     $types = str_repeat('s', count($params)); // Giả sử tất cả tham số là kiểu chuỗi
-                    // Thay thế spread operator bằng call_user_func_array
-                    call_user_func_array(array($stmt, 'bind_param'), array_merge(array($types), $params));
+                    $stmt->bind_param($types, ...$params);
                 }
-
-                $result = $stmt->execute();
+        
+                // Thực thi câu truy vấn
+                if (!$stmt->execute()) {
+                    throw new Exception("Thực thi thất bại: " . $stmt->error);
+                }
+        
                 $stmt->close();
                 $this->close();
-
-                return $result ? 1 : 0;
-            } else {
+                return true; // Thành công
+            } catch (Exception $e) {
+                // Ghi lỗi vào log nếu cần
+                error_log($e->getMessage());
                 $this->close();
-                return 0;
+                return false; // Thất bại
             }
         }
-    }
+    }        
 }
 ?>

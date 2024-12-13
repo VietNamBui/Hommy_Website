@@ -1,10 +1,45 @@
 <title>Duyệt Dự Án</title>
 <body>
 <?php
-include("pages/quan_li_he_thong/class/clsquanlyDA.php");
+include_once("pages/quan_li_he_thong/class/clsquanlyDA.php");
 
 // Khởi tạo đối tượng quản lý dự án
 $quanlyDA = new QuanlyDA();
+
+// Xử lý form nếu có dữ liệu POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $maDA = isset($_POST['maDA']) ? intval($_POST['maDA']) : 0;
+    $action = isset($_POST['action']) ? $_POST['action'] : '';
+    $reason = isset($_POST['reason']) ? trim($_POST['reason']) : null;
+
+    if ($maDA > 0) {
+        switch ($action) {
+            case 'approve': // Duyệt
+                $quanlyDA->capNhatTrangThai($maDA, 1);
+                $quanlyDA->ghiNhanThaoTacDuAn($maDA, 'Duyệt', null);
+                echo "<script>alert('Duyệt dự án thành công!'); window.location.href='index.php?page=quan_li_du_an';</script>";
+                break;
+
+            case 'delete': // Xóa
+                $quanlyDA->capNhatTrangThai($maDA, 3);
+                $quanlyDA->ghiNhanThaoTacDuAn($maDA, 'Xóa', $reason);
+                echo "<script>alert('Xóa dự án thành công!'); window.location.href='index.php?page=quan_li_du_an';</script>";
+                break;
+
+            case 'feedback': // Phản hồi
+                $quanlyDA->ghiNhanThaoTacDuAn($maDA, 'Phản hồi', $reason);
+                echo "<script>alert('Phản hồi thành công!'); history.back();</script>";
+                break;
+
+            default:
+                echo "<script>alert('Hành động không hợp lệ!'); history.back();</script>";
+                break;
+        }
+    } else {
+        echo "<script>alert('Mã dự án không hợp lệ!'); history.back();</script>";
+    }
+}
+
 // Lấy maDA từ URL
 $maDA = isset($_GET['maDA']) ? intval($_GET['maDA']) : 0;
 
@@ -29,7 +64,6 @@ if ($maDA > 0) {
                         ?>
                     </div>
                     <h2><p class="mt-3"><?php echo htmlspecialchars($duAn['tenDA']); ?></p></h2>
-                    <textarea class="form-control" rows="5" placeholder="Mô tả"></textarea>
                 </div>
                 <div class="col-md-6 details">
                     <h5>THÔNG TIN CHI TIẾT</h5>
@@ -52,7 +86,7 @@ if ($maDA > 0) {
                                 echo '<p><strong>Pháp lý:</strong> ' . htmlspecialchars($chiTiet['phapLy']) . '</p>';
                                 break;
                             case 2: // Phòng trọ
-                                echo '<p><strong>Nội thất:</strong> ' . htmlspecialchars($chiTiet['noiThat']) . '</p>';
+                                echo '<p><strong>Nội thất:</strong> ' . htmlspecialchars($chiTiet['noiThat']). '</p>';
                                 break;
                             case 3: // Chung cư
                                 echo '<p><strong>Mã căn:</strong> ' . htmlspecialchars($chiTiet['maCan']) . '</p>';
@@ -67,7 +101,7 @@ if ($maDA > 0) {
                 </div>
             </div>
             <div class="actions text-center mt-4">
-                <form action="pages/quan_li_he_thong/pages/duyet_du_an/xuly.php" method="POST">
+                <form method="POST">
                     <input type="hidden" name="maDA" value="<?php echo $maDA; ?>">
                     <input type="hidden" name="action" id="action">
                     <textarea name="reason" id="reason" style="display: none;"></textarea>
@@ -102,4 +136,3 @@ if ($maDA > 0) {
 }
 ?>
 </body>
-</html>

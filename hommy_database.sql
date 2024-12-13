@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2024 at 08:38 AM
+-- Generation Time: Dec 13, 2024 at 04:24 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -155,14 +155,11 @@ CREATE TABLE `duan` (
 --
 
 INSERT INTO `duan` (`maDA`, `tenDA`, `diaChiDA`, `giaThue`, `hoaHong`, `ngayTao`, `ngayXacThuc`, `maChuDuAn`, `tienCoc`, `maLoaiDA`, `hinhAnh`, `trangThaiDuyet`, `trangThaiThue`, `dienTich`) VALUES
-(157, 'Phòng Trọ Hòa Bình - Căn Hộ Mini An Cư Hòa Mạng', '456/673, Lê Văn Sĩ, Phường 3, Quận Phú Nhuận, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:32:03', '2024-12-11 06:32:03', 7, '5000000', 2, '464_2c8eea63bbd228f9979d4fc737b3115f.jpg', 2, 1, '8'),
-(158, 'Căn Hộ Mini Trung Tâm Quận 1 - Nơi An Cư Lý Tưởng', '456/673, Lê Duẩn, Phường 3, Quận 1, Hồ Chí Minh', '5000000', '40%', '2024-12-11 06:32:39', '2024-12-11 06:32:39', 7, '5000000', 2, '627_OIP (1).jpg', 2, 1, '8'),
-(159, 'Phòng Trọ Cao Cấp Quận 1 - Chỗ Ở Sang Trọng Giữa Lòng Thành Phố', '456/67, Lê Duẩn, Phường 1, Quận 1, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:33:09', '2024-12-11 06:33:09', 7, '5000000', 2, '124_e4e550a847e2dcbe21838e478abcdb56.jpg', 2, 1, '8'),
-(160, 'Văn Phòng Phòng Trọ Quận 7 - Sống Và Làm Việc Tiện Nghi', '456/67, Mai Chí Thọ, Phường 7, Quận 7, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:34:19', '2024-12-11 06:34:19', 7, '5000000', 2, '407_thiet-ke-nha-tro-dep-2020-bandon-0.jpg', 2, 1, '8'),
-(161, 'Khu Phòng Trọ Dịch Vụ Chợ Lớn - An Cư Tiện Lợi, Giá Cả Hợp Lý', '123, Lê Đức Thọ, Phường 5, Quận Gò Vấp, Hồ Chí Minh', '4000000', '30%', '2024-12-11 06:46:37', '2024-12-11 06:46:37', 9, '4000000', 2, '291_2f84f521469c92dbece6d55158fa7e0d.jpg', 2, 1, '8'),
-(162, 'Phòng Trọ Green Living Quận 3 - Sống Xanh, Không Gian Tươi Mới', '123, Lê Đức Thọ, Phường 12, Quận 3, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:47:08', '2024-12-11 06:47:08', 9, '4000000', 2, '111_789f9b9231a67cc10d9bfde1e89cdb92.jpg', 2, 1, '8'),
-(163, 'Khu Phòng Trọ Tiện Nghi Quận 5 - Căn Hộ Mini, Tiện Ích Tối Ưu', '123, Hồng Hà, Phường 7, Quận 5, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:48:25', '2024-12-11 06:48:25', 9, '4000000', 2, '645_d6065dc49e7a11c9c51a322089ee81f1.jpg', 2, 1, '8'),
-(164, 'Phòng Trọ An Cư Quận 10 - Nơi Khởi Đầu Mới, Sống Bình Yên, vui vẽ', '456, Sư Vạn Hạnh, Phường 6, Quận 10, Hồ Chí Minh', '4000000', '30%', '2024-12-11 06:53:03', '2024-12-11 06:53:03', 10, '4000000', 2, '479_OIP (2).jpg', 2, 1, '8'),
+(159, 'Phòng Trọ Cao Cấp Quận 1 - Chỗ Ở Sang Trọng Giữa Lòng Thành Phố', '456/67, Lê Duẩn, Phường 1, Quận 1, Hồ Chí Minh', '5000000', '30%', '2024-12-11 06:33:09', '2024-12-11 06:33:09', 7, '5000000', 2, '124_e4e550a847e2dcbe21838e478abcdb56.jpg', 3, 1, '8'),
+(161, 'Khu Phòng Trọ Dịch Vụ Chợ Lớn - An Cư Tiện Lợi, Giá Cả Hợp Lý', '123, Lê Đức Thọ, Phường 5, Quận Gò Vấp, Hồ Chí Minh', '4000000', '30%', '2024-12-11 06:46:37', '2024-12-11 06:46:37', 9, '4000000', 2, '291_2f84f521469c92dbece6d55158fa7e0d.jpg', 1, 1, '8'),
+(162, 'Phòng Trọ Green Living Quận 3 - Sống Xanh, Không Gian Tươi Mới', '123, Lê Đức Thọ, Phường 12, Quận 3, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:47:08', '2024-12-11 06:47:08', 9, '4000000', 2, '111_789f9b9231a67cc10d9bfde1e89cdb92.jpg', 1, 1, '8'),
+(163, 'Khu Phòng Trọ Tiện Nghi Quận 5 - Căn Hộ Mini, Tiện Ích Tối Ưu', '123, Hồng Hà, Phường 7, Quận 5, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:48:25', '2024-12-11 06:48:25', 9, '4000000', 2, '645_d6065dc49e7a11c9c51a322089ee81f1.jpg', 1, 1, '8'),
+(164, 'Phòng Trọ An Cư Quận 10 - Nơi Khởi Đầu Mới, Sống Bình Yên, vui vẽ', '456, Sư Vạn Hạnh, Phường 6, Quận 10, Hồ Chí Minh', '4000000', '30%', '2024-12-11 06:53:03', '2024-12-11 06:53:03', 10, '4000000', 2, '479_OIP (2).jpg', 3, 1, '8'),
 (165, 'Phòng Trọ Diamond Residence Quận 4 - Đẳng Cấp Sống Xanh Bên Sông', '456, Sư Vạn Hạnh, Phường 7, Quận 4, Hồ Chí Minh', '4000000', '30%', '2024-12-11 06:53:32', '2024-12-11 06:53:32', 10, '4000000', 2, '600_R.jpg', 2, 1, '8'),
 (166, 'Phòng Trọ Eco Life Quận 3 - Căn Hộ Tiện Ích, Môi Trường Xanh Sạch', '456, Sư Vạn Hạnh, Phường 3, Quận 3, Hồ Chí Minh', '4000000', '40%', '2024-12-11 06:54:37', '2024-12-11 06:54:37', 10, '4000000', 2, '230_OIP.jpg', 2, 1, '8'),
 (167, 'Chung Cư Royal Heights - Tầm Nhìn Vươn Xa', '456/67, Lê Văn Sĩ, Phường 9, Quận Gò Vấp, Hồ Chí Minh', '12000000', '30%', '2024-12-11 07:00:38', '2024-12-11 07:00:38', 10, '12000000', 3, '549_3978-Interior-Living-Kitchenroom-Scene-Sketchup-Model-By-DieuLinh-4-768x470.jpg', 2, 1, '20'),
@@ -208,6 +205,20 @@ INSERT INTO `goithanhvien` (`maGoi`, `tenGoi`, `cacTinhNang`, `gia`, `moTa`) VAL
 (1, 'VIP 1', 'Gói VIP1', 199, 'Truy cập không giới hạn\r\nƯu đãi đặc biệt hàng thán'),
 (2, 'VIP 2', 'VIP 2', 399, 'Truy cập không giới hạn\r\nƯu đãi đặc biệt hàng tuần'),
 (3, 'VIP 3', 'VIP 3', 599, 'Truy cập không giới hạn\r\nƯu đãi đặc biệt hàng ngày');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hanhdongtaikhoan`
+--
+
+CREATE TABLE `hanhdongtaikhoan` (
+  `maHanhDong` varchar(50) NOT NULL,
+  `loai` varchar(50) NOT NULL,
+  `ngayThucHien` date NOT NULL,
+  `maTK` int(11) DEFAULT NULL,
+  `liDo` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
@@ -374,10 +385,8 @@ CREATE TABLE `phongtro` (
 --
 
 INSERT INTO `phongtro` (`maPhongTro`, `noiThat`, `maDA`) VALUES
-(35, 'Đầy đủ nội thất', 157),
 (36, 'Đầy đủ nội thất', 158),
 (37, 'Đầy đủ nội thất', 159),
-(38, 'Đầy đủ nội thất', 160),
 (39, 'Đầy đủ nội thất', 161),
 (40, 'Đầy đủ nội thất', 162),
 (41, 'Đầy đủ nội thất', 163),
@@ -396,7 +405,8 @@ CREATE TABLE `quantrihethong` (
   `tenAdmin` varchar(50) NOT NULL,
   `soDT` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `diaChi` varchar(50) NOT NULL,
+  `diaChi` text NOT NULL,
+  `khuVuc` varchar(50) NOT NULL,
   `maTK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -404,8 +414,9 @@ CREATE TABLE `quantrihethong` (
 -- Dumping data for table `quantrihethong`
 --
 
-INSERT INTO `quantrihethong` (`maAdmin`, `tenAdmin`, `soDT`, `email`, `diaChi`, `maTK`) VALUES
-(1, 'Võ Nguyễn Hoành Hợp', '0911576456', 'hopboy553@gmail.com', 'Gò Vấp', 3);
+INSERT INTO `quantrihethong` (`maAdmin`, `tenAdmin`, `soDT`, `email`, `diaChi`, `khuVuc`, `maTK`) VALUES
+(1, 'Võ Nguyễn Hoành Hợp', '0911576456', 'hopboy553@gmail.com', '', 'Nam', 3),
+(7, 'bennis@gmail.com', '0911576456', 'hopboy553@gmail.com', 'Gò Vấp', 'Bắc', 33);
 
 -- --------------------------------------------------------
 
@@ -431,11 +442,35 @@ INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`
 (2, 'nguyentrongphu', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-11-21', 1),
 (3, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
 (5, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(2, 'nguyentrongphu', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-11-21', 1),
-(3, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
-(5, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
-(6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1);
+(6, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, '2024-12-11', 1),
+(33, 'bennnisdsadas', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-13', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thaotacduan`
+--
+
+CREATE TABLE `thaotacduan` (
+  `maThaoTac` varchar(50) NOT NULL,
+  `loai` varchar(50) NOT NULL,
+  `ngayThucHien` date NOT NULL,
+  `maDA` int(11) DEFAULT NULL,
+  `liDo` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Dumping data for table `thaotacduan`
+--
+
+INSERT INTO `thaotacduan` (`maThaoTac`, `loai`, `ngayThucHien`, `maDA`, `liDo`) VALUES
+('091624dc-b89a-11ef-bede-a0e70bae56f9', 'Xóa', '2024-12-12', 157, 'xấu'),
+('1714e824-b89b-11ef-bede-a0e70bae56f9', 'Xóa tạm', '2024-12-12', 160, 'xấu'),
+('3e0a8e74-b89a-11ef-bede-a0e70bae56f9', 'Xóa', '2024-12-12', 157, 'xấu'),
+('73776e09-b89b-11ef-bede-a0e70bae56f9', 'Xóa', '2024-12-12', 160, 'xấu'),
+('7d9fe2f7-b901-11ef-8c42-a0e70bae56f9', 'Xóa tạm', '2024-12-13', 159, 'xấu vl'),
+('8dbb8705-b900-11ef-8c42-a0e70bae56f9', 'Duyệt', '2024-12-13', 159, ''),
+('a6e1d3c8-b89a-11ef-bede-a0e70bae56f9', 'Xóa', '2024-12-12', 158, 'xấu');
 
 --
 -- Indexes for dumped tables
@@ -483,6 +518,13 @@ ALTER TABLE `duan`
 --
 ALTER TABLE `goithanhvien`
   ADD PRIMARY KEY (`maGoi`);
+
+--
+-- Indexes for table `hanhdongtaikhoan`
+--
+ALTER TABLE `hanhdongtaikhoan`
+  ADD PRIMARY KEY (`maHanhDong`),
+  ADD KEY `maTK` (`maTK`);
 
 --
 -- Indexes for table `khachhang`
@@ -539,6 +581,18 @@ ALTER TABLE `quantrihethong`
   ADD KEY `maTK` (`maTK`);
 
 --
+-- Indexes for table `taikhoan`
+--
+ALTER TABLE `taikhoan`
+  ADD PRIMARY KEY (`maTK`);
+
+--
+-- Indexes for table `thaotacduan`
+--
+ALTER TABLE `thaotacduan`
+  ADD PRIMARY KEY (`maThaoTac`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -547,6 +601,28 @@ ALTER TABLE `quantrihethong`
 --
 ALTER TABLE `cuochen`
   MODIFY `maCuocHen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `quantrihethong`
+--
+ALTER TABLE `quantrihethong`
+  MODIFY `maAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `taikhoan`
+--
+ALTER TABLE `taikhoan`
+  MODIFY `maTK` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `hanhdongtaikhoan`
+--
+ALTER TABLE `hanhdongtaikhoan`
+  ADD CONSTRAINT `hanhdongtaikhoan_ibfk_1` FOREIGN KEY (`maTK`) REFERENCES `taikhoan` (`maTK`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

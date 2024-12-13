@@ -28,9 +28,8 @@ if (isset($_GET['action'])) {
     header('Location: index.php?page=quan_li_tai_khoan');
     exit();
 }
-
 // Xử lý thêm tài khoản
-if (isset($_POST["dangKy"])) {
+if (isset($_POST['taoTK'])) {
     $tenTK = $_POST['tenTK'];
     $matKhau = $_POST['matKhau']; // Lấy mật khẩu từ form
     $maLoai = $_POST['maLoai'];
@@ -42,10 +41,8 @@ if (isset($_POST["dangKy"])) {
     $khuVuc = isset($_POST['khuVuc']) ? $_POST['khuVuc'] : '';
     // Gọi phương thức thêm tài khoản
     $qlTaiKhoan->themTaiKhoan($tenTK, $matKhau, $maLoai, $trangThai, $ten, $soDT, $email, $diaChi, $khuVuc);
+        echo "<script>alert('Thêm tài khoản thành công!');</script>";
 
-    // Chuyển hướng về trang quản lý tài khoản
-    header("Location: index.php?page=quan_li_tai_khoan");
-    exit();
 }
 
 // Lấy danh sách tài khoản

@@ -1,5 +1,5 @@
 <?php
-class QuanlyDA extends database
+class QuanlyDA extends Database
 {
 
     // Lấy danh sách chủ dự án
@@ -10,13 +10,6 @@ class QuanlyDA extends database
         else
             $sql = 'SELECT * FROM chuduan';
         return $this->xuatdulieu($sql);
-    }
-
-    // Xóa chủ dự án theo ID
-    public function deletechuduan($id = '')
-    {
-        $sql = "DELETE FROM chuduan WHERE maChuDuAn = '$id'";
-        return $this->thucthi($sql);
     }
 
     // Lấy danh sách các dự án
@@ -103,8 +96,6 @@ class QuanlyDA extends database
     public function layChiTietDuAn($maDA)
     {
         // Lấy thông tin chung từ bảng duan
-        $sql = "SELECT duan.*, chuduan.tenCDA FROM duan 
-                LEFT JOIN chuduan ON duan.maChuDuAn = chuduan.maChuDuAn";
         $sql = "SELECT duan.*, chuduan.tenCDA
                 FROM duan LEFT JOIN chuduan ON duan.maChuDuAn = chuduan.maChuDuAn
                 WHERE duan.maDA = '$maDA'";
@@ -147,12 +138,12 @@ class QuanlyDA extends database
     {
         $sql = "INSERT INTO thaotacduan (maThaoTac, loai, ngayThucHien, maDA, liDo)
                 VALUES (UUID(), '$loaiThaoTac', CURDATE(), '$maDA', '$liDo')";
-        return $this->thucthi($sql);
-    }
+        return $this->themdulieu($sql);
+    } 
     public function capNhatTrangThai($maDA, $trangThai)
     {
         $sql = "UPDATE duan SET trangThaiDuyet = '$trangThai' WHERE maDA = '$maDA'";
-        return $this->thucthi($sql);
+        return $this->suadulieu($sql);
     }
     public function layThaoTacDuAn($maDA)
     {
@@ -163,12 +154,28 @@ class QuanlyDA extends database
     {
         $sql = "INSERT INTO duan (tenDA, diaChiDA, maChuDuAn, maLoaiDA, hoaHong, tienCoc, dienTich, ngayTao, trangThaiDuyet)
                 VALUES ('$tenDA', '$diaChi', '$maChuDuAn', '$maLoaiDA', '$hoaHong', '$tienCoc', '$dienTich', CURDATE(), 2)";
-        return $this->thucthi($sql);
+        return $this->themdulieu($sql);
     }
     public function xoaDuAn($maDA)
     {
-        $sql = "DELETE FROM duan WHERE maDA = '$maDA'";
-        return $this->thucthi($sql);
+        $sql = "SELECT maLoaiDA FROM duan WHERE maDA = $maDA";
+        $kq= $this->xuatdulieu($sql);
+        $loaiDA = $kq[0]['maLoaiDA'];
+        switch ($loaiDA) {
+            case 1: // Nhà ở
+                $table = "nhao";
+                break;
+            case 2: // Phòng trọ
+                $table = "phongtro";
+                break;
+            case 3: // Chung cư
+                $table = "chungcu";
+                break;
+        }
+        $sql = "DELETE FROM duan WHERE maDA = $maDA";
+        $this->xoadulieu($sql);
+        $sql = "DELETE FROM $table WHERE maDA = $maDA";
+        return $this->xoadulieu($sql);
     }
     public function capNhatDuAn($maDA, $tenDA, $diaChi, $hoaHong, $tienCoc, $dienTich, $trangThai)
     {
@@ -176,7 +183,7 @@ class QuanlyDA extends database
                 SET tenDA = '$tenDA', diaChiDA = '$diaChi', hoaHong = '$hoaHong', 
                     tienCoc = '$tienCoc', dienTich = '$dienTich', trangThaiDuyet = '$trangThai'
                 WHERE maDA = '$maDA'";
-        return $this->thucthi($sql);
+        return $this->suadulieu($sql);
     }
     public function kiemTraQuyen($maTK, $maDA)
     {

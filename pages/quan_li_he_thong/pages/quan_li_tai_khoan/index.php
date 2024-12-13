@@ -7,7 +7,7 @@ $qlTaiKhoan = new QuanLyTaiKhoan();
 
 // Lấy danh sách tài khoản
 $danhSachTaiKhoan = $qlTaiKhoan->danhSachTaiKhoan();
-include_once('pages/quan_li_he_thong/pages/quan_li_tai_khoan/xuly.php');
+include('pages/quan_li_he_thong/pages/quan_li_tai_khoan/xuly.php');
 ?>
 <title>Quản Lý Tài Khoản</title>
 <body>
@@ -70,6 +70,7 @@ include_once('pages/quan_li_he_thong/pages/quan_li_tai_khoan/xuly.php');
                                 <a href="?page=quan_li_tai_khoan&action=unlock&maTK=<?= $taiKhoan['maTK']; ?>" class="btn btn-success btn-sm">Mở khóa</a>
                             <?php endif; ?>
                             <a href="?page=quan_li_tai_khoan&action=delete&maTK=<?= $taiKhoan['maTK']; ?>&maLoai=<?= $taiKhoan['maLoai']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa tài khoản này?');">Xóa</a>
+                            <a href="?page=sua_tai_khoan&action=edit&maTK=<?= $taiKhoan['maTK']; ?>&maLoai=<?= $taiKhoan['maLoai']; ?>" class="btn btn-primary btn-sm" >Sửa</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -85,204 +86,94 @@ include_once('pages/quan_li_he_thong/pages/quan_li_tai_khoan/xuly.php');
 
 <!-- Modal Form Thêm Tài Khoản -->
 <div class="modal fade" id="addAccountModal" tabindex="-1" aria-labelledby="addAccountModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addAccountModalLabel">Thêm Tài Khoản Mới</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-      </div>
-      <form action="pages/quan_li_he_thong/pages/quan_li_tai_khoan/xuly.php" method="POST">
-        <div class="modal-body">
-            <!-- Tên tài khoản -->
-            <div class="form-group">
-                <label for="tenTK">Tên Tài Khoản</label>
-                <input type="text" class="form-control" id="tenTK" name="tenTK" required>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAccountModalLabel">Thêm Tài Khoản Mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- Mật khẩu -->
-            <div class="form-group">
-                <label for="matKhau">Mật khẩu</label>
-                <input type="password" class="form-control" id="matKhau" name="matKhau" required>
-            </div>
-            <!-- Loại tài khoản -->
-            <div class="form-group">
-                <label for="maLoai">Loại Tài Khoản</label>
-                <select class="form-control" id="maLoai" name="maLoai" required onchange="toggleFields(this.value)">
-                    <option value="">Chọn loại tài khoản</option>
-                    <option value="1">Khách Hàng</option>
-                    <option value="2">Chủ Dự Án</option>
-                    <option value="3">Nhân Viên Môi Giới</option>
-                    <option value="4">Nhân Viên Điều Hành</option>
-                    <option value="5">Quản Trị Hệ Thống</option>
-                </select>
-            </div>
-            <!-- Trạng thái tài khoản -->
-            <div class="form-group">
-                <label for="trangThai">Trạng Thái</label>
-                <select class="form-control" id="trangThai" name="trangThai" required>
-                    <option value="1">Hoạt động</option>
-                    <option value="0">Đã khóa</option>
-                </select>
-            </div>
-            <!-- Thông tin tùy chỉnh cho từng loại tài khoản -->
-            <div id="khachHangFields" style="display: none;">
-                <div class="form-group">
-                    <label for="ten">Tên khách hàng</label>
-                    <input type="text" class="form-control" id="ten" name="ten" required>
+            <form action="index.php?page=quan_li_tai_khoan" method="POST">
+                <div class="modal-body">
+                    <!-- Tên tài khoản -->
+                    <div class="mb-3">
+                        <label for="tenTK" class="form-label">Tên Tài Khoản</label>
+                        <input type="text" class="form-control" id="tenTK" name="tenTK" required>
+                    </div>
+                    <!-- Mật khẩu -->
+                    <div class="mb-3">
+                        <label for="matKhau" class="form-label">Mật Khẩu</label>
+                        <input type="password" class="form-control" id="matKhau" name="matKhau" required>
+                    </div>
+                    <!-- Loại tài khoản -->
+                    <div class="mb-3">
+                        <label for="maLoai" class="form-label">Loại Tài Khoản</label>
+                        <select class="form-select" id="maLoai" name="maLoai" required>
+                            <option value="">Chọn loại tài khoản</option>
+                            <option value="1">Khách Hàng</option>
+                            <option value="2">Chủ Dự Án</option>
+                            <option value="3">Nhân Viên Môi Giới</option>
+                            <option value="4">Nhân Viên Điều Hành</option>
+                            <option value="5">Quản Trị Hệ Thống</option>
+                        </select>
+                    </div>
+                    <!-- Trạng thái -->
+                    <div class="mb-3">
+                        <label for="trangThai" class="form-label">Trạng Thái</label>
+                        <select class="form-select" id="trangThai" name="trangThai" required>
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Đã khóa</option>
+                        </select>
+                    </div>
+                    <!-- Tên người dùng -->
+                    <div class="mb-3">
+                        <label for="ten" class="form-label">Tên</label>
+                        <input type="text" class="form-control" id="ten" name="ten" required>
+                    </div>
+                    <!-- Số điện thoại -->
+                    <div class="mb-3">
+                        <label for="soDT" class="form-label">Số Điện Thoại</label>
+                        <input type="tel" class="form-control" id="soDT" name="soDT" required>
+                    </div>
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <!-- Địa chỉ -->
+                    <div class="mb-3">
+                        <label for="diaChi" class="form-label">Địa Chỉ</label>
+                        <input type="text" class="form-control" id="diaChi" name="diaChi" required>
+                    </div>
+                    <!-- Khu vực (chỉ hiển thị cho quản trị viên) -->
+                    <div class="mb-3 d-none" id="khuVucField">
+                        <label for="khuVuc" class="form-label">Khu Vực</label>
+                        <select class="form-select" id="khuVuc" name="khuVuc">
+                            <option value="">Chọn khu vực</option>
+                            <option value="Bắc">Bắc</option>
+                            <option value="Trung">Trung</option>
+                            <option value="Nam">Nam</option>
+                        </select>
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="soDT">Số Điện Thoại</label>
-                    <input type="tel" class="form-control" id="soDT" name="soDT" required>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary" name="taoTK">Lưu Tài Khoản</button>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="diaChi">Địa chỉ</label>
-                    <input type="text" class="form-control" id="diaChi" name="diaChi" required>
-                </div>
-            </div>
-            <div id="chuDuAnFields" style="display: none;">
-            <div class="form-group">
-                    <label for="ten">Tên chủ dự án</label>
-                    <input type="text" class="form-control" id="ten" name="ten" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="soDT">Số Điện Thoại</label>
-                    <input type="tel" class="form-control" id="soDT" name="soDT" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="diaChi">Địa chỉ</label>
-                    <input type="text" class="form-control" id="diaChi" name="diaChi" required>
-                </div>
-            </div>
-            <div id="nhanVienMoiGioiFields" style="display: none;">
-            <div class="form-group">
-                    <label for="ten">Tên nhân viên môi giới</label>
-                    <input type="text" class="form-control" id="ten" name="ten" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="soDT">Số Điện Thoại</label>
-                    <input type="tel" class="form-control" id="soDT" name="soDT" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="diaChi">Địa chỉ</label>
-                    <input type="text" class="form-control" id="diaChi" name="diaChi" required>
-                </div>
-            </div>
-            <div id="nhanVienDieuHanhFields" style="display: none;">
-            <div class="form-group">
-                    <label for="ten">Tên nhân viên điều hành</label>
-                    <input type="text" class="form-control" id="ten" name="ten" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="soDT">Số Điện Thoại</label>
-                    <input type="tel" class="form-control" id="soDT" name="soDT" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="diaChi">Địa chỉ</label>
-                    <input type="text" class="form-control" id="diaChi" name="diaChi" required>
-                </div>
-            </div>
-            <div id="quanTriHeThongFields" style="display: none;">
-            <div class="form-group">
-                    <label for="ten">Tên quản trị viên</label>
-                    <input type="text" class="form-control" id="ten" name="ten" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="soDT">Số Điện Thoại</label>
-                    <input type="tel" class="form-control" id="soDT" name="soDT" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="diaChi">Địa chỉ</label>
-                    <input type="text" class="form-control" id="diaChi" name="diaChi" required>
-                </div>
-                <div class="form-group">
-                    <label for="khuVuc">Khu vực</label>
-                    <select class="form-control" id="khuVuc" name="khuVuc" required>
-                        <option value="">Chọn khu vực</option>
-                        <option value="Đông">Đông</option>
-                        <option value="Đông Nam">Đông Nam</option>
-                        <option value="Tây Bắc">Tây Bắc</option>
-                        <option value="Tây Nam">Tây Nam</option>
-                        <option value="Bắc">Bắc</option>
-                        <option value="Nam">Nam</option>
-                        <option value="Tây">Tây</option>
-                        <option value="Đông Bắc">Đông Bắc</option>
-                    </select>
-                </div>
-            </div>
+            </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-            <button type="submit" class="btn btn-primary">Lưu Tài Khoản</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 
+
+
 <script>
-    // Hàm để hiển thị các trường tùy chỉnh cho từng loại tài khoản
-    function toggleFields(maLoai) {
-        // Ẩn tất cả các trường
-        document.getElementById('khachHangFields').style.display = 'none';
-        document.getElementById('chuDuAnFields').style.display = 'none';
-        document.getElementById('nhanVienMoiGioiFields').style.display = 'none';
-        document.getElementById('nhanVienDieuHanhFields').style.display = 'none';
-        document.getElementById('quanTriHeThongFields').style.display = 'none';
-
-        // Hiển thị trường tương ứng với loại tài khoản
-        if (maLoai == 1) {
-            document.getElementById('khachHangFields').style.display = 'block';
-        } else if (maLoai == 2) {
-            document.getElementById('chuDuAnFields').style.display = 'block';
-        } else if (maLoai == 3) {
-            document.getElementById('nhanVienMoiGioiFields').style.display = 'block';
-        } else if (maLoai == 4) {
-            document.getElementById('nhanVienDieuHanhFields').style.display = 'block';
-        } else if (maLoai == 5) {
-            document.getElementById('quanTriHeThongFields').style.display = 'block';
-        }
+document.getElementById('maLoai').addEventListener('change', function () {
+    const khuVucField = document.getElementById('khuVucField');
+    if (this.value === '5') {
+        khuVucField.classList.remove('d-none');
+    } else {
+        khuVucField.classList.add('d-none');
     }
-    // Lấy đối tượng modal và form từ DOM
-    const modal = document.getElementById('addAccountModal');
-    const form = document.getElementById('modalForm');
+});
 
-    // Xử lý form khi gửi
-    form.onsubmit = function(event) {
-        event.preventDefault();  // Ngừng hành động mặc định (submit form)
-
-        // Xử lý dữ liệu tại đây, ví dụ:
-        alert("Dữ liệu đã được gửi!");
-
-        // Đóng modal sau khi gửi form
-        modal.style.display = "none";  // Hoặc dùng 'modal.hide()' nếu bạn dùng Bootstrap
-    }
-
-    // Nếu bạn muốn modal tự động mở khi trang load:
-    document.getElementById('addAccountModal').addEventListener('shown.bs.modal', function () {
-        // Khi modal hiển thị, có thể thực hiện hành động nào đó
-    });
 </script>

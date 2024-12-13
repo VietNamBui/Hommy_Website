@@ -26,3 +26,18 @@
     align-items: center;
     gap: 20px;
 }
+/* Định dạng cơ bản cho hình ảnh */
+table img.img-thumbnail{
+    width: 50px;
+    height: auto;
+    margin-right: 5px;
+    transition: transform 0.4s ease, box-shadow 0.6s ease; /* Hiệu ứng mượt */
+}
+
+/* Hiệu ứng khi trỏ chuột vào ảnh */
+table img.img-thumbnail:hover {
+    position: fixed;
+    transform: scale(6); /* Phóng to ảnh gấp 2 lần */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng đổ bóng */
+    z-index: 10; /* Đảm bảo ảnh nằm trên các phần tử khác */
+}

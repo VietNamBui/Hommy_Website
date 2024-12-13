@@ -1,33 +1,7 @@
 <?php
-// Kết nối với class quanly
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 include_once('pages/quan_li_he_thong/class/clsquanlyDA.php');
 $quanly = new QuanlyDA();
-
-// Kiểm tra nếu đã bấm nút "Chưa duyệt" hay không
-$filterChuaDuyet = isset($_GET['chua_duyet']) && $_GET['chua_duyet'] == 'true';
-
-// Lấy tham số tìm kiếm từ URL nếu có
-$search = isset($_GET['search']) ? $_GET['search'] : '';
-
-// Lấy trang hiện tại từ URL (mặc định là trang 1 nếu không có tham số)
-$page = isset($_GET['pages']) ? (int)$_GET['pages'] : 1;
-
-// Số lượng dự án hiển thị trên mỗi trang
-$limit = 10;
-
-// Tính toán offset
-$offset = ($page - 1) * $limit;
-
-// Lấy danh sách dự án với phân trang và tìm kiếm
-$duan_list = $quanly->danhsachduan($search, $filterChuaDuyet, $limit, $offset);
-
-// Tính tổng số dự án
-$totalDuan = $quanly->getTotalDuan($search, $filterChuaDuyet);
-
-// Tính số trang
-$totalPages = ceil($totalDuan / $limit);
+include("pages/quan_li_he_thong/pages/quan_li_du_an/xuly.php");
 ?>
 <body>
     <div class="container mt-4">
@@ -50,11 +24,10 @@ $totalPages = ceil($totalDuan / $limit);
                         <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter2"><label class="form-check-label" for="filter2">Chung cư</label></div></li>
                         <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter3"><label class="form-check-label" for="filter3">Nhà</label></div></li>
                         <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter4"><label class="form-check-label" for="filter4">Trọ</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter5"><label class="form-check-label" for="filter5">Chưa duyệt</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter6"><label class="form-check-label" for="filter6">Đã duyệt</label></div></li>
+                        <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter5"><label class="form-check-label" for="filter5">Chưa thuê</label></div></li>
+                        <li><div class="form-check"><input class="form-check-input" type="checkbox" id="filter6"><label class="form-check-label" for="filter6">Đã thuê</label></div></li>
                     </ul>
                 </div>
-                <button class="btn btn-outline-secondary">Thêm mới</button>
             </div>
         </div>
 
@@ -112,11 +85,17 @@ $totalPages = ceil($totalDuan / $limit);
                             if ($trangThai == 'Chưa duyệt') {
                                 echo '<button class="btn btn-success btn-sm" onclick="window.location.href=\'index.php?page=duyet_du_an&maDA=' . $duan['maDA'] . '\';">Duyệt</button> ';
                             }
-
-                            echo "<button class='btn btn-warning btn-sm'>Sửa</button> ";
-                            echo "<button class='btn btn-danger btn-sm'>Xóa</button>";
+                            echo "<button class='btn btn-danger btn-sm' onclick=\"promptReason({$duan['maDA']}, {$duan['trangThaiDuyet']})\">Xóa</button>";
                             echo "</td>";
-                            echo "<td><button class='btn btn-light btn-sm'>Hình ảnh</button></td>";
+                            
+                            // Hiển thị danh sách hình ảnh
+                            echo "<td>";
+                            $images = explode(',', $duan['hinhAnh']); // Giả sử các hình ảnh được lưu cách nhau bằng dấu phẩy
+                            foreach ($images as $image) {
+                                echo '<img src="assets/video/' . htmlspecialchars(trim($image)) . '" alt="Ảnh" class="img-thumbnail" style="width: 50px; height: auto; margin-right: 5px;">';
+                            }
+                            echo "</td>";
+                            
                             echo "</tr>";
                         }                            
                     } else {
@@ -169,7 +148,7 @@ $totalPages = ceil($totalDuan / $limit);
 
                     <!-- Nút quay lại trang sau -->
                     <li class="page-item <?= $page >= $totalPages ? 'disabled' : ''; ?>">
-                        <a class="page-link" href="?page=quan_li_duan&pages=<?= $page + 1; ?>&chua_duyet=<?= $filterChuaDuyet ? 'true' : 'false'; ?>&search=<?= urlencode($search); ?>"><i class="fas fa-angle-right"></i></a>
+                        <a class="page-link" href="?page=quan_li_du_an&pages=<?= $page + 1; ?>&chua_duyet=<?= $filterChuaDuyet ? 'true' : 'false'; ?>&search=<?= urlencode($search); ?>"><i class="fas fa-angle-right"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -203,4 +182,13 @@ function searchProjects() {
 
     window.location.href = currentUrl.href; // Tải lại trang với tham số tìm kiếm mới
 }
+function promptReason(maDA, trangThaiDuyet) {
+    const reason = prompt("Vui lòng nhập lý do xóa dự án:");
+    if (reason) {
+        // Chuyển hướng với lý do xóa
+        const url = `index.php?page=quan_li_du_an&action=delete&maDA=${maDA}&trangThaiDuyet=${trangThaiDuyet}&reason=${encodeURIComponent(reason)}`;
+        window.location.href = url;
+    }
+}
+
 </script>
