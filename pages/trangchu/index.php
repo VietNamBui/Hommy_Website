@@ -138,15 +138,21 @@
                             // Hiển thị các dự án của từng trang
                             for ($i = $page * $itemsPerPage; $i < ($page + 1) * $itemsPerPage && $i < $totalItems; $i++) {
                                 echo '
+                                
                                     <div class="col-md-4 col-lg-4 mb-3">
                                         <div class="card" style="width: 400px; height: 350px; border: 2px solid #ddd; margin: 5px; border-radius: 8px;">
-                                            <img class="card-img-top" src="./assets/video/' . $duan[$i]["hinhAnh"] . '" alt="Card image" style="object-fit: cover; width: 100%; height: 200px;">
+                                            <a href="index.php?page=chitietduan&mada=' . $duan[$i]["maDA"] . '&maloai=' . $sanpham[$i]['maLoaiDA'] . '">
+                                                <img class="card-img-top" src="./assets/video/' . $duan[$i]["hinhAnh"] . '" alt="Card image" style="object-fit: cover; width: 100%; height: 200px;">
+                                            </a>   
                                             <div class="card-body">
-                                                <h5 class="image-title" style="margin-top: 5px;">' . $duan[$i]["tenDA"] . '</h5>
-                                                <p class="image-price" style="margin-top: 5px;">' . $duan[$i]["giaThue"] . '</p>
+                                                <a href="index.php?page=chitietduan&mada=' . $duan[$i]["maDA"] . '&maloai=' . $sanpham[$i]['maLoaiDA'] . '" class="text-decoration-none text-reset">
+                                                    <h5 class="image-title" style="margin-top: 5px;">' . $duan[$i]["tenDA"] . '</h5>
+                                                    <p class="image-price" style="margin-top: 5px;">' . $duan[$i]["giaThue"] . '</p>
+                                                </a>   
                                             </div>
                                         </div>
                                     </div>
+
                                 ';
                             }
 

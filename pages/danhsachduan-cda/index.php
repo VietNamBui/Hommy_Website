@@ -1,14 +1,14 @@
 <?php
 $obj = new database();
 // tất cả dự án
-if($mada)
-    $sql1="SELECT d.maDA, d.giaThue, d.maLoaiDA, d.hinhAnh, d.tenDA, d.ngayTao, cdu.tenChuDauTu, cdu.ngayBatDau
+if($maloai)
+    $sql1="SELECT d.maDA, d.giaThue, d.maLoaiDA, d.hinhAnh, d.tenDA, d.ngayTao
             FROM duan d
             LEFT JOIN chungcu cu ON d.maDA = cu.maDA
             LEFT JOIN nhao n ON d.maDA = n.maDA
             LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-            LEFT JOIN chuduand cdu ON d.maChuDuAn = cdu.maChuDuAn
-            where maLoaiDA = '$mada' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+            LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+            where maLoaiDA = '$maloai' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 else
     $sql1="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao
             FROM duan d 
@@ -18,80 +18,90 @@ else
             where d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 
 // dự án đã duyệt
-if($mada)
+if($maloai)
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-    FROM duan d 
-    LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-    LEFT JOIN nhao n ON d.maDA = n.maDA 
-    LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where maLoaiDA = '$mada' and trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+            FROM duan d 
+            LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+            LEFT JOIN nhao n ON d.maDA = n.maDA 
+            LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+            LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+            where maLoaiDA = '$maloai' and trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; // 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
     $sql2="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-    FROM duan d 
-    LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-    LEFT JOIN nhao n ON d.maDA = n.maDA 
-    LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-    where trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+            FROM duan d 
+            LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+            LEFT JOIN nhao n ON d.maDA = n.maDA 
+            LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+            LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+            where trangThaiDuyet = '1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án chưa duyệt 
-if($mada)
+if($maloai)
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where maLoaiDA = '$maloai' and trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
 $sql3="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where trangThaiDuyet = '2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án bị từ chối
-if($mada)
+if($maloai)
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where maLoaiDA = '$maloai' and trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else
 $sql4="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where trangThaiDuyet = '3' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án đã duyệt và đã thuê
-if($mada)
+if($maloai)
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
-else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where maLoaiDA = '$maloai' and trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+        else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
 $sql5="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where trangThaiDuyet = '1' and trangThaiThue ='2' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 // dự án đã duyệt và chưa thuê
-if($mada)
+if($maloai)
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where maLoaiDA = '$mada' and trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where maLoaiDA = '$maloai' and trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'"; //trangThaiDuyet 1 là đã duyệt, 2 là chưa duyệt, 3 là từ chối.
 else                                                                       //trangThaiThue 1 là chưa thuê 2 là thuê rồi
 $sql6="SELECT d.maDA,d.giaThue,maLoaiDA,hinhAnh,tenDA,ngayTao 
-FROM duan d 
-LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
-LEFT JOIN nhao n ON d.maDA = n.maDA 
-LEFT JOIN phongtro pt ON d.maDA = pt.maDA
-where trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
+        FROM duan d 
+        LEFT JOIN chungcu cu ON d.maDA = cu.maDA 
+        LEFT JOIN nhao n ON d.maDA = n.maDA 
+        LEFT JOIN phongtro pt ON d.maDA = pt.maDA
+        LEFT JOIN chuduan cdu ON d.maChuDuAn = cdu.maChuDuAn
+        where trangThaiDuyet = '1' and trangThaiThue ='1' and d.maChuDuAn = '{$_SESSION["maChuDuAn"]}'";
 
 $sanpham=$obj->xuatdulieu($sql1);
 $duan=$obj->xuatdulieu($sql2);
@@ -100,9 +110,23 @@ $duan3=$obj->xuatdulieu($sql4);
 $duan4=$obj->xuatdulieu($sql5);
 $duan5=$obj->xuatdulieu($sql6);
 ?>
-
-    <!-- Content Sections -->
-    <div class="container" style="margin-top: 80px;">
+        <div class="container mt-2">
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda" style="text-decoration: none; color: inherit;">All</a>
+            </button>
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda&maloai=1" style="text-decoration: none; color: inherit;">Nhà ở</a>
+            </button>
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda&maloai=2" style="text-decoration: none; color: inherit;">Phòng trọ</a>
+            </button>
+            <button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
+                <a href="index.php?page=danhsachduan-cda&maloai=3" style="text-decoration: none; color: inherit;">Chung cư</a>
+            </button>
+            
+        </div>
+    <!-- Lựa chọn -->
+    <div class="container mt-5" style="margin-top: 80px;">
         <div class="d-flex justify-content-between" style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
         <div id="tab-all" class="text-dark fw-bold" onclick="showTab('all')" style="cursor: pointer; margin: 0 8px;">Tất cả</div>
         <div id="tab-approved" class="text-muted" onclick="showTab('approved')" style="cursor: pointer; margin: 0 8px;">Đã duyệt</div>
@@ -111,7 +135,7 @@ $duan5=$obj->xuatdulieu($sql6);
         <div id="tab-rented" class="text-muted" onclick="showTab('rented')" style="cursor: pointer; margin: 0 8px;">Đã thuê</div>
         <div id="tab-unrented" class="text-muted" onclick="showTab('unrented')" style="cursor: pointer; margin: 0 8px;">Chưa thuê</div>
     </div>
-        <!-- All Listings -->
+        <!-- TẤT CẢ -->
         <div id="content-all" class="content-section active-content" style="display: block;">
         <?php
             if($sanpham) {
@@ -135,7 +159,7 @@ $duan5=$obj->xuatdulieu($sql6);
         ?>
         </div>
 
-        <!-- Approved Listings -->
+        <!-- CHƯA DUYỆT -->
         <div id="content-approved" class="content-section" style="display: none;">
         <?php
                 if($duan)
@@ -161,7 +185,7 @@ $duan5=$obj->xuatdulieu($sql6);
                     echo "Hiện tại chưa có dự án nào được đăng";
         ?>
         </div>
-         <!--Pending Listings -->
+         <!--ĐÃ DUYỆT -->
         <div id="content-pending" class="content-section" style="display: none;">
         <?php
                 if($duan1)
@@ -187,7 +211,7 @@ $duan5=$obj->xuatdulieu($sql6);
                     echo "Hiện tại chưa có dự án nào được đăng";
     ?>
         </div>
-        <!-- Rejected Listings -->
+        <!-- BỊ TỪ CHỐI -->
         <div id="content-rejected" class="content-section" style="display: none;">
         <?php
                 if($duan3)
@@ -214,7 +238,7 @@ $duan5=$obj->xuatdulieu($sql6);
     ?>
         </div>
 
-        <!-- Rented Listings -->
+        <!-- ĐÃ THUÊ -->
         <div id="content-rented" class="content-section" style="display: none;">
         <?php
                 if($duan4)
@@ -241,7 +265,7 @@ $duan5=$obj->xuatdulieu($sql6);
         ?>
         </div>
 
-        <!-- Unrented Listings -->
+        <!-- CHƯA THUÊ -->
         <div id="content-unrented" class="content-section" style="display: none;">
         <?php
                 if($duan5)
@@ -268,28 +292,28 @@ $duan5=$obj->xuatdulieu($sql6);
     ?>
         </div>
     </div>
-    <!-- JavaScript for Tab Switching -->
     <script>
-        function showTab(tab) {
-            // Hide all content sections
-            document.querySelectorAll('.content-section').forEach(function(section) {
-                section.style.display = 'none';
-            });
+    function showTab(tab) {
+    // Ẩn tất cả các phần nội dung
+    document.querySelectorAll('.content-section').forEach(section => section.style.display = 'none');
 
-            // Reset all tab styles to muted
-            document.querySelectorAll('.d-flex > div').forEach(function(tabElement) {
-                tabElement.classList.remove('fw-bold');
-                tabElement.classList.remove('text-dark');
-                tabElement.classList.add('text-muted');
-            });
+    // Đặt lại tất cả các tab về trạng thái mặc định (màu mờ)
+    document.querySelectorAll('.d-flex > div').forEach(tabElement => {
+        tabElement.classList.replace('fw-bold', 'text-muted');  // Thay 'fw-bold' bằng 'text-muted'
+        tabElement.classList.replace('text-dark', 'text-muted'); // Thay 'text-dark' bằng 'text-muted'
+    });
+    
+    // Hiển thị phần nội dung của tab đã chọn
+    document.getElementById('content-' + tab).style.display = 'block';
 
-            // Show the selected content and style the active tab
-            document.getElementById('content-' + tab).style.display = 'block';
-            document.getElementById('tab-' + tab).classList.add('fw-bold');
-            document.getElementById('tab-' + tab).classList.add('text-dark');
-            document.getElementById('tab-' + tab).classList.remove('text-muted');
-        }
-    </script>
+    // Thêm lớp 'fw-bold' và 'text-dark' vào tab đã chọn, và bỏ lớp 'text-muted'
+    const activeTab = document.getElementById('tab-' + tab);
+    activeTab.classList.add('fw-bold', 'text-dark');   // Thêm các lớp 'fw-bold' và 'text-dark' vào tab
+    activeTab.classList.remove('text-muted');         // Xóa lớp 'text-muted' khỏi tab đã chọn
+}
+
+</script>
+
         
         
         

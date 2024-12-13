@@ -97,12 +97,12 @@ CREATE TABLE `cuochen` (
 --
 
 INSERT INTO `cuochen` (`maCuocHen`, `thoiGian`, `ngayDienRa`, `maKH`, `maDA`, `maNhanVienMG`) VALUES
-(1, '25:58:13', '2024-12-25', 0, 0, NULL),
-(2, '15:07:39', '2024-12-10', 0, 0, NULL),
-(4, '15:07:39', '2024-12-10', 0, 0, NULL),
-(5, '15:07:39', '2024-12-10', 0, 0, NULL),
-(6, '25:58:13', '2024-12-25', 0, 0, NULL),
-(7, '25:58:13', '2024-12-25', 0, 0, NULL);
+(1, '15:00:13', '2024-12-25', 1, 157, NULL),
+(2, '10:00:39', '2024-12-10', 2, 158, NULL),
+(3, '14:07:39', '2024-12-10', 3, 159, NULL),
+(4, '16:07:39', '2024-12-10', 4, 160, NULL),
+(5, '08:07:39', '2024-12-11', 5, 161, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,7 @@ CREATE TABLE `danhsachduanyeuthich` (
 --
 
 INSERT INTO `danhsachduanyeuthich` (`STT`, `maKH`, `maDuAn`, `tenDA`, `diaChiDA`, `giaThue`, `maLoaiDA`) VALUES
-(0, 0, 157, 'Phòng Trọ Hòa Bình - Căn Hộ Mini An Cư Hòa Mạng', '456/673, Lê Văn Sĩ, Phường 3, Quận Phú Nhuận, Hồ Chí Minh', '5000000', '2');
+(4, 0, 159, 'Phòng Trọ Cao Cấp Quận 1 - Chỗ Ở Sang Trọng Giữa Lòng Thành Phố', '456/67, Lê Duẩn, Phường 1, Quận 1, Hồ Chí Minh', '5000000', '2');
 
 -- --------------------------------------------------------
 
@@ -169,10 +169,10 @@ INSERT INTO `duan` (`maDA`, `tenDA`, `diaChiDA`, `giaThue`, `hoaHong`, `ngayTao`
 (171, 'Chung Cư The Garden View - Môi Trường Xanh, Không Gian Lý Tưởng', '456/67, Lê Văn Sĩ, Phường 7, Quận Gò Vấp, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:05:06', '2024-12-11 07:05:06', 9, '14000000', 3, '808_hinh-anh-can-ho-chung-cu-dep-6.jpg', 2, 1, '20'),
 (172, 'Căn Hộ Golden Palace - Sang Trọng Và Tiện Nghi', '456/67, Lê Văn Sĩ, Phường 1, Quận Gò Vấp, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:05:38', '2024-12-11 07:05:38', 9, '14000000', 3, '861_hinh-anh-can-ho-chung-cu-dep-7.jpg', 2, 1, '20'),
 (173, 'Chung Cư Sapphire Tower - Chạm Tới Đẳng Cấp', '456/67, Lê Văn Sĩ, Phường 5, Quận Phú Nhuận, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:06:06', '2024-12-11 07:06:06', 9, '14000000', 3, '216_hinh-anh-can-ho-chung-cu-dep-13.jpg', 2, 1, '20'),
-(174, 'Căn Hộ EcoPark View - Sống Xanh, Tận Hưởng Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 9, Quận 10, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:26', '2024-12-11 07:07:26', 7, '14000000', 3, '407_OIP (3).jpg', 2, 1, '20'),
-(175, 'Chung Cư Diamond City - Thành Phố Của Những Ước Mơ', '456/67, Lê Văn Sĩ, Phường 6, Quận 4, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:55', '2024-12-11 07:07:55', 7, '14000000', 3, '521_OIP.jpg', 2, 1, '20'),
-(176, 'The Horizon Residence - Vượt Ra Biên Giới Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 8, Quận Tân Phú, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:08:19', '2024-12-11 07:08:19', 7, '14000000', 3, '817_thiet-ke-noi-that-chung-cu7.jpg', 2, 1, '20'),
-(177, 'Khu Nhà Ở Vịnh Xanh - An Cư Lạc Nghiệp', '456/6733, Hồ Huy, Phường 10, Quận Gò Vấp, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:13:54', '2024-12-11 07:13:54', 7, '20000000', 1, '870_4bc9dc5f23be53163ccd87a75f13d46f.jpg', 2, 1, '56'),
+(174, 'Căn Hộ EcoPark View - Sống Xanh, Tận Hưởng Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 9, Quận 6, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:26', '2024-12-11 07:07:26', 7, '14000000', 3, '407_OIP (3).jpg', 1, 2, '20'),
+(175, 'Chung Cư Diamond City - Thành Phố Của Những Ước Mơ', '456/67, Lê Văn Sĩ, Phường 6, Quận 4, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:07:55', '2024-12-11 07:07:55', 7, '14000000', 3, '521_OIP.jpg', 1, 2, '20'),
+(176, 'The Horizon Residence - Vượt Ra Biên Giới Cuộc Sống', '456/67, Lê Văn Sĩ, Phường 8, Quận Tân Phú, Hồ Chí Minh', '14000000', '30%', '2024-12-11 07:08:19', '2024-12-11 07:08:19', 7, '14000000', 3, '817_thiet-ke-noi-that-chung-cu7.jpg', 3, 1, '20'),
+(177, 'Khu Nhà Ở Vịnh Xanh - An Cư Lạc Nghiệp', '456/6733, Hồ Huy, Phường 10, Quận Gò Vấp, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:13:54', '2024-12-11 07:13:54', 7, '20000000', 1, '870_4bc9dc5f23be53163ccd87a75f13d46f.jpg', 3, 1, '56'),
 (178, 'Dự Án Home Paradise - Nơi Cuộc Sống Mới Bắt Đầu', '456/6733, Hồ Huy, Phường 7, Quận 10, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:14:23', '2024-12-11 07:14:23', 7, '20000000', 1, '441_4083-v3-800x538.jpg', 2, 1, '56'),
 (179, 'Khu Dân Cư An Bình - Nhà Ở Tiện Nghi, Giá Cả Hợp Lý', '456/6733, Hồ Huy, Phường 4, Quận 6, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:14:57', '2024-12-11 07:14:57', 7, '20000000', 1, '362_biet-thu-1-1.jpg', 2, 1, '56'),
 (180, 'Nhà Ở Eco Living - Sống Xanh, Sống Khỏe', '456/6733, Hồ Huy, Phường 5, Quận Tân Phú, Hồ Chí Minh', '20000000', '30%', '2024-12-11 07:15:51', '2024-12-11 07:15:51', 9, '20000000', 1, '481_biet-thu-san-vuon-mai-thai-binh-duong.jpg', 2, 1, '56'),
@@ -235,7 +235,19 @@ CREATE TABLE `khachhang` (
   `maTK` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
+-- ---------------
+INSERT INTO `khachhang` (`maKH`, `tenKH`, `soDT`, `email`, `diaChi`, `maTK`) VALUES
+(1, 'Phạm Tiến Chung', '0869761733', 'phamtienchungq222222@gmail.com', 'Ấp Bưng Thuốc', 10),
+(3, 'Nguyễn Văn A', '0901234500', 'nguyentrongphu111@gmail.com', '123 ABC, TP.HCM', 12);
 -- --------------------------------------------------------
+-- add dl kh
+INSERT INTO khachhang (maKH, tenKH, soDT, email, diaChi, maTK) VALUES
+(1, 'Nguyễn Minh', '0123456789', 'nguyenminh@gmail.com', '133 Lê Đức Thọ, TP HCM', 17),
+(2, 'Trần văn An', '0987654321', 'tranvanan@gmail.com', '201 Tân Bình, TP HCM', 18),
+(3, 'Hoàng Kim', '0912345678', 'hoangkim@gmail.com', '144 Phạm Văn Chiêu, TP HCM', 19),
+(4, 'Lê Thành Phát', '0123456789', 'lethanhphat@gmail.com', '203/19 Tân Sơn, TP HCM', 20),
+(5, 'Phạm Thị Thảo', '0987654321', 'phamthithao@gmail.com', '12 Nguyễn Văn Bảo, TP HCM', 21);
+
 
 --
 -- Table structure for table `lichlamviec`
@@ -255,7 +267,7 @@ CREATE TABLE `lichlamviec` (
 --
 
 INSERT INTO `lichlamviec` (`STT`, `maNhanVienMoiGioi`, `ngayDangKy`, `gioBatDau`, `gioKetThuc`, `trangThaiLichLamViec`) VALUES
-(0, NULL, '2024-12-25', '25:58:13', '41:58:13', '0'),
+(0, NULL, '2024-12-25', '8:00:13', '17:58:13', ''),
 (0, NULL, '2024-12-10', '08:00:00', '12:00:00', ''),
 (0, NULL, '2024-12-10', '13:00:00', '17:00:00', ''),
 (0, NULL, '2024-12-11', '08:00:00', '12:00:00', ''),
@@ -337,6 +349,9 @@ CREATE TABLE `nhanvienmoigioi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
+-- add dữ liệu nhân viên môi giới
+INSERT INTO nhanvienmoigioi (maNVMG, tenNVMG, soDT, email, diaChi, maTK) VALUES
+('null', 'PhamTienTrung', '0987654321', 'trungpham123@gmail.com', '123 Đường A, TP HCM', 8);
 
 --
 -- Table structure for table `nhao`

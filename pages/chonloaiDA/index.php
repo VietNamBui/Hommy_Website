@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
         <h2 class="text-center mb-4 mt-4">Chọn Loại Dự Án</h2>
 
         <!-- Liệt kê các dự án dưới dạng các link -->

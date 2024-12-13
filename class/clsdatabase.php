@@ -97,7 +97,7 @@
             $link = $this->connect();
         
             // Sử dụng prepared statement
-            $stmt = $link->prepare($sql);
+            $stmt = $link->prepare($sql); //tách tham số khỏi câu lệnh SQL injection
         
             // Kiểm tra lỗi prepare
             if (!$stmt) {

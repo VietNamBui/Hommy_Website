@@ -12,7 +12,7 @@
                 WHERE d.maDA = '$mada'";
 
     }else{
-        if($maloai=="2"){// nha o
+        if($maloai=="2"){// phong trọ
             $sql = "SELECT d.maDA, tenDA, d.giaThue, diaChiDA, tienCoc, dienTich, maLoaiDA, hinhAnh, tenDA, ngayTao, ngayXacThuc, 
                         trangThaiDuyet, trangThaiThue, hoaHong,noiThat,cd.tenCDA
                     FROM duan d
@@ -21,7 +21,7 @@
                     LEFT JOIN phongtro pt ON d.maDA = pt.maDA
                     LEFT JOIN chuduan cd ON d.maChuDuan = cd.maChuDuan
                     WHERE d.maDA = '$mada'";
-                    }else{
+                    }else{// chung cu
                         $sql = "SELECT d.maDA, tenDA, d.giaThue, diaChiDA, tienCoc, dienTich, maLoaiDA, hinhAnh, tenDA, ngayTao, ngayXacThuc, 
                                         trangThaiDuyet, trangThaiThue, hoaHong, loaiNha, huongCua, cu.soNhaVS, cu.soPhongNgu, cu.phapLy,block,maCan, 
                                         cd.tenCDA
@@ -119,7 +119,7 @@ if (isset($_POST["btxoa"])) {
                                     <img src="assets/video/'.$sanpham[0]["hinhAnh"].'" class="d-block w-100" style="width: 500px; height: 500px; border: 2px solid #ddd; border-radius: 8px;" alt="Property Image 3">
                                 </div>
                             </div>
-                            <!-- Carousel Controls -->
+                            <!-- Control chuyển ảnh -->
                             <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev" style="width: 1px; height: 570px;">
                                 <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; padding: 20px;"></span>
                                 <span class="visually-hidden">Previous</span>
@@ -137,18 +137,18 @@ if (isset($_POST["btxoa"])) {
                             <img src="assets/video/'.$sanpham[0]["hinhAnh"].'" class="img" width="200" alt="4" style="margin: 5px; border-radius: 8px;">
                         </div>
 
-                        <!-- Property Description and Price -->
+                        <!-- Tên sản phẩm -->
                         <h4>'.$sanpham[0]["tenDA"].'</h4>
                         <div class="d-flex align-items-center mb-3">
                             <span style="color: red; font-weight: bold; font-size: 1.5em; margin-right: 15px;">'.number_format($sanpham[0]["giaThue"]).'   VND</span>
                         </div>
 
-                        <!-- Location and Update Info -->
+                        <!-- Địa chỉ -->
                         <p style="color: gray; font-size: 0.9em;">
                             <i class="fas fa-map-marker-alt"></i> '.$sanpham[0]["diaChiDA"].'<br>
                         </p>
 
-                        <!-- Property Attributes Section -->
+                        <!-- Thông tin -->
                         <h6 class="mt-4">Đặc điểm bất động sản</h6>
                         <div style="margin-top: 10px;">
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ddd;">
@@ -202,7 +202,7 @@ if (isset($_POST["btxoa"])) {
                                                 <img src="assets/video/'.$sanpham[0]["hinhAnh"].'" class="d-block w-100" style="width: 500px; height: 500px; border: 2px solid #ddd; border-radius: 8px;" alt="Property Image 3">
                                             </div>
                                         </div>
-                                        <!-- Carousel Controls -->
+                                        <!-- Control chuyển hướng -->
                                         <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev" style="width: 1px; height: 570px;">
                                             <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 50%; padding: 20px;"></span>
                                             <span class="visually-hidden">Previous</span>
@@ -220,18 +220,18 @@ if (isset($_POST["btxoa"])) {
                                         <img src="assets/video/'.$sanpham[0]["hinhAnh"].'" class="img" width="200" alt="4" style="margin: 5px; border-radius: 8px;">
                                     </div>
             
-                                    <!-- Property Description and Price -->
+                                    <!-- Tên dự án -->
                                     <h4>'.$sanpham[0]["tenDA"].'</h4>
                                     <div class="d-flex align-items-center mb-3">
                                         <span style="color: red; font-weight: bold; font-size: 1.5em; margin-right: 15px;">'.number_format($sanpham[0]["giaThue"]).'   VND</span>
                                     </div>
             
-                                    <!-- Location and Update Info -->
+                                    <!-- Địa chỉ -->
                                     <p style="color: gray; font-size: 0.9em;">
                                         <i class="fas fa-map-marker-alt"></i> '.$sanpham[0]["diaChiDA"].'<br>
                                     </p>
             
-                                    <!-- Property Attributes Section -->
+                                    <!-- Thông tin dự án -->
                                     <h6 class="mt-4">Đặc điểm bất động sản</h6>
                                     <div style="margin-top: 10px;">
                                         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ddd;">
@@ -290,18 +290,18 @@ if (isset($_POST["btxoa"])) {
                                         <img src="assets/video/'.$sanpham[0]["hinhAnh"].'" class="img" width="200" alt="4" style="margin: 5px; border-radius: 8px;">
                                     </div>
             
-                                    <!-- Property Description and Price -->
+                                    <!-- Tên dự án -->
                                     <h4>'.$sanpham[0]["tenDA"].'</h4>
                                     <div class="d-flex align-items-center mb-3">
                                         <span style="color: red; font-weight: bold; font-size: 1.5em; margin-right: 15px;">'.number_format($sanpham[0]["giaThue"]).'   VND</span>
                                     </div>
             
-                                    <!-- Location and Update Info -->
+                                    <!-- Địa chỉ -->
                                     <p style="color: gray; font-size: 0.9em;">
                                         <i class="fas fa-map-marker-alt"></i> '.$sanpham[0]["diaChiDA"].'<br>
                                     </p>
             
-                                    <!-- Property Attributes Section -->
+                                    <!-- Thông tin dự án -->
                                     <h6 class="mt-4">Đặc điểm bất động sản</h6>
                                     <div style="margin-top: 10px;">
                                         <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #ddd;">
@@ -349,7 +349,7 @@ if (isset($_POST["btxoa"])) {
                 echo 'Dự án không tồn tại';
             }
         ?>
-            <!-- Agent Information -->
+            <!-- Thông tin chủ dự án và các nút chức năng -->
             <div class="col-md-4">
                 <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; text-align: center;">
                     <img src="assets/video/<?php echo $sanpham[0]["hinhAnh"];?>" alt="Agent Image" style="border-radius: 50%; width: 80px; height: 80px;">
@@ -378,7 +378,7 @@ if (isset($_POST["btxoa"])) {
                         ?>
                     </div>
                     
-                    <!-- Contact Buttons -->
+                    <!-- Nút chức năng -->
                     <div class="contact-buttons mt-2" style="margin-top: 0.5em; display: flex; gap: 1em; align-items: center;">
                     <div class="contact-buttons mt-2" style="display: flex; gap: 1em; justify-content: center;">
                     <?php
@@ -389,7 +389,7 @@ if (isset($_POST["btxoa"])) {
                             <form action="" method="post" style="margin: 0; display: inline;">
                                 <button class="btn btn-danger" name="btxoa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa dự án này không?\')" style="background-color: #fc011a; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xóa dự án</button>
                             </form>
-                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xác nhận dự án</button>';
+                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;"><a href="index.php?page=xacnhanda-cda" style="text-decoration: none; color: inherit;">Xác nhận hơp đồng</a></button>';
                     } else if ($maloai == '2') {
                         echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
                                 <a href="index.php?page=suapt-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
@@ -397,7 +397,7 @@ if (isset($_POST["btxoa"])) {
                             <form action="" method="post" style="margin: 0; display: inline;">
                                 <button class="btn btn-danger" name="btxoa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa dự án này không?\')" style="background-color: #fc011a; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xóa dự án</button>
                             </form>
-                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xác nhận dự án</button>';
+                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;"><a href="index.php?page=xacnhanda-cda" style="text-decoration: none; color: inherit;">Xác nhận hơp đồng</a></button>';
                     } else {
                         echo '<button class="btn btn-success" style="background-color: #198754; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">
                                 <a href="index.php?page=suacc-cda&mada=' . $sanpham[0]["maDA"] . '&maloai=' . $sanpham[0]['maLoaiDA'] . '" style="text-decoration: none; color: inherit;">Sửa dự án</a>
@@ -405,14 +405,12 @@ if (isset($_POST["btxoa"])) {
                             <form action="" method="post" style="margin: 0; display: inline;">
                                 <button class="btn btn-danger" name="btxoa" onclick="return confirm(\'Bạn có chắc chắn muốn xóa dự án này không?\')" style="background-color: #fc011a; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xóa dự án</button>
                             </form>
-                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;">Xác nhận dự án</button>';
+                            <button class="btn btn-info" style="background-color: #000101; color: white; border: none;  border-radius: 0.25rem; white-space: nowrap;"><a href="index.php?page=xacnhanda-cda" style="text-decoration: none; color: inherit;">Xác nhận hơp đồng</a></button>';
                     }
                     ?>
                 </div>
-
-
                 </div>
             </div>
         </div>
-
+    </div>
     </div>

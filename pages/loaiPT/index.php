@@ -71,91 +71,116 @@ if (isset($_POST["btdangtin"])) {
                         <!-- Thông tin đăng tin -->
                         <div class="col-8 mt-3 mb-3">
                             <div class="form-section">
+                                <!-- Tiêu đề đăng tin -->
                                 <div class="mb-3 mt-3">
                                     <label for="tieude">Tiêu đề đăng tin:</label>
-                                    <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude" required>
+                                    <input type="text" class="form-control" id="tieude" placeholder="Tiêu đề đăng tin" name="tieude" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng nhập tiêu đề đăng tin!')" oninput="setCustomValidity('')">
                                 </div>
+
+                                <!-- Thông tin địa chỉ -->
                                 <h5>Thông tin địa chỉ</h5>
                                 <div class="mb-3">
                                     <label for="tinhTP">Tỉnh/Thành phố:</label>
-                                    <select class="form-select" id="tinhTP" name="tinhTP" required>
-                                            <option value="" disabled selected>Tỉnh/Thành phố</option>
-                                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                    <select class="form-select" id="tinhTP" name="tinhTP" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng chọn tỉnh/thành phố!')" oninput="setCustomValidity('')">
+                                        <option value="" disabled selected>Tỉnh/Thành phố</option>
+                                        <option value="Hồ Chí Minh">Hồ Chí Minh</option>
                                     </select>
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="quanHuyen">Quận/Huyện:</label>
-                                    <select class="form-select" id="quanHuyen" name="quanHuyen" required>
-                                                <option value="" disabled selected>Quận/Huyện</option>
-                                                <option value="Quận 1">Quận 1</option>
-                                                <option value="Quận 2">Quận 2</option>
-                                                <option value="Quận 3">Quận 3</option>
-                                                <option value="Quận 4">Quận 4</option>
-                                                <option value="Quận 5">Quận 5</option>
-                                                <option value="Quận 6">Quận 6</option>
-                                                <option value="Quận 7">Quận 7</option>
-                                                <option value="Quận 8">Quận 8</option>
-                                                <option value="Quận 10">Quận 10</option>
-                                                <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
-                                                <option value="Quận Tân Phú">Quận Tân Phú</option>
-                                                <option value="Quận Gò Vấp">Quận Gò Vấp</option>
-                                                <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
-                                            </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phuongXa">Phường/Xã:</label>
-                                    <select class="form-select" id="phuongXa" name="phuongXa" required>
-                                            <option value="" disabled selected>Phường/Xã</option>
-                                            <option value="Phường 1">Phường 1</option>
-                                            <option value="Phường 2">Phường 2</option>
-                                            <option value="Phường 3">Phường 3</option>
-                                            <option value="Phường 4">Phường 4</option>
-                                            <option value="Phường 5">Phường 5</option>
-                                            <option value="Phường 6">Phường 6</option>
-                                            <option value="Phường 7">Phường 7</option>
-                                            <option value="Phường 8">Phường 8</option>
-                                            <option value="Phường 9">Phường 9</option>
-                                            <option value="Phường 10">Phường 10</option>
-                                            <option value="Phường 12">Phường 12</option>
+                                    <select class="form-select" id="quanHuyen" name="quanHuyen" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng chọn quận/huyện!')" oninput="setCustomValidity('')">
+                                        <option value="" disabled selected>Quận/Huyện</option>
+                                        <option value="Quận 1">Quận 1</option>
+                                        <option value="Quận 2">Quận 2</option>
+                                        <option value="Quận 3">Quận 3</option>
+                                        <option value="Quận 4">Quận 4</option>
+                                        <option value="Quận 5">Quận 5</option>
+                                        <option value="Quận 6">Quận 6</option>
+                                        <option value="Quận 7">Quận 7</option>
+                                        <option value="Quận 8">Quận 8</option>
+                                        <option value="Quận 10">Quận 10</option>
+                                        <option value="Quận Phú Nhuận">Quận Phú Nhuận</option>
+                                        <option value="Quận Tân Phú">Quận Tân Phú</option>
+                                        <option value="Quận Gò Vấp">Quận Gò Vấp</option>
+                                        <option value="Quận Bình Thạnh">Quận Bình Thạnh</option>
                                     </select>
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="phuongXa">Phường/Xã:</label>
+                                    <select class="form-select" id="phuongXa" name="phuongXa" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng chọn phường/xã!')" oninput="setCustomValidity('')">
+                                        <option value="" disabled selected>Phường/Xã</option>
+                                        <option value="Phường 1">Phường 1</option>
+                                        <option value="Phường 2">Phường 2</option>
+                                        <option value="Phường 3">Phường 3</option>
+                                        <option value="Phường 4">Phường 4</option>
+                                        <option value="Phường 5">Phường 5</option>
+                                        <option value="Phường 6">Phường 6</option>
+                                        <option value="Phường 7">Phường 7</option>
+                                        <option value="Phường 8">Phường 8</option>
+                                        <option value="Phường 9">Phường 9</option>
+                                        <option value="Phường 10">Phường 10</option>
+                                        <option value="Phường 12">Phường 12</option>
+                                    </select>
+                                </div>
+
                                 <div class="mb-3 mt-3">
                                     <label for="sonha">Số nhà:</label>
-                                    <input type="text" class="form-control" id="soNha" placeholder="Số nhà" name="soNha" required>
+                                    <input type="text" class="form-control" id="soNha" placeholder="Số nhà" name="soNha" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng nhập số nhà!')" oninput="setCustomValidity('')">
                                 </div>
+
                                 <div class="mb-3 mt-3">
                                     <label for="tenduong">Tên đường:</label>
-                                    <input type="text" class="form-control" id="tenDuong" placeholder="Tên đường" name="tenDuong" required>
+                                    <input type="text" class="form-control" id="tenDuong" placeholder="Tên đường" name="tenDuong" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng nhập tên đường!')" oninput="setCustomValidity('')">
                                 </div>
+
+                                <!-- Thông tin chi tiết bất động sản -->
                                 <h5>Thông tin chi tiết bất động sản</h5>
                                 <div class="mb-3 mt-3">
                                     <label for="dientich">Diện tích:</label>
-                                    <input type="text" class="form-control" id="dienTich" placeholder="Diện tích" name="dienTich" required>
+                                    <input type="text" class="form-control" id="dienTich" placeholder="Diện tích" name="dienTich" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng nhập diện tích!')" oninput="setCustomValidity('')">
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="noiThat">Thông tin nội thất:</label>
-                                    <select class="form-select" id="noiThat" name="noiThat" required>
+                                    <select class="form-select" id="noiThat" name="noiThat" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng chọn thông tin nội thất!')" oninput="setCustomValidity('')">
                                         <option value="" disabled selected>Thông tin nội thất</option>
                                         <option value="Đầy đủ nội thất">Đầy đủ nội thất</option>
                                         <option value="Phòng trống">Phòng trống</option>
                                     </select>
                                 </div>
+
+                                <!-- Thông tin cho thuê -->
                                 <h5>Thông tin cho thuê</h5>
                                 <div class="mb-3 mt-3">
                                     <label for="tienCoc">Tiền cọc:</label>
-                                    <input type="number" class="form-control" id="tiencoc" placeholder="Tiền cọc" name="tienCoc" required>
+                                    <input type="number" class="form-control" id="tiencoc" placeholder="Tiền cọc" name="tienCoc" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng nhập tiền cọc!')" oninput="setCustomValidity('')">
                                 </div>
+
                                 <div class="mb-3 mt-3">
                                     <label for="giaThue">Tiền thuê:</label>
-                                    <input type="number" class="form-control" id="giaThue" placeholder="Tiền thuê" name="giaThue" required>
+                                    <input type="number" class="form-control" id="giaThue" placeholder="Tiền thuê" name="giaThue" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng nhập tiền thuê!')" oninput="setCustomValidity('')">
                                 </div>
+
                                 <div class="mb-3 mt-3">
                                     <label for="hoaHong">Phí hoa hồng:</label>
-                                    <select class="form-select" id="hoaHong" name="hoaHong" required>
-                                            <option value="" disabled selected>Phí hoa hồng</option>
-                                            <option value="30%">30%</option>
-                                            <option value="40%">40%</option>
-                                            <option value="50%">50%</option>
+                                    <select class="form-select" id="hoaHong" name="hoaHong" 
+                                        required oninvalid="this.setCustomValidity('Vui lòng chọn phí hoa hồng!')" oninput="setCustomValidity('')">
+                                        <option value="" disabled selected>Phí hoa hồng</option>
+                                        <option value="30%">30%</option>
+                                        <option value="40%">40%</option>
+                                        <option value="50%">50%</option>
                                     </select>
                                 </div>
                             </div>

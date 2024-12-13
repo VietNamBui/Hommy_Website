@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Header Hommy</title>
+    <title>Trang chủ nvmg</title>
+
+
     <style>
         /* header
         /* Reset mặc định */
@@ -93,7 +95,7 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand" href="index.php?page=trangchu-cda">
+        <a class="navbar-brand" href="#">
             <img src="assets/video/HommyHommy.jpg" alt="Hommy Logo" style="width: 70px;height: 70;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,23 +105,26 @@
             <!-- Các nút bên trái -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=trangchu-cda">Trang chủ</a>
+                    <a class="nav-link" href="index.php?page=trangchu-nvmg">Trang chủ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=chonloaiDA">Đăng tin</a>
+                    <a class="nav-link" href="index.php?page=dky_lich_lam_viec">Đăng ký lịch làm việc</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=danhsachduan-cda">Quản lý dự án</a>
+                    <a class="nav-link" href="index.php?page=xem_ds_cuoc_hen">Xem danh sách cuộc hẹn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?page=xemlichhen-cda">Xem lịch hẹn</a>
+                    <a class="nav-link" href="index.php?page=lap_hop_dong_coc">Lập hợp đồng cọc</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?page=xem_bao_cao_thu_nhap">Xem báo cáo thu nhập</a>
                 </li>
             </ul>
             <!-- Avatar người dùng và dropdown menu -->
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://th.bing.com/th/id/OIP.puvppVij8zpGfiKm4X-hEQHaGW?w=269&h=231&c=8&rs=1&qlt=90&o=6&dpr=1.3rm=2&w=3070&h=2635&dpr=1.3&pid=ImgDetMain" alt="User avatar" width="30" height="30" class="rounded-circle">
+                        <img src="https://storage.googleapis.com/a1aa/image/hb5Nzm6NNdYaPJTIStmWgEycMxfReJur7GbB6Bf5Bd1ypQZnA.jpg" alt="User avatar" width="30" height="30" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="index.php?page=profile">Hồ sơ cá nhân</a></li>
