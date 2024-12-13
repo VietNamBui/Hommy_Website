@@ -119,7 +119,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://storage.googleapis.com/a1aa/image/hb5Nzm6NNdYaPJTIStmWgEycMxfReJur7GbB6Bf5Bd1ypQZnA.jpg" alt="User avatar" width="30" height="30" class="rounded-circle">
+                        <img src="https://th.bing.com/th/id/OIP.puvppVij8zpGfiKm4X-hEQHaGW?w=269&h=231&c=8&rs=1&qlt=90&o=6&dpr=1.3rm=2&w=3070&h=2635&dpr=1.3&pid=ImgDetMain" alt="User avatar" width="30" height="30" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="index.php?page=profile">Hồ sơ cá nhân</a></li>
