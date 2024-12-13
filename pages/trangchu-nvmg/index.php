@@ -5,14 +5,6 @@ if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Kết nối bảng `taikhoan` với bảng `nhanvienmoigioi`
-$query = "ALTER TABLE `nhanvienmoigioi` 
-          ADD CONSTRAINT `fk_nhanvienmoigioi_taikhoan` 
-          FOREIGN KEY (`maTK`) REFERENCES `taikhoan`(`maTK`) 
-          ON DELETE CASCADE ON UPDATE CASCADE;";
-
-$conn->query($query);
-$conn->close();
 ?>
 <!-- Main Content -->
 <main>

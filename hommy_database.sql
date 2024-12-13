@@ -104,6 +104,12 @@ INSERT INTO `cuochen` (`maCuocHen`, `thoiGian`, `ngayDienRa`, `maKH`, `maDA`, `m
 (7, '21:06:54', '2024-12-08', 1, 159, NULL),
 (8, '21:49:26', '2024-12-29', 1, 159, NULL),
 (9, '21:06:54', '2024-12-08', 1, 159, NULL);
+(1, '15:00:13', '2024-12-25', 1, 157, NULL),
+(2, '10:00:39', '2024-12-10', 2, 158, NULL),
+(3, '14:07:39', '2024-12-10', 3, 159, NULL),
+(4, '16:07:39', '2024-12-10', 4, 160, NULL),
+(5, '08:07:39', '2024-12-11', 5, 161, NULL);
+
 
 -- --------------------------------------------------------
 
@@ -229,6 +235,15 @@ CREATE TABLE `khachhang` (
 INSERT INTO `khachhang` (`maKH`, `tenKH`, `soDT`, `email`, `diaChi`, `maTK`) VALUES
 (1, 'Phạm Tiến Chung', '0869761733', 'phamtienchungq222222@gmail.com', 'Ấp Bưng Thuốc', 10),
 (3, 'Nguyễn Văn A', '0901234500', 'nguyentrongphu111@gmail.com', '123 ABC, TP.HCM', 12);
+-- --------------------------------------------------------
+-- add dl kh
+INSERT INTO khachhang (maKH, tenKH, soDT, email, diaChi, maTK) VALUES
+(1, 'Nguyễn Minh', '0123456789', 'nguyenminh@gmail.com', '133 Lê Đức Thọ, TP HCM', 17),
+(2, 'Trần văn An', '0987654321', 'tranvanan@gmail.com', '201 Tân Bình, TP HCM', 18),
+(3, 'Hoàng Kim', '0912345678', 'hoangkim@gmail.com', '144 Phạm Văn Chiêu, TP HCM', 19),
+(4, 'Lê Thành Phát', '0123456789', 'lethanhphat@gmail.com', '203/19 Tân Sơn, TP HCM', 20),
+(5, 'Phạm Thị Thảo', '0987654321', 'phamthithao@gmail.com', '12 Nguyễn Văn Bảo, TP HCM', 21);
+
 
 --
 -- Table structure for table `lichlamviec`
@@ -248,7 +263,7 @@ CREATE TABLE `lichlamviec` (
 --
 
 INSERT INTO `lichlamviec` (`STT`, `maNhanVienMoiGioi`, `ngayDangKy`, `gioBatDau`, `gioKetThuc`, `trangThaiLichLamViec`) VALUES
-(0, NULL, '2024-12-25', '25:58:13', '41:58:13', '0'),
+(0, NULL, '2024-12-25', '8:00:13', '17:58:13', ''),
 (0, NULL, '2024-12-10', '08:00:00', '12:00:00', ''),
 (0, NULL, '2024-12-10', '13:00:00', '17:00:00', ''),
 (0, NULL, '2024-12-11', '08:00:00', '12:00:00', ''),
@@ -330,6 +345,9 @@ CREATE TABLE `nhanvienmoigioi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
+-- add dữ liệu nhân viên môi giới
+INSERT INTO nhanvienmoigioi (maNVMG, tenNVMG, soDT, email, diaChi, maTK) VALUES
+('null', 'PhamTienTrung', '0987654321', 'trungpham123@gmail.com', '123 Đường A, TP HCM', 10);
 
 --
 -- Table structure for table `nhao`
@@ -441,6 +459,17 @@ INSERT INTO `taikhoan` (`maTK`, `tenTK`, `matKhau`, `maGoi`, `maLoai`, `ngayTao`
 (9, 'nguyentrongphuttt', 'e10adc3949ba59abbe56e057f20f883e', NULL, 3, '2024-12-11', 1),
 (10, 'nguyentrongphu111@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, '2024-12-11', 1),
 (12, 'user_lock', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, '2024-12-12', 0);
+(12, 'nguyentrongphu', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-11-21', 1),
+(13, 'hopboy553', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 5, '2024-12-10', 1),
+(15, 'buivietnam', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
+(16, 'phamtienchung', 'e10adc3949ba59abbe56e057f20f883e', NULL, 2, '2024-12-11', 1),
+(17, 'nguyenminh', MD5('123'), NULL, 1, '2024-11-21', 1),
+(18, 'tranvanan', MD5('123'), null, 1, '2024-12-01', 1),
+(19, 'hoangkim', MD5('123'), null, 1, '2024-12-02', 1),
+(20, 'lethanhphat', MD5('123'), null, 1, '2024-12-03', 1),
+(21, 'phamthithao', MD5('123'), NULL, 1, '2024-12-04', 1);
+(22, 'phamtrung' , MD5('12345'), NULL, 3, '2024-12-10', 1);
+
 
 --
 -- Indexes for dumped tables
