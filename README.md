@@ -1,5 +1,8 @@
 # Real Estate Rental Platform - [namthangmedia.io.vn](http://namthangmedia.io.vn) 🏡
 
+## How to Run the Project
+I have purchased a domain and hosting to deploy this project online. You can access and view the project via the following link: [namthangmedia.io.vn](http://namthangmedia.io.vn)
+
 ## Introduction
 This project involves developing a real estate website to help customers easily search for, manage information on rental/purchase properties, and make quick decisions. Additionally, the system assists project owners in posting listings, managing project portfolios, tracking transactions, and optimizing business efficiency.
 
@@ -7,9 +10,6 @@ This project involves developing a real estate website to help customers easily 
 - **Frontend**: HTML, CSS, Bootstrap, Javascript
 - **Backend**: PHP
 - **Database**: MySQL
-
-## How to Run the Project
-I have purchased a domain and hosting to deploy this project online. You can access and view the project via the following link: [namthangmedia.io.vn](http://namthangmedia.io.vn)
 
 ## Key Features
 ### 1. For Customers
