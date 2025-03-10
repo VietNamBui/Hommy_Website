@@ -6,6 +6,7 @@ This project involves developing a real estate website to help customers easily 
 ## Technologies Used
 - **Frontend**: HTML, CSS, Bootstrap, Javascript
 - **Backend**: PHP
+- **Database**: MySQL
 
 ## How to Run the Project
 I have purchased a domain and hosting to deploy this project online. You can access and view the project via the following link: [namthangmedia.io.vn](http://namthangmedia.io.vn)
